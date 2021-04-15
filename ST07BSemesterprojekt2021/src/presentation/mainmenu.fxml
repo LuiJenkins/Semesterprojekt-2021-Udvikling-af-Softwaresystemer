@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="1000.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.Controller">
    <children>
       <ScrollPane layoutX="20.0" layoutY="104.0" prefHeight="235.0" prefWidth="661.0">
@@ -163,7 +162,7 @@
             <Font name="Arial" size="20.0" />
          </font>
       </Label>
-      <TextField layoutX="20.0" layoutY="355.0" prefHeight="32.0" prefWidth="430.0" promptText="Søg Program/Skuespiller" />
+      <TextField layoutX="20.0" layoutY="355.0" prefHeight="32.0" prefWidth="430.0" promptText="Søg" />
       <Button layoutX="462.0" layoutY="355.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="222.0" text="Søg Program" />
       <ListView layoutX="20.0" layoutY="387.0" prefHeight="109.0" prefWidth="430.0" />
       <TextArea layoutX="20.0" layoutY="508.0" prefHeight="482.0" prefWidth="661.0" text="KREDITERING: beliggenhed beliggenhed beliggenhed&#10;==================================&#10;&#10;-- VÆRT --&#10;John Doe&#10;Adam Smith&#10;-- FOTOGRAF --&#10;Will Smith&#10;John Adams&#10;" />
