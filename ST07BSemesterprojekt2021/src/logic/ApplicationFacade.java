@@ -1,6 +1,6 @@
 package logic;
 
-public class application_Facade {
+public class ApplicationFacade {
 
     public void makeNewProgram(String Titel) {
         throw new UnsupportedOperationException();
