@@ -12,5 +12,6 @@ public class DashboardController {
     public TextField newprogram_name;
     public Button edit_chosen_program;
     public Button delete_chosen_program;
-
+    public Button accept_chosen_program;
+    public Button deny_chosen_program;
 }
