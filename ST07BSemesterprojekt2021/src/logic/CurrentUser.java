@@ -1,10 +1,10 @@
 package logic;
 
 public class CurrentUser {
-    int userID;
-    String userName;
-    int userRole;
-    int ProducerID;
+    public int userID;
+    public String userName;
+    public int userRole;
+    public int ProducerID;
 
     public void createUser(String name, int role) {
         throw new UnsupportedOperationException();
