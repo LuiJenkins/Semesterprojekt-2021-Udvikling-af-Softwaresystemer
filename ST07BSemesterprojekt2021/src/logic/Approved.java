@@ -16,7 +16,9 @@ public class Approved<setStatus> {
         int programID;
         int approvedBy;
         Date approvedDate;
+        //behøves vistnok ik??
     }
+
 
     public static void createApproved(int status, int programID, int approvedBy) {
         //return int

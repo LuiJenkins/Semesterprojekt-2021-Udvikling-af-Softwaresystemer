@@ -10,7 +10,7 @@ public class LoginHandler {
         String password;
         int userRole;
 
-
+        //hm tror ik lige den skal være her. -L
     }
 
 
