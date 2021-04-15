@@ -15,18 +15,18 @@
             <Font name="Arial Bold" size="50.0" />
          </font>
       </Label>
-      <Button layoutX="564.0" layoutY="24.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="126.0" text="Logud" />
-      <Label contentDisplay="RIGHT" layoutX="564.0" layoutY="53.0" prefHeight="21.0" prefWidth="126.0" text="Admin" wrapText="true">
+      <Button fx:id="logout_button" layoutX="564.0" layoutY="24.0" mnemonicParsing="false" onAction="#logout" prefHeight="25.0" prefWidth="126.0" text="Logud" />
+      <Label fx:id="role_loggedin" contentDisplay="RIGHT" layoutX="564.0" layoutY="53.0" prefHeight="21.0" prefWidth="126.0" text="Admin" wrapText="true">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-  <AnchorPane layoutY="74.0" minHeight="0.0" minWidth="0.0" prefHeight="926.0" prefWidth="700.0">
+  <AnchorPane layoutY="74.0" minHeight="0.0" minWidth="0.0" prefHeight="926.0" prefWidth="700.0" visible="false">
          <children>
-            <ListView layoutX="21.0" layoutY="60.0" prefHeight="770.0" prefWidth="316.0" />
-            <Button layoutX="21.0" layoutY="846.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="156.0" text="Rediger Valgte" />
-            <Button layoutX="177.0" layoutY="846.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="160.0" text="Slet Valgte" />
-            <TextField layoutX="350.0" layoutY="60.0" prefHeight="25.0" prefWidth="334.0" promptText="Navn på program" />
+            <ListView fx:id="program_list" layoutX="21.0" layoutY="60.0" prefHeight="770.0" prefWidth="316.0" />
+            <Button fx:id="edit_chosen_program" layoutX="21.0" layoutY="846.0" mnemonicParsing="false" onAction="#editChosenProgram" prefHeight="25.0" prefWidth="156.0" text="Rediger Valgte" />
+            <Button fx:id="delete_chosen_program" layoutX="177.0" layoutY="846.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="160.0" text="Slet Valgte" />
+            <TextField fx:id="newprogram_name" layoutX="350.0" layoutY="60.0" prefHeight="25.0" prefWidth="334.0" promptText="Navn på program" />
             <Label layoutX="20.0" layoutY="28.0" prefHeight="32.0" prefWidth="317.0" text="Programliste">
                <font>
                   <Font name="Arial" size="20.0" />
@@ -37,10 +37,10 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </Label>
-            <Button layoutX="601.0" layoutY="85.0" mnemonicParsing="false" text="Lav program" />
-            <Button layoutX="352.0" layoutY="846.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="160.0" text="Godkend Valgte" />
-            <Button layoutX="521.0" layoutY="846.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="160.0" text="Afvis Valgte" />
-            <TextArea layoutX="350.0" layoutY="206.0" prefHeight="624.0" prefWidth="334.0" />
+            <Button layoutX="601.0" layoutY="85.0" mnemonicParsing="false" onAction="#makeProgram" text="Lav program" />
+            <Button fx:id="accept_chosen_program" layoutX="352.0" layoutY="846.0" mnemonicParsing="false" onAction="#denyChosenProgram" prefHeight="25.0" prefWidth="160.0" text="Godkend Valgte" />
+            <Button fx:id="deny_chosen_program" layoutX="521.0" layoutY="846.0" mnemonicParsing="false" onAction="#denyChosenProgram" prefHeight="25.0" prefWidth="160.0" text="Afvis Valgte" />
+            <TextArea fx:id="program_preview" layoutX="350.0" layoutY="206.0" prefHeight="624.0" prefWidth="334.0" />
             <Label layoutX="352.0" layoutY="168.0" prefHeight="32.0" prefWidth="317.0" text="Preview af Kreditering">
                <font>
                   <Font name="Arial" size="20.0" />
@@ -50,9 +50,9 @@
       </AnchorPane>
       <AnchorPane layoutX="1.0" layoutY="74.0" minHeight="0.0" minWidth="0.0" prefHeight="926.0" prefWidth="700.0" visible="false">
          <children>
-            <ListView layoutX="21.0" layoutY="60.0" prefHeight="770.0" prefWidth="316.0" />
-            <Button layoutX="21.0" layoutY="846.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="156.0" text="Rediger Valgte" />
-            <Button layoutX="177.0" layoutY="846.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="160.0" text="Slet Valgte" />
+            <ListView fx:id="category_list" layoutX="21.0" layoutY="60.0" prefHeight="770.0" prefWidth="316.0" />
+            <Button fx:id="edit_chosen_category" layoutX="21.0" layoutY="846.0" mnemonicParsing="false" onAction="#editChosenCategory" prefHeight="25.0" prefWidth="156.0" text="Rediger Valgte" />
+            <Button fx:id="delete_chosen_category" layoutX="177.0" layoutY="846.0" mnemonicParsing="false" onAction="#deleteChosenCategory" prefHeight="25.0" prefWidth="160.0" text="Slet Valgte" />
             <TextField layoutX="350.0" layoutY="60.0" prefHeight="25.0" prefWidth="334.0" promptText="Navn på kategori" />
             <Label layoutX="20.0" layoutY="28.0" prefHeight="32.0" prefWidth="317.0" text="Kategoriliste">
                <font>
@@ -65,21 +65,21 @@
                </font>
             </Label>
             <Button layoutX="601.0" layoutY="85.0" mnemonicParsing="false" text="Lav kategori" />
-            <TextArea layoutX="350.0" layoutY="207.0" prefHeight="624.0" prefWidth="334.0" />
+            <TextArea fx:id="program_preview2" layoutX="350.0" layoutY="207.0" prefHeight="624.0" prefWidth="334.0" />
             <Label layoutX="352.0" layoutY="169.0" prefHeight="32.0" prefWidth="317.0" text="Preview af Kreditering">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
             </Label>
-            <Button layoutX="352.0" layoutY="846.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="334.0" text="Tilbage" />
-            <Button layoutX="350.0" layoutY="887.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="334.0" text="Send kreditering til godkendelse" />
+            <Button fx:id="back_to_programs" layoutX="352.0" layoutY="846.0" mnemonicParsing="false" onAction="#goBackToPrograms" prefHeight="25.0" prefWidth="334.0" text="Tilbage" />
+            <Button fx:id="send_program_to_review" layoutX="352.0" layoutY="878.0" mnemonicParsing="false" onAction="#sendCreditToReview" prefHeight="25.0" prefWidth="334.0" text="Send kreditering til godkendelse" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutY="74.0" minHeight="0.0" minWidth="0.0" prefHeight="926.0" prefWidth="700.0" visible="false">
+      <AnchorPane layoutY="74.0" minHeight="0.0" minWidth="0.0" prefHeight="926.0" prefWidth="700.0">
          <children>
-            <ListView layoutX="21.0" layoutY="60.0" prefHeight="770.0" prefWidth="316.0" />
-            <Button layoutX="350.0" layoutY="85.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="156.0" text="Set valgte persons navn" />
-            <TextField layoutX="350.0" layoutY="60.0" prefHeight="25.0" prefWidth="317.0" promptText="Navn" />
+            <ListView fx:id="person_list" layoutX="21.0" layoutY="60.0" prefHeight="770.0" prefWidth="316.0" />
+            <Button fx:id="set_person_name" layoutX="350.0" layoutY="116.0" mnemonicParsing="false" onAction="#setPersonName" prefHeight="25.0" prefWidth="156.0" text="Set valgte persons navn" />
+            <TextField fx:id="person_name" layoutX="350.0" layoutY="60.0" prefHeight="25.0" prefWidth="317.0" promptText="Navn" />
             <Label layoutX="20.0" layoutY="28.0" prefHeight="32.0" prefWidth="317.0" text="Personliste">
                <font>
                   <Font name="Arial" size="20.0" />
@@ -90,17 +90,18 @@
                   <Font name="Arial" size="20.0" />
                </font>
             </Label>
-            <Button layoutX="511.0" layoutY="85.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="156.0" text="Lav ny person med navn" />
-            <Label layoutX="353.0" layoutY="120.0" prefHeight="32.0" prefWidth="317.0" text="Preview af Krediteringkategori">
+            <Button fx:id="add_new_person_with_name" layoutX="506.0" layoutY="116.0" mnemonicParsing="false" onAction="#makeNewPersonWithName" prefHeight="25.0" prefWidth="156.0" text="Lav ny person med navn" />
+            <Label layoutX="354.0" layoutY="147.0" prefHeight="32.0" prefWidth="317.0" text="Preview af Krediteringkategori">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
             </Label>
-            <Button layoutX="357.0" layoutY="884.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="310.0" text="Tilbage" />
-            <Button layoutX="21.0" layoutY="834.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="316.0" text="Tilføj person til krediteringskategori" />
-            <ListView layoutX="354.0" layoutY="162.0" prefHeight="668.0" prefWidth="316.0" />
-            <Button layoutX="354.0" layoutY="834.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="316.0" text="Slet Valgte Person fra Krediteringskategorien" />
-            <Button layoutX="21.0" layoutY="884.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="316.0" text="Slet Valgte Person fra Databasen" />
+            <Button fx:id="back_to_category" layoutX="357.0" layoutY="884.0" mnemonicParsing="false" onAction="#goBackToCategory" prefHeight="25.0" prefWidth="310.0" text="Tilbage" />
+            <Button fx:id="add_person_to_category" layoutX="21.0" layoutY="834.0" mnemonicParsing="false" onAction="#addPersonToCategory" prefHeight="25.0" prefWidth="316.0" text="Tilføj person til krediteringskategori" />
+            <ListView fx:id="category_preview" layoutX="354.0" layoutY="179.0" prefHeight="651.0" prefWidth="316.0" />
+            <Button fx:id="remove_person_from_category" layoutX="354.0" layoutY="834.0" mnemonicParsing="false" onAction="#removePersonFromCategory" prefHeight="25.0" prefWidth="316.0" text="Slet Valgte Person fra Krediteringskategorien" />
+            <Button fx:id="remove_person_from_database" layoutX="21.0" layoutY="884.0" mnemonicParsing="false" onAction="#deletePersonFromDatabase" prefHeight="25.0" prefWidth="316.0" text="Slet Valgte Person fra Databasen" />
+            <TextField fx:id="person_desc" layoutX="350.0" layoutY="85.0" prefHeight="25.0" prefWidth="317.0" promptText="Beskrivelse til internt brug" />
          </children>
       </AnchorPane>
    </children>
