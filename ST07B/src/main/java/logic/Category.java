@@ -29,7 +29,7 @@ public class Category {
         throw new UnsupportedOperationException();
     }
     public Person[] getPersonsFromCategory() {
-
+        throw new UnsupportedOperationException();
     }
  }
 
