@@ -9,8 +9,8 @@ public class CreditsHandler {
         throw new UnsupportedOperationException();
     }
 
-    public static int[] getAllCreditsFromLocal(){
-        throw new UnsupportedOperationException();
+    public static ArrayList<Program> getAllCreditsFromLocal(){
+        return currentLoadedProgramCredits;
     }
     public static void makeNewCredit(int id,int producerid, String name) {
         currentLoadedProgramCredits.add(new Program(id,producerid,name));

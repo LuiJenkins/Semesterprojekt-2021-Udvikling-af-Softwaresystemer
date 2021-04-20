@@ -1,5 +1,7 @@
 package logic;
 
+import java.util.ArrayList;
+
 public class ApplicationFacade {
 
     public static void makeNewProgram(int id,int producerid,String Titel) {
@@ -50,8 +52,8 @@ public class ApplicationFacade {
         throw new UnsupportedOperationException();
     }
 
-    public static Program[] getCurrentPrograms(){
-        throw new UnsupportedOperationException();
+    public static ArrayList<Program> getCurrentPrograms(){
+        return CreditsHandler.getAllCreditsFromLocal();
     }
 
     public static Program getCurrentProgram(int id) {

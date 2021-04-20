@@ -36,8 +36,7 @@ public class Category {
     }
     public Person[] getPersonsFromCategory() {throw new UnsupportedOperationException(); }
 
-    @Override
-    public String toString() {
+    public String toText() {
         String res = "";
         for (Person p : persons) {
             res += p.getName()+"\n";

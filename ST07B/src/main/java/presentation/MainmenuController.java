@@ -14,12 +14,20 @@ public class MainmenuController {
     public ListView<Program> suggestions;
 
     public TextArea credits;
+    public Program selectedProgram;
 
     public void login() {
         System.out.println("Login Event");
         Main.SwitchScene(1);
     }
     public void search() {
+        if (selectedProgram != null) {
+            Main.displayCredits(selectedProgram);
+        }
+    }
+    public void updateSearch() {
+        selectedProgram = suggestions.getSelectionModel().getSelectedItem();
+        search_term.setText(selectedProgram.toString());
 
     }
 }

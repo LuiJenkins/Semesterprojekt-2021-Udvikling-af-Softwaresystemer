@@ -13,11 +13,9 @@ public class Program {
     public Program(int programID, int producerID, String programName) {
         this.programID = programID;
         this.ProducerID = producerID;
-        this.programName = programName;
+        this.programTitle = programName;
     }
-    public Program() {
-            //????
-    }
+    public Program() { }
 
     public int getProgramID(){
         return programID;
@@ -52,13 +50,17 @@ public class Program {
         throw new UnsupportedOperationException();
     }
 
-    @Override
-    public String toString() {
+    public String toText() {
         String res = "▶▶ "+getName()+"\n\n";
         for (Category c : categories) {
             res += "──━━━ "+c.getName()+" ━━━──\n";
-            res += c.toString();
+            res += c.toText();
         }
         return res;
+    }
+
+    @Override
+    public String toString() {
+        return programTitle;
     }
 }

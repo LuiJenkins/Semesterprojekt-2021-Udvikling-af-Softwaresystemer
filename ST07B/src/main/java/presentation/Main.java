@@ -1,6 +1,7 @@
 package presentation;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -38,8 +39,6 @@ public class Main extends Application {
         primaryStage.setScene(scenes.get(0));
         primaryStage.show();
 
-        mainmenuController.suggestions.setItems(ApplicationFacade.getCurrentPrograms());
-        });
 
         ///// shows demo credit
         ApplicationFacade.makeNewProgram(1,1,"Vores Test Program");
@@ -53,19 +52,36 @@ public class Main extends Application {
         pc.getCategory(2).addPersonToCategory(new Person(2,"Din Far"));
         pc.getCategory(2).addPersonToCategory(new Person(3,"Din Søster"));
         pc.getCategory(2).addPersonToCategory(new Person(4,"Din Bror"));
-        mainmenuController.credits.setText(ApplicationFacade.getCurrentProgram(1).toString());
+
+        ApplicationFacade.makeNewProgram(2,2,"Et lorte program");
+        Program pc2 = ApplicationFacade.getCurrentProgram(2);
+        pc2.createCategory(1,"Vært");
+        pc2.createCategory(2,"Kamera");
+        pc2.createCategory(3,"Tom");
+
+        pc2.getCategory(1).addPersonToCategory(new Person(1,"John Doe"));
+        pc2.getCategory(2).addPersonToCategory(new Person(2,"John Wick"));
+        pc2.getCategory(2).addPersonToCategory(new Person(1,"Egon Olsen"));
+        pc2.getCategory(2).addPersonToCategory(new Person(2,"Skipper Skræk"));
+
         /////
+        mainmenuController.suggestions.setItems(FXCollections.observableArrayList(ApplicationFacade.getCurrentPrograms()));
     }
 
 
     public static void main(String[] args) {
         launch(args);
     }
+
     public static void SwitchScene(int SceneId) {
         System.out.println("Switching Scene to: "+SceneId);
         primaryStage.setScene(scenes.get(SceneId));
         primaryStage.show();
     }
+    public static void displayCredits(Program program) {
+        mainmenuController.credits.setText(program.toText());
+    }
+
     public void makeNewProgram(String programName) {
         throw new UnsupportedOperationException();
     }
