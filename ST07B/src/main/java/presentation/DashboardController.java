@@ -39,7 +39,7 @@ public class DashboardController {
 
 
     public void logout() {
-
+        Main.SwitchScene(0);
     }
     public void makeProgram() {
 

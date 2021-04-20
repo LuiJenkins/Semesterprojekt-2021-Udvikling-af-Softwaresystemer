@@ -15,6 +15,8 @@ public class MainmenuController {
     public TextArea credits;
 
     public void login() {
+        System.out.println("Login Event");
+        Main.SwitchScene(1);
     }
     public void search() {
     }

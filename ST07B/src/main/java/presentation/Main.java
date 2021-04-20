@@ -10,18 +10,18 @@ import presentation.*;
 import java.util.ArrayList;
 
 public class Main extends Application {
-    private ArrayList<Parent> roots = new ArrayList<>();
-    private Stage primaryStage;
+    private static ArrayList<Scene> scenes = new ArrayList<>();
+    private static Stage primaryStage;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        roots.add((Parent) FXMLLoader.load(getClass().getClassLoader().getResource("mainmenu.fxml")));
-        roots.add((Parent) FXMLLoader.load(getClass().getClassLoader().getResource("dashboard.fxml")));
+        // creating a list of references to controllers and scenes, this allows the switching of scenes with method SwitchScene()
+        scenes.add(new Scene((Parent) FXMLLoader.load(getClass().getClassLoader().getResource("mainmenu.fxml")), 700,1000));
+        scenes.add(new Scene((Parent) FXMLLoader.load(getClass().getClassLoader().getResource("dashboard.fxml")), 700,1000));
         this.primaryStage = primaryStage;
 
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("mainmenu.fxml"));
         primaryStage.setTitle("Krediteringssystem");
-        primaryStage.setScene(new Scene(root, 700, 1000));
+        primaryStage.setScene(scenes.get(0));
         primaryStage.show();
     }
 
@@ -30,8 +30,9 @@ public class Main extends Application {
         launch(args);
     }
 
-    public void SwitchScene(int SceneId) {
-        primaryStage.setScene(new Scene(roots.get(SceneId),700, 1000));
+    public static void SwitchScene(int SceneId) {
+        System.out.println("Switching Scene to: "+SceneId);
+        primaryStage.setScene(scenes.get(SceneId));
         primaryStage.show();
     }
     public void makeNewProgram(String programName) {
