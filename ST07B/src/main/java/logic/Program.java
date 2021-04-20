@@ -12,6 +12,7 @@ public class Program {
     public Program(int programID, int producerID, String programName) {
         this.programID = programID;
         this.ProducerID = producerID;
+        this.programName = programName;
     }
     public Program() {
 
@@ -24,6 +25,7 @@ public class Program {
     public String getName(){
         return programName;
     }
+
     public void createCategory(int id,String categoryName){
         categories.add(new Category(id,categoryName));
     }
@@ -50,7 +52,7 @@ public class Program {
 
     @Override
     public String toString() {
-        String res = "";
+        String res = "▶▶ "+getName()+"\n\n";
         for (Category c : categories) {
             res += "──━━━ "+c.getName()+" ━━━──\n";
             res += c.toString();
