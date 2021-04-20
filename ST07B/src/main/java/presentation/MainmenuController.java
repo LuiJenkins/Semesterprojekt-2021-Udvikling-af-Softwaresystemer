@@ -1,6 +1,7 @@
 package presentation;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import logic.*;
 
 public class MainmenuController {
     @FXML
@@ -10,7 +11,7 @@ public class MainmenuController {
 
     public TextField search_term;
     public Button search_button;
-    public ListView suggestions;
+    public ListView<Program> suggestions;
 
     public TextArea credits;
 
@@ -19,5 +20,6 @@ public class MainmenuController {
         Main.SwitchScene(1);
     }
     public void search() {
+
     }
 }

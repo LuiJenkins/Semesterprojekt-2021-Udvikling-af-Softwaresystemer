@@ -50,7 +50,7 @@ public class ApplicationFacade {
         throw new UnsupportedOperationException();
     }
 
-    public static String getCurrentPrograms(){
+    public static Program[] getCurrentPrograms(){
         throw new UnsupportedOperationException();
     }
 

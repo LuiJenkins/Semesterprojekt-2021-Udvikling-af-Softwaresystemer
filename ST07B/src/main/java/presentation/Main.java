@@ -1,6 +1,7 @@
 package presentation;
 
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -8,6 +9,7 @@ import javafx.stage.Stage;
 import logic.ApplicationFacade;
 import logic.Person;
 import logic.Program;
+import logic.*;
 
 import java.util.ArrayList;
 
@@ -35,6 +37,9 @@ public class Main extends Application {
         primaryStage.setTitle("Krediteringssystem");
         primaryStage.setScene(scenes.get(0));
         primaryStage.show();
+
+        mainmenuController.suggestions.setItems(ApplicationFacade.getCurrentPrograms());
+        });
 
         ///// shows demo credit
         ApplicationFacade.makeNewProgram(1,1,"Vores Test Program");
