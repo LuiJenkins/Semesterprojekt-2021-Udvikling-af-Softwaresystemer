@@ -2,18 +2,18 @@ package logic;
 
 import java.util.ArrayList;
 
-public class ProgramCredits {
+public class Program {
     private Approved approved;
     private ArrayList<Category> categories = new ArrayList<>();
     private int ProducerID;
     private int programID;
     private String programName;
 
-    public ProgramCredits(int programID,int producerID,String programName) {
+    public Program(int programID, int producerID, String programName) {
         this.programID = programID;
         this.ProducerID = producerID;
     }
-    public ProgramCredits() {
+    public Program() {
 
     }
 

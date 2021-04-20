@@ -4,12 +4,10 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import logic.ApplicationFacade;
 import logic.Person;
-import logic.ProgramCredits;
-import presentation.*;
+import logic.Program;
 
 import java.util.ArrayList;
 
@@ -40,7 +38,7 @@ public class Main extends Application {
 
         ///// shows demo credit
         ApplicationFacade.makeNewProgram(1,1,"Vores Test Program");
-        ProgramCredits pc = ApplicationFacade.getCurrentProgram(1);
+        Program pc = ApplicationFacade.getCurrentProgram(1);
         pc.createCategory(1,"Vært");
         pc.createCategory(2,"Skuespiller");
 

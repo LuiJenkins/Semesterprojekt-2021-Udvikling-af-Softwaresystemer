@@ -1,10 +1,10 @@
 package database;
 
-import logic.ProgramCredits;
+import logic.Program;
 
 public class ProgramParser extends FileParser{
-    public void addProgram(ProgramCredits programCredits){}
-    public void updateProgram(ProgramCredits programCredits){}
-    public void deleteProgram(ProgramCredits programCredits){}
-    public ProgramCredits getProgram(int ID){throw new UnsupportedOperationException();}
+    public void addProgram(Program program){}
+    public void updateProgram(Program program){}
+    public void deleteProgram(Program program){}
+    public Program getProgram(int ID){throw new UnsupportedOperationException();}
 }

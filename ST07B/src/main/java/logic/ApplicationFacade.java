@@ -54,7 +54,7 @@ public class ApplicationFacade {
         throw new UnsupportedOperationException();
     }
 
-    public static ProgramCredits getCurrentProgram(int id) {
+    public static Program getCurrentProgram(int id) {
         return CreditsHandler.getSpecificCredit(id);
     }
 
