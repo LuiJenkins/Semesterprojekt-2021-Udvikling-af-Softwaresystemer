@@ -7,11 +7,11 @@ public class ApplicationFacade {
     }
 
     public static void deleteProgram(int ID){
-        throw new UnsupportedOperationException();
+        CreditsHandler.deleteCredit(ID);
     }
 
-    public static void editProgram(int ID){
-        throw new UnsupportedOperationException();
+    public static void editProgram(int ID, String Title){
+        CreditsHandler.getSpecificCredit(ID).setName(Title);
     }
 
     public static void acceptProgram(int ID){
@@ -51,7 +51,6 @@ public class ApplicationFacade {
     }
 
     public static String getCurrentPrograms(){
-        throw new UnsupportedOperationException();
     }
 
     public static Program getCurrentProgram(int id) {
