@@ -7,7 +7,8 @@ public class Program {
     private ArrayList<Category> categories = new ArrayList<>();
     private int ProducerID;
     private int programID;
-    private String programName;
+    private String programTitle;
+
 
     public Program(int programID, int producerID, String programName) {
         this.programID = programID;
@@ -15,7 +16,7 @@ public class Program {
         this.programName = programName;
     }
     public Program() {
-
+            //????
     }
 
     public int getProgramID(){
@@ -23,8 +24,9 @@ public class Program {
     }
 
     public String getName(){
-        return programName;
+        return programTitle;
     }
+    public void setName(String newName){programTitle = newName;}
 
     public void createCategory(int id,String categoryName){
         categories.add(new Category(id,categoryName));

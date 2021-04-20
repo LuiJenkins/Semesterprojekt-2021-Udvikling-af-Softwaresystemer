@@ -9,16 +9,16 @@ public class CreditsHandler {
         throw new UnsupportedOperationException();
     }
 
-    public static int getAccessibleIDsForUser(){
-        throw new UnsupportedOperationException();
-    }
-
     public static int[] getAllCreditsFromLocal(){
         throw new UnsupportedOperationException();
     }
     public static void makeNewCredit(int id,int producerid, String name) {
         currentLoadedProgramCredits.add(new Program(id,producerid,name));
     }
+    public static void deleteCredit(int id) {
+        currentLoadedProgramCredits.remove(getSpecificCredit(id));
+    }
+
 
     public static Program getSpecificCredit(int ID){
         for (int i = 0; i < currentLoadedProgramCredits.size();i++) {
