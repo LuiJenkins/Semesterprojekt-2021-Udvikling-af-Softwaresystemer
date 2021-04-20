@@ -14,14 +14,22 @@ public class Category {
         return name;
     }
 
+
     public int getType(int ID){
         return catType;
     }
-    public void addPersonToCat(int catID, int userID){
+    public void addPersonToCategory(int catID, int userID){
+
         throw new UnsupportedOperationException();
     }
-    public void removePersonFromCat(int ID, int userID) {
-        
+    public void removePersonFromCategory(int ID, int userID) {
+        throw new UnsupportedOperationException();
     }
-}
+    public Person getPersonFromCategory(int id) {
+        throw new UnsupportedOperationException();
+    }
+    public Person[] getPersonsFromCategory() {
+
+    }
+ }
 

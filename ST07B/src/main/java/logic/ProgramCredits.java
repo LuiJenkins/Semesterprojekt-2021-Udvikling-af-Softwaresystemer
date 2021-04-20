@@ -21,10 +21,16 @@ public class ProgramCredits {
         throw new UnsupportedOperationException();
     }
 
-    public String getCategory(int ID) {
+    public Category getCategory(int ID) {
     //returns category
     throw new UnsupportedOperationException();
     }
+
+    public Category getAllCategory() {
+        //returns category
+        throw new UnsupportedOperationException();
+    }
+
 
     public void setCategory(String category){
         throw new UnsupportedOperationException();
