@@ -1,31 +1,34 @@
 package logic;
 
+import java.util.ArrayList;
+
 public class CreditsHandler {
-    public void getProgramCreditsFromDB (int [] IDList){
+    private static ArrayList<ProgramCredits> currentLoadedProgramCredits = new ArrayList<>();
+
+    public static void getProgramCreditsFromDB (int [] IDList){
         throw new UnsupportedOperationException();
     }
 
-    public int getAccessibleIDsForUser(){
-        //return int
+    public static int getAccessibleIDsForUser(){
         throw new UnsupportedOperationException();
     }
 
-    public int[] getAllCreditsFromLocal(){
-        //return int[]
+    public static int[] getAllCreditsFromLocal(){
         throw new UnsupportedOperationException();
     }
-
-    public void setSpecificCredit(int ID,String HER_INDSÆTTES_PROGRAMCREDITS){
-
+    public static void makeNewCredit(int id,int producerid, String name) {
+        currentLoadedProgramCredits.add(new ProgramCredits(id,producerid,name));
     }
 
-    public int[] getSpecificCredit(int ID){
-        //return int[] for programcredit obj
-        throw new UnsupportedOperationException();
+    public static ProgramCredits getSpecificCredit(int ID){
+        for (int i = 0; i < currentLoadedProgramCredits.size();i++) {
+            if (currentLoadedProgramCredits.get(i).getProgramID() == ID) {
+                return currentLoadedProgramCredits.get(i);
+            }
+        }
+        return new ProgramCredits();
     }
-
-    public void ProgramCredits(int Producer, String name){
-        throw new UnsupportedOperationException();
+    public static void addSpecificCredit(ProgramCredits programCredits) {
+        currentLoadedProgramCredits.add(programCredits);
     }
-
 }

@@ -6,14 +6,6 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Approved<setStatus> {
-    public static void main(String[] args) {
-        int status;
-        int programID;
-        int approvedBy;
-        Date approvedDate;
-        //behøves vistnok ik??
-    }
-
 
     public static void createApproved(int status, int programID, int approvedBy) {
         //return int

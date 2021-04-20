@@ -1,35 +1,48 @@
 package logic;
 
-public class Category {
-    private int ID;
-    private String name;
-    private int catType;
-    //mangler opslagsværk til catType som int, f.eks. en Hashmap.
+import java.util.ArrayList;
 
-    public void createCategory(String name, int CatType){
-        throw new UnsupportedOperationException();
+public class Category {
+
+    private ArrayList<Person> persons = new ArrayList<>();
+    private int id;
+    private String name;
+
+    public Category(int id,String name) {
+        this.id = id;
+        this.name = name;
+    }
+    public Category() {
+
     }
 
-    public String getName(int ID){
+    public String getName(){
         return name;
     }
+    public int getId() { return id;}
 
+    public void addPersonToCategory(Person person){
+        persons.add(person);
+    }
+    public void removePersonFromCategory(int id) {throw new UnsupportedOperationException(); }
 
-    public int getType(int ID){
-        return catType;
-    }
-    public void addPersonToCategory(int catID, int userID){
-
-        throw new UnsupportedOperationException();
-    }
-    public void removePersonFromCategory(int ID, int userID) {
-        throw new UnsupportedOperationException();
-    }
     public Person getPersonFromCategory(int id) {
-        throw new UnsupportedOperationException();
+        for (int i = 0; i < persons.size();i++) {
+            if (persons.get(i).getId() == id) {
+                return persons.get(i);
+            }
+        }
+        return new Person();
     }
-    public Person[] getPersonsFromCategory() {
-        throw new UnsupportedOperationException();
+    public Person[] getPersonsFromCategory() {throw new UnsupportedOperationException(); }
+
+    @Override
+    public String toString() {
+        String res = "";
+        for (Person p : persons) {
+            res += p.getName()+"\n";
+        }
+        return res;
     }
  }
 

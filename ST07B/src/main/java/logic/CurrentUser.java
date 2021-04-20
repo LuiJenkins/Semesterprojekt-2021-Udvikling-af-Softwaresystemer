@@ -36,9 +36,6 @@ public class CurrentUser {
 
     public void isAllowed(int reqRole){
         throw new UnsupportedOperationException();
-        /*meningen med denne method er at man skal parse en user og et "spørgsmål" og så
-        returner den om den givne user har permissions
-         */
     }
 
     public void updateUser(){
