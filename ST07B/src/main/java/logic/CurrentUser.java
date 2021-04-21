@@ -22,7 +22,7 @@ public class CurrentUser {
     }
 
     public int getProducerID(){
-        return ProducerID;
+        return producerID;
     }
 
     public void setUserName(String uname){
