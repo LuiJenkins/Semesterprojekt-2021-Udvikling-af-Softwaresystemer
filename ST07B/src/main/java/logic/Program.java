@@ -25,6 +25,7 @@ public class Program {
         return programTitle;
     }
     public void setName(String newName){programTitle = newName;}
+    public Approved getApproved(){return approved;}
 
     public void createCategory(String categoryName){
         int highestId = 0;
@@ -46,7 +47,7 @@ public class Program {
 
 
     public void deleteCategory(int ID){
-        throw new UnsupportedOperationException();
+        categories.remove(ID);
     }
 
 
