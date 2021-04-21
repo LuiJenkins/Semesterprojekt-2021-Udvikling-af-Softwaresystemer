@@ -4,7 +4,14 @@ public class CurrentUser {
     public int userID;
     public String userName;
     public int userRole;
-    public int ProducerID;
+    public int producerID;
+
+    public CurrentUser(int userID, String userName, int userRole, int producerID) {
+        this.userID = userID;
+        this.userName = userName;
+        this.userRole = userRole;
+        this.producerID = producerID;
+    }
 
     public void createUser(String name, int role) {
         throw new UnsupportedOperationException();
@@ -19,23 +26,24 @@ public class CurrentUser {
     }
 
     public void setUserName(String uname){
-        throw new UnsupportedOperationException();
+        this.userName = uname;
     }
 
     public String getUserName(){
-        return userName;
+        return this.userName;
     }
 
-    public void setUserRole(int UserRole){
-        throw new UnsupportedOperationException();
+    public void setUserRole(int userRole){
+        this.userRole=userRole;
+//        throw new UnsupportedOperationException();
     }
 
     public int getUserRole(){
         return userRole;
     }
 
-    public void isAllowed(int reqRole){
-        throw new UnsupportedOperationException();
+    public boolean isAllowed(int reqRole){
+        return(this.userRole >= reqRole);
     }
 
     public void updateUser(){
