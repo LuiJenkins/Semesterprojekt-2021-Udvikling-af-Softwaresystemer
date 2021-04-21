@@ -7,27 +7,35 @@ public class Program {
     private ArrayList<Category> categories = new ArrayList<>();
     private int ProducerID;
     private int programID;
-    private String programName;
+    private String programTitle;
+
 
     public Program(int programID, int producerID, String programName) {
         this.programID = programID;
         this.ProducerID = producerID;
-        this.programName = programName;
+        this.programTitle = programName;
     }
-    public Program() {
-
-    }
+    public Program() { }
 
     public int getProgramID(){
         return programID;
     }
+    public int getProducerID() {return ProducerID;}
 
     public String getName(){
-        return programName;
+        return programTitle;
     }
+    public void setName(String newName){programTitle = newName;}
+    public Approved getApproved(){return approved;}
 
-    public void createCategory(int id,String categoryName){
-        categories.add(new Category(id,categoryName));
+    public void createCategory(String categoryName){
+        int highestId = 0;
+        for (Category c : categories) {
+            if (c.getId() > highestId) {
+                highestId = c.getId();
+            }
+        }
+        categories.add(new Category(highestId+1,categoryName));
     }
     public Category getCategory(int id) {
         for (int i = 0; i < categories.size();i++) {
@@ -40,23 +48,23 @@ public class Program {
 
 
     public void deleteCategory(int ID){
-        throw new UnsupportedOperationException();
+        categories.remove(ID);
     }
 
 
-    public Category[] getAllCategory() { return (Category[])categories.toArray(); }
+    public ArrayList<Category> getAllCategory() { return categories; }
 
-    public void setCategory(String category){
-        throw new UnsupportedOperationException();
+    public String toText() {
+        String res = "▶▶ "+getName()+"\n\n";
+        for (Category c : categories) {
+            res += "──━━━ "+c.getName()+" ━━━──\n";
+            res += c.toText();
+        }
+        return res;
     }
 
     @Override
     public String toString() {
-        String res = "▶▶ "+getName()+"\n\n";
-        for (Category c : categories) {
-            res += "──━━━ "+c.getName()+" ━━━──\n";
-            res += c.toString();
-        }
-        return res;
+        return programTitle;
     }
 }

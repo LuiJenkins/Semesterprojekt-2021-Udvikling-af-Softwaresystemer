@@ -34,10 +34,11 @@ public class Category {
         }
         return new Person();
     }
-    public Person[] getPersonsFromCategory() {throw new UnsupportedOperationException(); }
+    public ArrayList<Person> getPersonsFromCategory() {
+        return persons;
+    }
 
-    @Override
-    public String toString() {
+    public String toText() {
         String res = "";
         for (Person p : persons) {
             res += p.getName()+"\n";

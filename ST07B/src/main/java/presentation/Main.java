@@ -1,6 +1,8 @@
 package presentation;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -8,6 +10,7 @@ import javafx.stage.Stage;
 import logic.ApplicationFacade;
 import logic.Person;
 import logic.Program;
+import logic.*;
 
 import java.util.ArrayList;
 
@@ -36,33 +39,67 @@ public class Main extends Application {
         primaryStage.setScene(scenes.get(0));
         primaryStage.show();
 
-        ///// shows demo credit
-        ApplicationFacade.makeNewProgram(1,1,"Vores Test Program");
-        Program pc = ApplicationFacade.getCurrentProgram(1);
-        pc.createCategory(1,"Vært");
-        pc.createCategory(2,"Skuespiller");
 
-        pc.getCategory(1).addPersonToCategory(new Person(1,"John Smith"));
-        pc.getCategory(1).addPersonToCategory(new Person(2,"Adam Sandal"));
-        pc.getCategory(2).addPersonToCategory(new Person(1,"Din Mor"));
-        pc.getCategory(2).addPersonToCategory(new Person(2,"Din Far"));
-        pc.getCategory(2).addPersonToCategory(new Person(3,"Din Søster"));
-        pc.getCategory(2).addPersonToCategory(new Person(4,"Din Bror"));
-        mainmenuController.credits.setText(ApplicationFacade.getCurrentProgram(1).toString());
+        ///// shows demo credit
+        ApplicationFacade.makeNewPerson("John Smith","");
+        ApplicationFacade.makeNewPerson("Adam Sandal","");
+        ApplicationFacade.makeNewPerson("Din Mor","");
+        ApplicationFacade.makeNewPerson("Din Far","");
+        ApplicationFacade.makeNewPerson("Din Søster","");
+        ApplicationFacade.makeNewPerson("Din Bror","");
+        ApplicationFacade.makeNewPerson("John Doe","");
+        ApplicationFacade.makeNewPerson("John Wick","");
+        ApplicationFacade.makeNewPerson("Egon Olsen","");
+        ApplicationFacade.makeNewPerson("Onkel Anders","");
+
+
+        ApplicationFacade.makeNewProgram(1,"Vores Test Program");
+        ApplicationFacade.makeNewCategory(1,"Vært");
+        ApplicationFacade.makeNewCategory(1,"Fotograf");
+
+        ApplicationFacade.makeNewProgram(2,"Et lorte program");
+        ApplicationFacade.makeNewCategory(2,"Skuespiller");
+        ApplicationFacade.makeNewCategory(2,"lyd");
+        ApplicationFacade.makeNewCategory(2,"hvem der spurgte");
+
+        ApplicationFacade.addPersonToCategory(1,1,1);
+        ApplicationFacade.addPersonToCategory(1,1,2);
+        ApplicationFacade.addPersonToCategory(1,2,3);
+        ApplicationFacade.addPersonToCategory(2,2,3);
+        ApplicationFacade.addPersonToCategory(1,2,4);
+        ApplicationFacade.addPersonToCategory(1,2,5);
+        ApplicationFacade.addPersonToCategory(1,2,6);
+        ApplicationFacade.addPersonToCategory(2,1,7);
+        ApplicationFacade.addPersonToCategory(2,2,8);
+        ApplicationFacade.addPersonToCategory(2,2,9);
+        ApplicationFacade.addPersonToCategory(2,2,10);
+
+
         /////
+        mainmenuController.suggestions.setItems(getAllPrograms());
     }
 
 
     public static void main(String[] args) {
         launch(args);
     }
+
     public static void SwitchScene(int SceneId) {
         System.out.println("Switching Scene to: "+SceneId);
         primaryStage.setScene(scenes.get(SceneId));
         primaryStage.show();
+        if (SceneId == 0) {mainmenuController.start();}
+        else if (SceneId == 1) {dashboardController.start();}
     }
-    public void makeNewProgram(String programName) {
-        throw new UnsupportedOperationException();
+    public static void displayCredits(Program program) {
+        mainmenuController.credits.setText(program.toText());
+    }
+    public static ObservableList<Program> getAllPrograms() {
+        return FXCollections.observableArrayList(ApplicationFacade.getCurrentPrograms());
+    }
+
+    public void makeNewProgram(int producerid, String programName) {
+        ApplicationFacade.makeNewProgram(producerid,programName);
     }
     public void editProgram(int programId) {
         throw new UnsupportedOperationException();
