@@ -26,6 +26,7 @@ public class Program {
         return programTitle;
     }
     public void setName(String newName){programTitle = newName;}
+    public Approved getApproved(){return approved;}
 
     public void createCategory(int id,String categoryName){
         categories.add(new Category(id,categoryName));
@@ -41,7 +42,7 @@ public class Program {
 
 
     public void deleteCategory(int ID){
-        throw new UnsupportedOperationException();
+        categories.remove(ID);
     }
 
 

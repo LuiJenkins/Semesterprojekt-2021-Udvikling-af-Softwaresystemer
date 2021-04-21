@@ -14,28 +14,29 @@ public class ApplicationFacade {
         CreditsHandler.getSpecificCredit(ID).setName(Title);
     }
 
-    public static void acceptProgram(int ID){
-        throw new UnsupportedOperationException();
+    public static void acceptProgram(int ID, int status){
+        CreditsHandler.getSpecificCredit(ID).getApproved().setStatus(status);
+
     }
 
-    public static void denyProgram(int ID){
-        throw new UnsupportedOperationException();
+    public static void denyProgram(int ID,int status){
+        CreditsHandler.getSpecificCredit(ID).getApproved().setStatus(status);
     }
 
     public static void sendCreditToReview(int ID){
         throw new UnsupportedOperationException();
     }
 
-    public static void makeNewCategory(String new_cat){
-        throw new UnsupportedOperationException();
+    public static void makeNewCategory(String new_cat, int prgID, int catID){
+        CreditsHandler.getSpecificCredit(prgID).createCategory(catID, new_cat);
     }
 
-    public static void deleteCategory(int ID){
-        throw new UnsupportedOperationException();
+    public static void deleteCategory(int catID, int prgID){
+        CreditsHandler.getSpecificCredit(prgID).deleteCategory(catID);
     }
 
-    public static int editCategory(int ID){
-        throw new UnsupportedOperationException();
+    public static void editCategory(int ID, int prgID, String newName){
+        CreditsHandler.getSpecificCredit(prgID).setName(newName);
     }
 
     public static void makeNewPerson(String name, String desc){
@@ -50,7 +51,7 @@ public class ApplicationFacade {
         throw new UnsupportedOperationException();
     }
 
-    public static String getCurrentPrograms(){
+    public static void getCurrentPrograms(){
     }
 
     public static Program getCurrentProgram(int id) {
