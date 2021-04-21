@@ -26,8 +26,14 @@ public class Program {
     }
     public void setName(String newName){programTitle = newName;}
 
-    public void createCategory(int id,String categoryName){
-        categories.add(new Category(id,categoryName));
+    public void createCategory(String categoryName){
+        int highestId = 0;
+        for (Category c : categories) {
+            if (c.getId() > highestId) {
+                highestId = c.getId();
+            }
+        }
+        categories.add(new Category(highestId,categoryName));
     }
     public Category getCategory(int id) {
         for (int i = 0; i < categories.size();i++) {

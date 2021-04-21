@@ -4,8 +4,9 @@ import java.util.ArrayList;
 
 public class ApplicationFacade {
 
-    public static void makeNewProgram(int id,int producerid,String Titel) {
-        CreditsHandler.makeNewCredit(id,producerid,Titel);
+    public static void makeNewProgram(int producerid,String Titel) {
+        // checks for highest id and creates new program with id+1;
+        CreditsHandler.makeNewCredit(producerid,Titel);
     }
 
     public static void deleteProgram(int ID){
@@ -41,15 +42,15 @@ public class ApplicationFacade {
     }
 
     public static void makeNewPerson(String name, String desc){
-        throw new UnsupportedOperationException();
+        CreditsHandler.makeNewPerson(name,desc);
     }
 
     public static void deletePerson(int ID){
-        throw new UnsupportedOperationException();
+        CreditsHandler.deletePerson(ID);
     }
 
     public static void updatePerson(int ID, String name, String desc){
-        throw new UnsupportedOperationException();
+        CreditsHandler.updatePerson(ID,name,desc);
     }
 
     public static ArrayList<Program> getCurrentPrograms(){

@@ -41,10 +41,22 @@ public class Main extends Application {
 
 
         ///// shows demo credit
-        ApplicationFacade.makeNewProgram(1,1,"Vores Test Program");
+        ApplicationFacade.makeNewPerson("John Smith","");
+        ApplicationFacade.makeNewPerson("Adam Sandal","");
+        ApplicationFacade.makeNewPerson("Din Mor","");
+        ApplicationFacade.makeNewPerson("Din Far","");
+        ApplicationFacade.makeNewPerson("Din Søster","");
+        ApplicationFacade.makeNewPerson("Din Bror","");
+        ApplicationFacade.makeNewPerson("John Doe","");
+        ApplicationFacade.makeNewPerson("John Wick","");
+        ApplicationFacade.makeNewPerson("Egon Olsen","");
+        ApplicationFacade.makeNewPerson("Onkel Anders","");
+
+
+        ApplicationFacade.makeNewProgram(1,"Vores Test Program");
         Program pc = ApplicationFacade.getCurrentProgram(1);
-        pc.createCategory(1,"Vært");
-        pc.createCategory(2,"Skuespiller");
+        pc.createCategory("Vært");
+        pc.createCategory("Skuespiller");
 
         pc.getCategory(1).addPersonToCategory(new Person(1,"John Smith"));
         pc.getCategory(1).addPersonToCategory(new Person(2,"Adam Sandal"));
@@ -53,11 +65,11 @@ public class Main extends Application {
         pc.getCategory(2).addPersonToCategory(new Person(3,"Din Søster"));
         pc.getCategory(2).addPersonToCategory(new Person(4,"Din Bror"));
 
-        ApplicationFacade.makeNewProgram(2,2,"Et lorte program");
+        ApplicationFacade.makeNewProgram(2,"Et lorte program");
         Program pc2 = ApplicationFacade.getCurrentProgram(2);
-        pc2.createCategory(1,"Vært");
-        pc2.createCategory(2,"Kamera");
-        pc2.createCategory(3,"Tom");
+        pc2.createCategory("Vært");
+        pc2.createCategory("Kamera");
+        pc2.createCategory("Hvem der spurgte");
 
         pc2.getCategory(1).addPersonToCategory(new Person(1,"John Doe"));
         pc2.getCategory(2).addPersonToCategory(new Person(2,"John Wick"));
@@ -82,8 +94,8 @@ public class Main extends Application {
         mainmenuController.credits.setText(program.toText());
     }
 
-    public void makeNewProgram(String programName) {
-        throw new UnsupportedOperationException();
+    public void makeNewProgram(int producerid, String programName) {
+        ApplicationFacade.makeNewProgram(producerid,programName);
     }
     public void editProgram(int programId) {
         throw new UnsupportedOperationException();
