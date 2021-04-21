@@ -94,6 +94,11 @@ public class Main extends Application {
     public static void displayCredits(Program program) {
         mainmenuController.credits.setText(program.toText());
     }
+
+
+    public static ObservableList<Category> getAllCategoryForProgram(Program selectedProgram) {
+        return FXCollections.observableArrayList(ApplicationFacade.getCategoriesFromProgram(selectedProgram));
+    }
     public static ObservableList<Program> getAllPrograms() {
         return FXCollections.observableArrayList(ApplicationFacade.getCurrentPrograms());
     }

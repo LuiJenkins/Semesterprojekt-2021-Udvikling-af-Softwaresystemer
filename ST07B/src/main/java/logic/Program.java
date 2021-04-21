@@ -34,6 +34,9 @@ public class Program {
             if (c.getId() > highestId) {
                 highestId = c.getId();
             }
+            if (c.getName().equals(categoryName)) {
+                return;
+            }
         }
         categories.add(new Category(highestId+1,categoryName));
     }
@@ -49,6 +52,9 @@ public class Program {
 
     public void deleteCategory(int ID){
         categories.remove(ID);
+    }
+    public void deleteCategory(Category c) {
+        categories.remove(c);
     }
 
 

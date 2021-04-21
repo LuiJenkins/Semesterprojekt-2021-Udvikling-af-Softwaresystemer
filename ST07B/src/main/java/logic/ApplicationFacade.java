@@ -40,6 +40,9 @@ public class ApplicationFacade {
     public static void deleteCategory(int catID, int prgID){
         CreditsHandler.getSpecificCredit(prgID).deleteCategory(catID);
     }
+    public static void deleteCategory(Category selectedCategory, Program selectedProgram) {
+        selectedProgram.deleteCategory(selectedCategory);
+    }
 
     public static void editCategory(int ID, int prgID, String newName){
         CreditsHandler.getSpecificCredit(prgID).setName(newName);
@@ -71,5 +74,9 @@ public class ApplicationFacade {
         Category c = p.getCategory(categoryid);
         Person pe = CreditsHandler.getSpecificPerson(personid);
         c.addPersonToCategory(pe);
+    }
+
+    public static ArrayList<Category> getCategoriesFromProgram(Program program) {
+        return program.getAllCategory();
     }
 }
