@@ -54,30 +54,29 @@ public class Main extends Application {
 
 
         ApplicationFacade.makeNewProgram(1,"Vores Test Program");
-        Program pc = ApplicationFacade.getCurrentProgram(1);
-        pc.createCategory("Vært");
-        pc.createCategory("Skuespiller");
-
-        pc.getCategory(1).addPersonToCategory(new Person(1,"John Smith"));
-        pc.getCategory(1).addPersonToCategory(new Person(2,"Adam Sandal"));
-        pc.getCategory(2).addPersonToCategory(new Person(1,"Din Mor"));
-        pc.getCategory(2).addPersonToCategory(new Person(2,"Din Far"));
-        pc.getCategory(2).addPersonToCategory(new Person(3,"Din Søster"));
-        pc.getCategory(2).addPersonToCategory(new Person(4,"Din Bror"));
+        ApplicationFacade.makeNewCategory(1,"Vært");
+        ApplicationFacade.makeNewCategory(1,"Fotograf");
 
         ApplicationFacade.makeNewProgram(2,"Et lorte program");
-        Program pc2 = ApplicationFacade.getCurrentProgram(2);
-        pc2.createCategory("Vært");
-        pc2.createCategory("Kamera");
-        pc2.createCategory("Hvem der spurgte");
+        ApplicationFacade.makeNewCategory(2,"Skuespiller");
+        ApplicationFacade.makeNewCategory(2,"lyd");
+        ApplicationFacade.makeNewCategory(2,"hvem der spurgte");
 
-        pc2.getCategory(1).addPersonToCategory(new Person(1,"John Doe"));
-        pc2.getCategory(2).addPersonToCategory(new Person(2,"John Wick"));
-        pc2.getCategory(2).addPersonToCategory(new Person(1,"Egon Olsen"));
-        pc2.getCategory(2).addPersonToCategory(new Person(2,"Skipper Skræk"));
+        ApplicationFacade.addPersonToCategory(1,1,1);
+        ApplicationFacade.addPersonToCategory(1,1,2);
+        ApplicationFacade.addPersonToCategory(1,2,3);
+        ApplicationFacade.addPersonToCategory(2,2,3);
+        ApplicationFacade.addPersonToCategory(1,2,4);
+        ApplicationFacade.addPersonToCategory(1,2,5);
+        ApplicationFacade.addPersonToCategory(1,2,6);
+        ApplicationFacade.addPersonToCategory(2,1,7);
+        ApplicationFacade.addPersonToCategory(2,2,8);
+        ApplicationFacade.addPersonToCategory(2,2,9);
+        ApplicationFacade.addPersonToCategory(2,2,10);
+
 
         /////
-        mainmenuController.suggestions.setItems(FXCollections.observableArrayList(ApplicationFacade.getCurrentPrograms()));
+        mainmenuController.suggestions.setItems(getAllPrograms());
     }
 
 
@@ -89,9 +88,14 @@ public class Main extends Application {
         System.out.println("Switching Scene to: "+SceneId);
         primaryStage.setScene(scenes.get(SceneId));
         primaryStage.show();
+        if (SceneId == 0) {mainmenuController.start();}
+        else if (SceneId == 1) {dashboardController.start();}
     }
     public static void displayCredits(Program program) {
         mainmenuController.credits.setText(program.toText());
+    }
+    public static ObservableList<Program> getAllPrograms() {
+        return FXCollections.observableArrayList(ApplicationFacade.getCurrentPrograms());
     }
 
     public void makeNewProgram(int producerid, String programName) {

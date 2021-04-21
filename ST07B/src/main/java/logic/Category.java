@@ -34,7 +34,9 @@ public class Category {
         }
         return new Person();
     }
-    public Person[] getPersonsFromCategory() {throw new UnsupportedOperationException(); }
+    public ArrayList<Person> getPersonsFromCategory() {
+        return persons;
+    }
 
     public String toText() {
         String res = "";

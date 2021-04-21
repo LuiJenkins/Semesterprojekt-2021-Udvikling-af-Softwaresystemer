@@ -20,6 +20,7 @@ public class Program {
     public int getProgramID(){
         return programID;
     }
+    public int getProducerID() {return ProducerID;}
 
     public String getName(){
         return programTitle;
@@ -34,7 +35,7 @@ public class Program {
                 highestId = c.getId();
             }
         }
-        categories.add(new Category(highestId,categoryName));
+        categories.add(new Category(highestId+1,categoryName));
     }
     public Category getCategory(int id) {
         for (int i = 0; i < categories.size();i++) {
@@ -51,11 +52,7 @@ public class Program {
     }
 
 
-    public Category[] getAllCategory() { return (Category[])categories.toArray(); }
-
-    public void setCategory(String category){
-        throw new UnsupportedOperationException();
-    }
+    public ArrayList<Category> getAllCategory() { return categories; }
 
     public String toText() {
         String res = "▶▶ "+getName()+"\n\n";

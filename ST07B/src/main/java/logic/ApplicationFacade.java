@@ -9,8 +9,8 @@ public class ApplicationFacade {
         CreditsHandler.makeNewCredit(producerid,Titel);
     }
 
-    public static void deleteProgram(int ID){
-        CreditsHandler.deleteCredit(ID);
+    public static void deleteProgram(Program p){
+        CreditsHandler.deleteCredit(p);
     }
 
     public static void editProgram(int ID, String Title){
@@ -30,8 +30,11 @@ public class ApplicationFacade {
         throw new UnsupportedOperationException();
     }
 
-    public static void makeNewCategory(String new_cat, int prgID, int catID){
-        CreditsHandler.getSpecificCredit(prgID).createCategory(catID, new_cat);
+    public static void makeNewCategory(int prgID,String new_cat){
+        CreditsHandler.getSpecificCredit(prgID).createCategory(new_cat);
+    }
+    public static void makeNewCategory(Program p,String new_cat){
+        p.createCategory(new_cat);
     }
 
     public static void deleteCategory(int catID, int prgID){
@@ -63,4 +66,10 @@ public class ApplicationFacade {
     }
 
 
+    public static void addPersonToCategory(int programid, int categoryid, int personid) {
+        Program p = getCurrentProgram(programid);
+        Category c = p.getCategory(categoryid);
+        Person pe = CreditsHandler.getSpecificPerson(personid);
+        c.addPersonToCategory(pe);
+    }
 }

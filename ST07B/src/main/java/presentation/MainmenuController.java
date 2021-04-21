@@ -3,7 +3,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import logic.*;
 
-public class MainmenuController {
+public class MainmenuController implements startInterface{
     @FXML
     public TextField username;
     public TextField password;
@@ -28,6 +28,11 @@ public class MainmenuController {
     public void updateSearch() {
         selectedProgram = suggestions.getSelectionModel().getSelectedItem();
         search_term.setText(selectedProgram.toString());
+
+    }
+
+    @Override
+    public void start() {
 
     }
 }

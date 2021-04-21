@@ -16,15 +16,17 @@ public class CreditsHandler {
     public static void makeNewCredit(int producerid, String name) {
         int highestId = 0;
         for (Program p : currentLoadedProgramCredits) {
+            if (p.getName().equals(name)) {
+                return;
+            }
             if (p.getProgramID() > highestId) {
                 highestId = p.getProgramID();
             }
         }
-
         currentLoadedProgramCredits.add(new Program(highestId+1,producerid,name));
     }
-    public static void deleteCredit(int id) {
-        currentLoadedProgramCredits.remove(getSpecificCredit(id));
+    public static void deleteCredit(Program program) {
+        currentLoadedProgramCredits.remove(program);
     }
 
 
@@ -62,6 +64,16 @@ public class CreditsHandler {
 
     public static void deletePerson(int id) {
         currentLoadedPersons.remove(getSpecificPerson(id));
+        // Deleting all persons from all credits
+        for (Program p : currentLoadedProgramCredits) {
+            for (Category c : p.getAllCategory()) {
+                for (Person pr : c.getPersonsFromCategory()) {
+                    if (pr.getId() == id) {
+                        c.getPersonsFromCategory().remove(p);
+                    }
+                }
+            }
+        }
     }
 
     public static void updatePerson(int id, String name, String desc) {
@@ -78,6 +90,17 @@ public class CreditsHandler {
                     }
                 }
                 currentLoadedPersons.set(i,new Person(highestId,name,desc));
+
+                // Updating all persons in all credtis
+                for (Program p : currentLoadedProgramCredits) {
+                    for (Category c : p.getAllCategory()) {
+                        for (Person pr : c.getPersonsFromCategory()) {
+                            if (pr.getId() == id) {
+                                c.getPersonsFromCategory().set(c.getPersonsFromCategory().indexOf(pr),new Person(highestId,name,desc));
+                            }
+                        }
+                    }
+                }
             }
         }
     }
