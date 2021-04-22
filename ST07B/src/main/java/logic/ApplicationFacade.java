@@ -75,8 +75,18 @@ public class ApplicationFacade {
         Person pe = CreditsHandler.getSpecificPerson(personid);
         c.addPersonToCategory(pe);
     }
+    public static void addPersonToCategory(Category category,Person person) {
+        category.addPersonToCategory(person);
+    }
+    public static void removePersonFromCategory(Category category,Person person) {
+        category.removePersonFromCategory(person);
+    }
 
     public static ArrayList<Category> getCategoriesFromProgram(Program program) {
         return program.getAllCategory();
+    }
+
+    public static ArrayList<Person> getPersonsFromPersonDB() {
+        return CreditsHandler.getPersonsFromPersonDB();
     }
 }

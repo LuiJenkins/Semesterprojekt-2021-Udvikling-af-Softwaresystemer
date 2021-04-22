@@ -102,6 +102,20 @@ public class Main extends Application {
     public static ObservableList<Program> getAllPrograms() {
         return FXCollections.observableArrayList(ApplicationFacade.getCurrentPrograms());
     }
+    public static ObservableList<Person> getAllPersonsFromPersonDB() {
+        return FXCollections.observableArrayList(ApplicationFacade.getPersonsFromPersonDB());
+    }
+    public static ObservableList<Person> getAllPersonsNotInCategory(Category category) {
+        ArrayList<Person> personindb = new ArrayList<>();
+        personindb.addAll(ApplicationFacade.getPersonsFromPersonDB());
+        for (Person p : category.getPersonsFromCategory()) {
+            personindb.remove(p);
+        }
+        return FXCollections.observableArrayList(personindb);
+    }
+    public static ObservableList<Person> getAllPersonsInCategory(Category category) {
+        return FXCollections.observableArrayList(category.getPersonsFromCategory());
+    }
 
     public void makeNewProgram(int producerid, String programName) {
         ApplicationFacade.makeNewProgram(producerid,programName);

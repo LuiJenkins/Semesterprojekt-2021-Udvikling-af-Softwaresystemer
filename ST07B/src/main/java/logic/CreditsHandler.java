@@ -6,10 +6,6 @@ public class CreditsHandler {
     private static ArrayList<Program> currentLoadedProgramCredits = new ArrayList<>();
     private static ArrayList<Person> currentLoadedPersons = new ArrayList<>();
 
-    public static void getProgramCreditsFromDB (int [] IDList){
-        throw new UnsupportedOperationException();
-    }
-
     public static ArrayList<Program> getAllCreditsFromLocal(){
         return currentLoadedProgramCredits;
     }
@@ -103,5 +99,10 @@ public class CreditsHandler {
                 }
             }
         }
+    }
+
+    public static ArrayList<Person> getPersonsFromPersonDB() {
+        System.out.println("Size of all persons in db: "+currentLoadedPersons.size());
+        return currentLoadedPersons;
     }
 }
