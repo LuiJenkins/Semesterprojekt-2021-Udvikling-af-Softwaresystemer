@@ -35,7 +35,7 @@ public class CurrentUser {
 
     public void setUserRole(int userRole){
         this.userRole=userRole;
-//        throw new UnsupportedOperationException();
+
     }
 
     public int getUserRole(){
