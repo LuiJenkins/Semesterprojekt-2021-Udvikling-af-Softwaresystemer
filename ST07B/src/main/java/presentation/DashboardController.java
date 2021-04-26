@@ -1,10 +1,14 @@
 package presentation;
 
+import javafx.collections.FXCollections;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import logic.ApplicationFacade;
 import logic.Category;
+import logic.Person;
 import logic.Program;
 
 public class DashboardController implements startInterface{
@@ -48,21 +52,32 @@ public class DashboardController implements startInterface{
 
     public Program selectedProgram;
     public Category selectedCategory;
+    public Person selectedPersonInDB;
+    public Person selectedPersonInCat;
 
     public void logout() {
         Main.SwitchScene(0);
     }
 
-    public void programListClick() {
+    public void programListClick(MouseEvent event) {
         selectedProgram = (Program)program_list.getSelectionModel().getSelectedItem();
         if (selectedProgram != null) {
             program_preview.setText(selectedProgram.toText());
             program_preview_second.setText(selectedProgram.toText());
         }
     }
-    public void categoryListClick() {
+    public void categoryListClick(MouseEvent event) {
         selectedCategory = (Category)category_list.getSelectionModel().getSelectedItem();
-        System.out.println("selected category"+selectedCategory);
+        System.out.println("selected category: "+selectedCategory);
+    }
+
+    public void personNotInCatClick(MouseEvent event) {
+        selectedPersonInDB = (Person)person_list.getSelectionModel().getSelectedItem();
+        System.out.println("Selected Peron in DB: "+selectedPersonInDB);
+    }
+    public void personInCatClick(MouseEvent event) {
+        selectedPersonInCat = (Person)person_list.getSelectionModel().getSelectedItem();
+        System.out.println("Selected Peron in Credit: "+selectedPersonInCat);
     }
 
     public void makeProgram() {
@@ -98,7 +113,11 @@ public class DashboardController implements startInterface{
         program_preview_second.setText(selectedProgram.toText());
     }
     public void editChosenCategory() {
-
+        if (selectedCategory != null) {
+            setpage(2);
+            person_list.setItems(Main.getAllPersonsNotInCategory(selectedCategory));
+            category_preview.setItems(Main.getAllPersonsInCategory(selectedCategory));
+        }
     }
     public void deleteChosenCategory() {
         ApplicationFacade.deleteCategory(selectedCategory,selectedProgram);
@@ -120,19 +139,40 @@ public class DashboardController implements startInterface{
 
     }
     public void makeNewPersonWithName() {
-
+        String name = person_name.getText();
+        String desc = person_desc.getText();
+        if (name != "") {
+            ApplicationFacade.makeNewPerson(name,desc);
+        }
+        person_list.setItems(Main.getAllPersonsNotInCategory(selectedCategory));
+        category_preview.setItems(Main.getAllPersonsInCategory(selectedCategory));
     }
     public void addPersonToCategory() {
-
+        if (selectedPersonInDB != null) {
+            ApplicationFacade.addPersonToCategory(selectedCategory,selectedPersonInDB);
+            person_list.setItems(Main.getAllPersonsNotInCategory(selectedCategory));
+            category_preview.setItems(Main.getAllPersonsInCategory(selectedCategory));
+            selectedPersonInDB = null;
+        }
     }
     public void removePersonFromCategory() {
-
+        if (selectedPersonInCat != null) {
+            ApplicationFacade.removePersonFromCategory(selectedCategory,selectedPersonInCat);
+            person_list.setItems(Main.getAllPersonsNotInCategory(selectedCategory));
+            category_preview.setItems(Main.getAllPersonsInCategory(selectedCategory));
+            selectedPersonInCat = null;
+        }
     }
     public void deletePersonFromDatabase() {
-
+        if (selectedPersonInDB != null) {
+            ApplicationFacade.deletePerson(selectedPersonInDB);
+            person_list.setItems(Main.getAllPersonsNotInCategory(selectedCategory));
+            category_preview.setItems(Main.getAllPersonsInCategory(selectedCategory));
+        }
     }
     public void goBackToCategory() {
-
+        setpage(1);
+        program_preview_second.setText(selectedProgram.toText());
     }
 
     @Override

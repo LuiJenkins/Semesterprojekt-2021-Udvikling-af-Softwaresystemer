@@ -6,10 +6,6 @@ public class CreditsHandler {
     private static ArrayList<Program> currentLoadedProgramCredits = new ArrayList<>();
     private static ArrayList<Person> currentLoadedPersons = new ArrayList<>();
 
-    public static void getProgramCreditsFromDB (int [] IDList){
-        throw new UnsupportedOperationException();
-    }
-
     public static ArrayList<Program> getAllCreditsFromLocal(){
         return currentLoadedProgramCredits;
     }
@@ -41,6 +37,7 @@ public class CreditsHandler {
     public static void addSpecificCredit(Program program) {
         currentLoadedProgramCredits.add(program);
     }
+
     public static Person getSpecificPerson(int id) {
         for (int i = 0; i < currentLoadedPersons.size();i++) {
             if (currentLoadedPersons.get(i).getId() == id) {
@@ -49,6 +46,7 @@ public class CreditsHandler {
         }
         return new Person();
     }
+
     public static void makeNewPerson(String name, String desc) {
         int highestId = 0;
         for (Person p : currentLoadedPersons) {
@@ -62,17 +60,19 @@ public class CreditsHandler {
         currentLoadedPersons.add(new Person(highestId+1,name,desc));
     }
 
-    public static void deletePerson(int id) {
-        currentLoadedPersons.remove(getSpecificPerson(id));
-        // Deleting all persons from all credits
+    public static void deletePerson(Person person) {
+        boolean isPersonInACredit = false;
         for (Program p : currentLoadedProgramCredits) {
             for (Category c : p.getAllCategory()) {
                 for (Person pr : c.getPersonsFromCategory()) {
-                    if (pr.getId() == id) {
-                        c.getPersonsFromCategory().remove(p);
+                    if (pr.equals(person)) {
+                        isPersonInACredit = true;
                     }
                 }
             }
+        }
+        if (isPersonInACredit == false) {
+            currentLoadedPersons.remove(person);
         }
     }
 
@@ -103,5 +103,10 @@ public class CreditsHandler {
                 }
             }
         }
+    }
+
+    public static ArrayList<Person> getPersonsFromPersonDB() {
+        System.out.println("Size of all persons in db: "+currentLoadedPersons.size());
+        return currentLoadedPersons;
     }
 }

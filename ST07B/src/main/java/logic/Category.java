@@ -24,7 +24,9 @@ public class Category {
     public void addPersonToCategory(Person person){
         persons.add(person);
     }
-    public void removePersonFromCategory(int id) {throw new UnsupportedOperationException(); }
+    public void removePersonFromCategory(Person person) {
+        persons.remove(person);
+    }
 
     public Person getPersonFromCategory(int id) {
         for (int i = 0; i < persons.size();i++) {
