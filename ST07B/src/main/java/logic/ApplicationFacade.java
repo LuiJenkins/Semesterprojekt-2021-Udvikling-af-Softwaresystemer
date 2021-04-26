@@ -95,4 +95,17 @@ public class ApplicationFacade {
     public static void addPersonToDB(String name,String desc) {
         CreditsHandler.makeNewPerson(name,desc);
     }
+
+    public static void logUserOut() {
+        LoginHandler.loginToAccount("","");
+    }
+
+    public static void logUserIn(String username,String password) {
+        LoginHandler.loginToAccount(username,password);
+    }
+
+    public static String loggedInRoleString() {
+        return LoginHandler.getUserRoleText();
+    }
+
 }
