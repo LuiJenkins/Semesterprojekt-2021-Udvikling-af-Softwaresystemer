@@ -44,12 +44,14 @@ public class LoginHandler {
         // CurrentUser currentUser = new CurrentUser(0,username,userRole,producerId);
 
     }
-    public int getUserRole(){
+    public int getUserRole() {
         return currentUser.getUserRole();
-
-//      throw new UnsupportedOperationException();
     }
 
+    public boolean isAllowed(int reqRole){
+         return(currentUser.isAllowed(reqRole));
+         }
+//      throw new UnsupportedOperationException();
 
 
 }

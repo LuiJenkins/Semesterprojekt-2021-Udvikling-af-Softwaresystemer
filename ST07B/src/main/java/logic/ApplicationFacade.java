@@ -2,11 +2,13 @@ package logic;
 
 import java.util.ArrayList;
 
+import static logic.LoginHandler.*;
+
 public class ApplicationFacade {
 
     public static void makeNewProgram(int producerid,String Titel) {
         // checks for highest id and creates new program with id+1;
-        CreditsHandler.makeNewCredit(producerid,Titel);
+            CreditsHandler.makeNewCredit(producerid, Titel);
     }
 
     public static void deleteProgram(Program p){
