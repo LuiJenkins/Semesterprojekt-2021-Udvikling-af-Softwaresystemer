@@ -32,11 +32,12 @@ public class LoginHandler {
                 }
             }
         }
+        if(currentUser == null){
+            currentUser = new CurrentUser(0,username, userRole, producerId);
+        }
 
         // dummy block end
-
-
-        CurrentUser currentUser = new CurrentUser(0,username,userRole,producerId);
+        // CurrentUser currentUser = new CurrentUser(0,username,userRole,producerId);
 
     }
     public int getUserRole(){
