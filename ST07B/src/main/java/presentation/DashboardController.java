@@ -139,7 +139,13 @@ public class DashboardController implements startInterface{
 
     }
     public void makeNewPersonWithName() {
-
+        String name = person_name.getText();
+        String desc = person_desc.getText();
+        if (name != "") {
+            ApplicationFacade.makeNewPerson(name,desc);
+        }
+        person_list.setItems(Main.getAllPersonsNotInCategory(selectedCategory));
+        category_preview.setItems(Main.getAllPersonsInCategory(selectedCategory));
     }
     public void addPersonToCategory() {
         if (selectedPersonInDB != null) {
@@ -158,7 +164,11 @@ public class DashboardController implements startInterface{
         }
     }
     public void deletePersonFromDatabase() {
-
+        if (selectedPersonInDB != null) {
+            ApplicationFacade.deletePerson(selectedPersonInDB);
+            person_list.setItems(Main.getAllPersonsNotInCategory(selectedCategory));
+            category_preview.setItems(Main.getAllPersonsInCategory(selectedCategory));
+        }
     }
     public void goBackToCategory() {
         setpage(1);

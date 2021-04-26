@@ -52,8 +52,8 @@ public class ApplicationFacade {
         CreditsHandler.makeNewPerson(name,desc);
     }
 
-    public static void deletePerson(int ID){
-        CreditsHandler.deletePerson(ID);
+    public static void deletePerson(Person person) {
+        CreditsHandler.deletePerson(person);
     }
 
     public static void updatePerson(int ID, String name, String desc){
@@ -88,5 +88,9 @@ public class ApplicationFacade {
 
     public static ArrayList<Person> getPersonsFromPersonDB() {
         return CreditsHandler.getPersonsFromPersonDB();
+    }
+
+    public static void addPersonToDB(String name,String desc) {
+        CreditsHandler.makeNewPerson(name,desc);
     }
 }
