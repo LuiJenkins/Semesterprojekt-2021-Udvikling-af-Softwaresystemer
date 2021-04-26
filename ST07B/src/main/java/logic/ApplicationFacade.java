@@ -52,8 +52,8 @@ public class ApplicationFacade {
         CreditsHandler.makeNewPerson(name,desc);
     }
 
-    public static void deletePerson(int ID){
-        CreditsHandler.deletePerson(ID);
+    public static void deletePerson(Person person) {
+        CreditsHandler.deletePerson(person);
     }
 
     public static void updatePerson(int ID, String name, String desc){
@@ -75,8 +75,22 @@ public class ApplicationFacade {
         Person pe = CreditsHandler.getSpecificPerson(personid);
         c.addPersonToCategory(pe);
     }
+    public static void addPersonToCategory(Category category,Person person) {
+        category.addPersonToCategory(person);
+    }
+    public static void removePersonFromCategory(Category category,Person person) {
+        category.removePersonFromCategory(person);
+    }
 
     public static ArrayList<Category> getCategoriesFromProgram(Program program) {
         return program.getAllCategory();
+    }
+
+    public static ArrayList<Person> getPersonsFromPersonDB() {
+        return CreditsHandler.getPersonsFromPersonDB();
+    }
+
+    public static void addPersonToDB(String name,String desc) {
+        CreditsHandler.makeNewPerson(name,desc);
     }
 }

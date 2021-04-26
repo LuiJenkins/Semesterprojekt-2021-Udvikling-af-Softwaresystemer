@@ -37,4 +37,12 @@ public class Person {
     public String getDesc() {
         return desc;
     }
+
+    @Override
+    public String toString() {
+        if (desc != "") {
+            return name+" ("+desc+")";
+        }
+        return name;
+    }
 }

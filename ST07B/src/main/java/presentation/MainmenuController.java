@@ -29,7 +29,7 @@ public class MainmenuController implements startInterface{
     public void updateSearch() {
         selectedProgram = suggestions.getSelectionModel().getSelectedItem();
         search_term.setText(selectedProgram.toString());
-
+        Main.displayCredits(selectedProgram);
     }
 
     @Override

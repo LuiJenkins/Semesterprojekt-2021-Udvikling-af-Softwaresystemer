@@ -48,7 +48,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="category_pane" layoutX="1.0" layoutY="74.0" minHeight="0.0" minWidth="0.0" prefHeight="926.0" prefWidth="700.0">
+      <AnchorPane fx:id="category_pane" layoutX="1.0" layoutY="74.0" minHeight="0.0" minWidth="0.0" prefHeight="926.0" prefWidth="700.0" visible="false">
          <children>
             <ListView fx:id="category_list" layoutX="21.0" layoutY="60.0" onMouseClicked="#categoryListClick" prefHeight="770.0" prefWidth="316.0" />
             <Button fx:id="edit_chosen_category" layoutX="21.0" layoutY="846.0" mnemonicParsing="false" onAction="#editChosenCategory" prefHeight="25.0" prefWidth="156.0" text="Rediger Valgte" />
@@ -75,12 +75,12 @@
             <Button fx:id="send_program_to_review" layoutX="352.0" layoutY="878.0" mnemonicParsing="false" onAction="#sendCreditToReview" prefHeight="25.0" prefWidth="334.0" text="Send kreditering til godkendelse" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="person_pane" layoutY="74.0" minHeight="0.0" minWidth="0.0" prefHeight="926.0" prefWidth="700.0" visible="false">
+      <AnchorPane fx:id="person_pane" layoutY="74.0" minHeight="0.0" minWidth="0.0" prefHeight="926.0" prefWidth="700.0">
          <children>
-            <ListView fx:id="person_list" layoutX="21.0" layoutY="60.0" prefHeight="770.0" prefWidth="316.0" />
+            <ListView fx:id="person_list" layoutX="21.0" layoutY="206.0" onMouseClicked="#personNotInCatClick" prefHeight="624.0" prefWidth="316.0" />
             <Button fx:id="set_person_name" layoutX="350.0" layoutY="116.0" mnemonicParsing="false" onAction="#setPersonName" prefHeight="25.0" prefWidth="156.0" text="Set valgte persons navn" />
             <TextField fx:id="person_name" layoutX="350.0" layoutY="60.0" prefHeight="25.0" prefWidth="317.0" promptText="Navn" />
-            <Label layoutX="20.0" layoutY="28.0" prefHeight="32.0" prefWidth="317.0" text="Personliste">
+            <Label layoutX="21.0" layoutY="163.0" prefHeight="32.0" prefWidth="317.0" text="Personliste">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
@@ -91,17 +91,17 @@
                </font>
             </Label>
             <Button fx:id="add_new_person_with_name" layoutX="506.0" layoutY="116.0" mnemonicParsing="false" onAction="#makeNewPersonWithName" prefHeight="25.0" prefWidth="156.0" text="Lav ny person med navn" />
-            <Label layoutX="354.0" layoutY="147.0" prefHeight="32.0" prefWidth="317.0" text="Preview af Krediteringkategori">
+            <Label layoutX="354.0" layoutY="163.0" prefHeight="32.0" prefWidth="317.0" text="Preview af Krediteringkategori">
                <font>
                   <Font name="Arial" size="20.0" />
                </font>
             </Label>
             <Button fx:id="back_to_category" layoutX="357.0" layoutY="884.0" mnemonicParsing="false" onAction="#goBackToCategory" prefHeight="25.0" prefWidth="310.0" text="Tilbage" />
             <Button fx:id="add_person_to_category" layoutX="21.0" layoutY="834.0" mnemonicParsing="false" onAction="#addPersonToCategory" prefHeight="25.0" prefWidth="316.0" text="Tilføj person til krediteringskategori" />
-            <ListView fx:id="category_preview" layoutX="354.0" layoutY="179.0" prefHeight="651.0" prefWidth="316.0" />
             <Button fx:id="remove_person_from_category" layoutX="354.0" layoutY="834.0" mnemonicParsing="false" onAction="#removePersonFromCategory" prefHeight="25.0" prefWidth="316.0" text="Slet Valgte Person fra Krediteringskategorien" />
             <Button fx:id="remove_person_from_database" layoutX="21.0" layoutY="884.0" mnemonicParsing="false" onAction="#deletePersonFromDatabase" prefHeight="25.0" prefWidth="316.0" text="Slet Valgte Person fra Databasen" />
             <TextField fx:id="person_desc" layoutX="350.0" layoutY="85.0" prefHeight="25.0" prefWidth="317.0" promptText="Beskrivelse til internt brug" />
+            <ListView fx:id="category_preview" layoutX="354.0" layoutY="206.0" onMouseClicked="#personInCatClick" prefHeight="624.0" prefWidth="317.0" />
          </children>
       </AnchorPane>
    </children>
