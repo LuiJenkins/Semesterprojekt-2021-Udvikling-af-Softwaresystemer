@@ -17,8 +17,8 @@ public class CurrentUser {
         throw new UnsupportedOperationException();
     }
 
-    public void setProducerID(){
-        throw new UnsupportedOperationException();
+    public void setProducerID(int producerID){
+        this.producerID = producerID;        ;
     }
 
     public int getProducerID(){

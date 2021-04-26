@@ -34,8 +34,12 @@ public class LoginHandler {
         }
         if(currentUser == null){
             currentUser = new CurrentUser(0,username, userRole, producerId);
+        } else {
+            currentUser.setUserName(username);
+            currentUser.setUserRole(userRole);
+            currentUser.setProducerID(producerId);
         }
-
+        // System.out.println("rolle: "+currentUser.userRole+" producer: "+currentUser.producerID);
         // dummy block end
         // CurrentUser currentUser = new CurrentUser(0,username,userRole,producerId);
 
