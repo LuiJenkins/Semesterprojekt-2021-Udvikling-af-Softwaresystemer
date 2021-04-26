@@ -19,7 +19,9 @@ public class MainmenuController implements startInterface{
     public void login() {
         System.out.println("Login Event");
         LoginHandler.loginToAccount(username.getText(), password.getText());
-        Main.SwitchScene(1);
+        if (LoginHandler.currentUser.isAllowed(1)) {
+            Main.SwitchScene(1);
+        }
     }
     public void search() {
         if (selectedProgram != null) {
