@@ -166,7 +166,7 @@
       <Button fx:id="search_button" layoutX="462.0" layoutY="355.0" mnemonicParsing="false" onAction="#search" prefHeight="32.0" prefWidth="222.0" text="Vis Program" />
       <ListView fx:id="suggestions" layoutX="20.0" layoutY="387.0" onMouseClicked="#updateSearch" prefHeight="109.0" prefWidth="430.0" />
       <TextArea fx:id="credits" layoutX="20.0" layoutY="508.0" prefHeight="482.0" prefWidth="661.0" text="Find en kreditering i krediteringslisten og klik på vis program&#10;&#10;" />
-      <Button fx:id="login_button" layoutX="554.0" layoutY="14.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="126.0" text="Bestyrrelses Login" />
+      <Button fx:id="login_button" layoutX="554.0" layoutY="14.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="126.0" text="Login" />
       <TextField fx:id="username" layoutX="302.0" layoutY="14.0" prefHeight="16.0" prefWidth="126.0" promptText="Brugernavn" />
       <PasswordField fx:id="password" layoutX="428.0" layoutY="14.0" prefHeight="25.0" prefWidth="126.0" promptText="Password" />
    </children>
