@@ -48,6 +48,11 @@ public class LoginHandler {
         return currentUser.getUserRole();
     }
 
+    public static String getUserRoleText() {
+        String[] roles = {"Seer","Producer","Maintainer","Administrator"};
+        return roles[currentUser.getUserRole()];
+    }
+
     public boolean isAllowed(int reqRole){
          return(currentUser.isAllowed(reqRole));
          }

@@ -56,6 +56,7 @@ public class DashboardController implements startInterface{
     public Person selectedPersonInCat;
 
     public void logout() {
+        ApplicationFacade.logUserOut();
         Main.SwitchScene(0);
     }
 
@@ -180,6 +181,7 @@ public class DashboardController implements startInterface{
         program_pane.setVisible(true);
         category_pane.setVisible(false);
         person_pane.setVisible(false);
+        role_loggedin.setText(ApplicationFacade.loggedInRoleString());
         program_list.setItems(Main.getAllPrograms());
     }
     public void setpage(int page) {
