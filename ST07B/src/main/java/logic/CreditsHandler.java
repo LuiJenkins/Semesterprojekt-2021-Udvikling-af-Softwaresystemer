@@ -19,7 +19,13 @@ public class CreditsHandler {
                 highestId = p.getProgramID();
             }
         }
-        currentLoadedProgramCredits.add(new Program(highestId+1,producerid,name));
+        Program p = new Program(highestId+1,producerid,name);
+        currentLoadedProgramCredits.add(p);
+        getSpecificCredit(highestId+1).createCategory("Skuespillere");
+        getSpecificCredit(highestId+1).createCategory("Producer");
+        getSpecificCredit(highestId+1).createCategory("Lyd");
+        getSpecificCredit(highestId+1).createCategory("Musik");
+        getSpecificCredit(highestId+1).createCategory("Kamera");
     }
     public static void deleteCredit(Program program) {
         currentLoadedProgramCredits.remove(program);

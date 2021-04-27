@@ -54,12 +54,9 @@ public class Main extends Application {
 
 
         ApplicationFacade.makeNewProgram(1,"Vores Test Program");
-        ApplicationFacade.makeNewCategory(1,"Vært");
-        ApplicationFacade.makeNewCategory(1,"Fotograf");
-
         ApplicationFacade.makeNewProgram(2,"Et lorte program");
-        ApplicationFacade.makeNewCategory(2,"Skuespiller");
-        ApplicationFacade.makeNewCategory(2,"lyd");
+
+        
         ApplicationFacade.makeNewCategory(2,"hvem der spurgte");
 
         ApplicationFacade.addPersonToCategory(1,1,1);
