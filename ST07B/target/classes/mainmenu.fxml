@@ -162,7 +162,7 @@
             <Font name="Arial" size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="search_term" layoutX="20.0" layoutY="355.0" prefHeight="32.0" prefWidth="430.0" promptText="Søg" />
+      <TextField fx:id="search_term" layoutX="20.0" layoutY="355.0" onKeyPressed="#KeyPressedInSearch" prefHeight="32.0" prefWidth="430.0" promptText="Søg" />
       <Button fx:id="search_button" layoutX="462.0" layoutY="355.0" mnemonicParsing="false" onAction="#search" prefHeight="32.0" prefWidth="222.0" text="Vis Program" />
       <ListView fx:id="suggestions" layoutX="20.0" layoutY="387.0" onMouseClicked="#updateSearch" prefHeight="109.0" prefWidth="430.0" />
       <TextArea fx:id="credits" layoutX="20.0" layoutY="508.0" prefHeight="482.0" prefWidth="661.0" text="Find en kreditering i krediteringslisten og klik på vis program&#10;&#10;" />

@@ -56,7 +56,7 @@ public class Main extends Application {
         ApplicationFacade.makeNewProgram(1,"Vores Test Program");
         ApplicationFacade.makeNewProgram(2,"Et lorte program");
 
-        
+
         ApplicationFacade.makeNewCategory(2,"hvem der spurgte");
 
         ApplicationFacade.addPersonToCategory(1,1,1);
@@ -113,6 +113,11 @@ public class Main extends Application {
     public static ObservableList<Person> getAllPersonsInCategory(Category category) {
         return FXCollections.observableArrayList(category.getPersonsFromCategory());
     }
+
+    public static ObservableList<Program> searchProgram(String text) {
+        return FXCollections.observableArrayList(ApplicationFacade.searchProgram(text));
+    }
+
 
     public void makeNewProgram(int producerid, String programName) {
         ApplicationFacade.makeNewProgram(producerid,programName);

@@ -115,4 +115,14 @@ public class CreditsHandler {
         System.out.println("Size of all persons in db: "+currentLoadedPersons.size());
         return currentLoadedPersons;
     }
+
+    public static ArrayList<Program> searchProgram(String text) {
+        ArrayList<Program> filteredQuery = new ArrayList<>();
+        for (Program p : currentLoadedProgramCredits) {
+            if(p.getName().toLowerCase().contains(text.toLowerCase())) {
+                filteredQuery.add(p);
+            }
+        }
+        return filteredQuery;
+    }
 }

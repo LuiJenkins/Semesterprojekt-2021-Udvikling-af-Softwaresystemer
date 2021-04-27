@@ -31,6 +31,9 @@ public class MainmenuController implements startInterface{
         search_term.setText(selectedProgram.toString());
         Main.displayCredits(selectedProgram);
     }
+    public void KeyPressedInSearch() {
+        suggestions.setItems(Main.searchProgram(search_term.getText()));
+    }
 
     @Override
     public void start() {

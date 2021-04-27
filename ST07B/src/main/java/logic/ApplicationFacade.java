@@ -1,5 +1,7 @@
 package logic;
 
+import javafx.collections.ObservableList;
+
 import java.util.ArrayList;
 
 import static logic.LoginHandler.*;
@@ -108,4 +110,7 @@ public class ApplicationFacade {
         return LoginHandler.getUserRoleText();
     }
 
+    public static ArrayList<Program> searchProgram(String text) {
+        return CreditsHandler.searchProgram(text);
+    }
 }
