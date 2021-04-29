@@ -54,10 +54,7 @@ public class Main extends Application {
 
 
         ApplicationFacade.makeNewProgram(1,"Vores Test Program");
-        ApplicationFacade.makeNewProgram(2,"Et lorte program");
-
-
-        ApplicationFacade.makeNewCategory(2,"hvem der spurgte");
+        ApplicationFacade.makeNewProgram(2,"Et andet testprogram");
 
         ApplicationFacade.addPersonToCategory(1,1,1);
         ApplicationFacade.addPersonToCategory(1,1,2);
@@ -99,6 +96,9 @@ public class Main extends Application {
     public static ObservableList<Program> getAllPrograms() {
         return FXCollections.observableArrayList(ApplicationFacade.getCurrentPrograms());
     }
+    public static ObservableList<Program> getAllProgramsICanEdit() {
+        return FXCollections.observableArrayList(ApplicationFacade.getCurrentProgramsICanEdit());
+    }
     public static ObservableList<Person> getAllPersonsFromPersonDB() {
         return FXCollections.observableArrayList(ApplicationFacade.getPersonsFromPersonDB());
     }
@@ -119,7 +119,7 @@ public class Main extends Application {
     }
 
 
-    public void makeNewProgram(int producerid, String programName) {
-        ApplicationFacade.makeNewProgram(producerid,programName);
+    public void makeNewProgram(String programName) {
+        ApplicationFacade.makeNewProgram(programName);
     }
 }
