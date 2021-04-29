@@ -44,10 +44,11 @@ CREATE TABLE IF NOT EXISTS app_user (
 CREATE TABLE IF NOT EXISTS approved (
     approved_id SERIAL PRIMARY KEY,	
 	program_id INT,				 -- the approved program
-	status BOOL DEFAULT 'false', -- true if approved 
+	status INT, 				 -- 1 if approved 0 = not approved
 	approvedBy INT,	 			 -- who has approved it, if not approved null
 	approvedDate TIMESTAMP		 -- time and date it was approved
 );
+-- Drop table approved;
 
 -- person
 CREATE TABLE IF NOT EXISTS persons (
@@ -173,7 +174,7 @@ VALUES ('TV 2','Underholdning m.m.'),
 
 -- make 1 dummy approvel
 INSERT INTO approved (program_id, status, approvedBy, approvedDate)
-VALUES (1,'yes',1, Now());		--  Program #1 approved by user #1 Morten 
+VALUES (1, 1, 1, Now());		--  Program #1 approved by user #1 Morten 
 
 -- make 8 dummy creditlines for program #1
 INSERT INTO credits (program_id, catagory_id, person_id, numberInCatagory)
