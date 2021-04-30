@@ -119,4 +119,12 @@ public class ApplicationFacade {
     public static ArrayList<Program> searchProgram(String text) {
         return CreditsHandler.searchProgram(text);
     }
+
+    public static ArrayList<Person> searchPerson(String text) {
+        return CreditsHandler.searchPerson(text);
+    }
+
+    public static String crossReferencePersonFromCredits(Person selectedPerson) {
+        return CreditsHandler.crossReferencePersonFromCredits(selectedPerson);
+    }
 }

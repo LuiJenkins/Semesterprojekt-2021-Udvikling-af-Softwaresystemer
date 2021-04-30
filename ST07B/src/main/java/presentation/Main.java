@@ -70,7 +70,7 @@ public class Main extends Application {
 
 
         /////
-        mainmenuController.suggestions.setItems(getAllPrograms());
+        mainmenuController.start();
     }
 
 
@@ -89,13 +89,23 @@ public class Main extends Application {
         mainmenuController.credits.setText(program.toText());
     }
 
+    public static void displayPersonInfo(Person selectedPerson) {
+        mainmenuController.credits.setText(ApplicationFacade.crossReferencePersonFromCredits(selectedPerson));
+    }
+
 
     public static ObservableList<Category> getAllCategoryForProgram(Program selectedProgram) {
         return FXCollections.observableArrayList(ApplicationFacade.getCategoriesFromProgram(selectedProgram));
     }
-    public static ObservableList<Program> getAllPrograms() {
-        return FXCollections.observableArrayList(ApplicationFacade.getCurrentPrograms());
+    public static ObservableList<Object> getAllPrograms() {
+        ArrayList<Program> ap = ApplicationFacade.getCurrentPrograms();
+        return FXCollections.observableArrayList(ap.toArray());
     }
+    public static ObservableList<Object> getAllPersons() {
+        ArrayList<Person> ap = ApplicationFacade.getPersonsFromPersonDB();
+        return FXCollections.observableArrayList(ap.toArray());
+    }
+
     public static ObservableList<Program> getAllProgramsICanEdit() {
         return FXCollections.observableArrayList(ApplicationFacade.getCurrentProgramsICanEdit());
     }
@@ -114,10 +124,15 @@ public class Main extends Application {
         return FXCollections.observableArrayList(category.getPersonsFromCategory());
     }
 
-    public static ObservableList<Program> searchProgram(String text) {
-        return FXCollections.observableArrayList(ApplicationFacade.searchProgram(text));
+    public static ObservableList<Object> searchProgram(String text) {
+        ArrayList<Program> ap = ApplicationFacade.searchProgram(text);
+        return FXCollections.observableArrayList(ap.toArray());
     }
 
+    public static ObservableList<Object> searchPerson(String text) {
+        ArrayList<Person> ap = ApplicationFacade.searchPerson(text);
+        return FXCollections.observableArrayList(ap.toArray());
+    }
 
     public void makeNewProgram(String programName) {
         ApplicationFacade.makeNewProgram(programName);

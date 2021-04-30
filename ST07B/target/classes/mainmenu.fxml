@@ -4,154 +4,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="1000.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.MainmenuController">
    <children>
-      <ScrollPane layoutX="20.0" layoutY="104.0" prefHeight="235.0" prefWidth="661.0" visible="false">
-         <content>
-            <VBox prefHeight="238.0" prefWidth="807.0">
-               <children>
-                  <ToolBar prefHeight="23.0" prefWidth="807.0">
-                     <items>
-                        <Label prefHeight="17.0" prefWidth="119.0" text="Tidstabel:" />
-                        <Label prefHeight="17.0" prefWidth="100.0" text="10:00" />
-                        <Label prefHeight="17.0" prefWidth="100.0" text="11:00" />
-                        <Label prefHeight="17.0" prefWidth="100.0" text="12:00" />
-                        <Label prefHeight="17.0" prefWidth="100.0" text="13:00" />
-                        <Label prefHeight="17.0" prefWidth="100.0" text="14:00" />
-                     </items>
-                  </ToolBar>
-                  <ToolBar prefHeight="50.0" prefWidth="658.0">
-                    <items>
-                        <Label prefHeight="30.0" prefWidth="115.0" text="TV2">
-                           <font>
-                              <Font name="System Bold" size="20.0" />
-                           </font>
-                        </Label>
-                      <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="184.0" text="Hammerslag" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                        </Button>
-                        <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="184.0" text="Kender du typen" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                        </Button>
-                        <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="184.0" text="Sæt pris på dit hjem" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                        </Button>
-                    </items>
-                  </ToolBar>
-                  <ToolBar prefHeight="50.0" prefWidth="658.0">
-                     <items>
-                        <Label prefHeight="30.0" prefWidth="115.0" text="TV2 Charlie">
-                           <font>
-                              <Font name="System Bold" size="20.0" />
-                           </font>
-                        </Label>
-                        <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="108.0" text="Hammerslag" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                        </Button>
-                        <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="260.0" text="Kender du typen" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                        </Button>
-                        <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="102.0" text="Sæt pris på dit hjem" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                        </Button>
-                     </items>
-                  </ToolBar>
-                  <ToolBar prefHeight="50.0" prefWidth="658.0">
-                     <items>
-                        <Label prefHeight="30.0" prefWidth="115.0" text="TV2 Fyn">
-                           <font>
-                              <Font name="System Bold" size="20.0" />
-                           </font>
-                        </Label>
-                        <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="276.0" text="Hammerslag" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                        </Button>
-                        <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="95.0" text="Kender du typen" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                        </Button>
-                        <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="205.0" text="Sæt pris på dit hjem" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                        </Button>
-                     </items>
-                  </ToolBar>
-                  <ToolBar prefHeight="50.0" prefWidth="658.0">
-                     <items>
-                        <Label prefHeight="30.0" prefWidth="115.0" text="TV2 Zulu">
-                           <font>
-                              <Font name="System Bold" size="20.0" />
-                           </font>
-                        </Label>
-                        <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="184.0" text="Hammerslag" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                        </Button>
-                        <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="88.0" text="Kender du typen" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                        </Button>
-                        <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="395.0" text="Sæt pris på dit hjem" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                        </Button>
-                     </items>
-                  </ToolBar>
-                  <ToolBar prefHeight="50.0" prefWidth="658.0">
-                     <items>
-                        <Label prefHeight="30.0" prefWidth="115.0" text="TV2 Zulu">
-                           <font>
-                              <Font name="System Bold" size="20.0" />
-                           </font>
-                        </Label>
-                        <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="184.0" text="Hammerslag" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                        </Button>
-                        <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="88.0" text="Kender du typen" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                        </Button>
-                        <Button mnemonicParsing="false" prefHeight="42.0" prefWidth="395.0" text="Sæt pris på dit hjem" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" wrapText="true">
-                           <font>
-                              <Font size="13.0" />
-                           </font>
-                        </Button>
-                     </items>
-                  </ToolBar>
-               </children>
-            </VBox>
-         </content>
-      </ScrollPane>
       <Label layoutX="20.0" layoutY="14.0" prefHeight="58.0" prefWidth="282.0" text="Kreditering">
          <font>
             <Font name="Arial Bold" size="50.0" />
@@ -162,12 +22,14 @@
             <Font name="Arial" size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="search_term" layoutX="20.0" layoutY="355.0" onKeyPressed="#KeyPressedInSearch" prefHeight="32.0" prefWidth="430.0" promptText="Søg" />
-      <Button fx:id="search_button" layoutX="462.0" layoutY="355.0" mnemonicParsing="false" onAction="#search" prefHeight="32.0" prefWidth="222.0" text="Vis Program" />
-      <ListView fx:id="suggestions" layoutX="20.0" layoutY="387.0" onMouseClicked="#updateSearch" prefHeight="109.0" prefWidth="430.0" />
+      <TextField fx:id="search_term" layoutX="19.0" layoutY="279.0" onKeyPressed="#KeyPressedInSearch" prefHeight="32.0" prefWidth="430.0" promptText="Søg" />
+      <Button fx:id="search_button" layoutX="461.0" layoutY="279.0" mnemonicParsing="false" onAction="#search" prefHeight="32.0" prefWidth="222.0" text="Vis Program" />
+      <ListView fx:id="suggestions" layoutX="20.0" layoutY="311.0" onMouseClicked="#updateSearch" prefHeight="185.0" prefWidth="430.0" />
       <TextArea fx:id="credits" layoutX="20.0" layoutY="508.0" prefHeight="482.0" prefWidth="661.0" text="Find en kreditering i krediteringslisten og klik på vis program&#10;&#10;" />
       <Button fx:id="login_button" layoutX="554.0" layoutY="14.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="126.0" text="Login" />
       <TextField fx:id="username" layoutX="302.0" layoutY="14.0" prefHeight="16.0" prefWidth="126.0" promptText="Brugernavn" />
       <PasswordField fx:id="password" layoutX="428.0" layoutY="14.0" prefHeight="25.0" prefWidth="126.0" promptText="Password" />
+      <RadioButton fx:id="searchCredit" layoutX="461.0" layoutY="319.0" mnemonicParsing="false" onAction="#switchSearch" text="Søg Krediteringer" />
+      <RadioButton fx:id="searchPerson" layoutX="461.0" layoutY="343.0" mnemonicParsing="false" onAction="#switchSearch" text="Søg Personer" />
    </children>
 </AnchorPane>
