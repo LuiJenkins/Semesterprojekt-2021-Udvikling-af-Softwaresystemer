@@ -21,7 +21,7 @@
             <Font size="15.0" />
          </font>
       </Label>
-  <AnchorPane fx:id="program_pane" layoutY="74.0" minHeight="0.0" minWidth="0.0" prefHeight="926.0" prefWidth="700.0" visible="false">
+  <AnchorPane fx:id="program_pane" layoutY="74.0" minHeight="0.0" minWidth="0.0" prefHeight="926.0" prefWidth="700.0">
          <children>
             <ListView fx:id="program_list" layoutX="21.0" layoutY="60.0" onMouseClicked="#programListClick" prefHeight="770.0" prefWidth="316.0" />
             <Button fx:id="edit_chosen_program" layoutX="21.0" layoutY="846.0" mnemonicParsing="false" onAction="#editChosenProgram" prefHeight="25.0" prefWidth="156.0" text="Rediger Valgte" />
@@ -38,7 +38,7 @@
                </font>
             </Label>
             <Button layoutX="601.0" layoutY="85.0" mnemonicParsing="false" onAction="#makeProgram" text="Lav program" />
-            <Button fx:id="accept_chosen_program" layoutX="352.0" layoutY="846.0" mnemonicParsing="false" onAction="#denyChosenProgram" prefHeight="25.0" prefWidth="160.0" text="Godkend Valgte" />
+            <Button fx:id="accept_chosen_program" layoutX="352.0" layoutY="846.0" mnemonicParsing="false" onAction="#acceptChosenProgram" prefHeight="25.0" prefWidth="160.0" text="Godkend Valgte" />
             <Button fx:id="deny_chosen_program" layoutX="521.0" layoutY="846.0" mnemonicParsing="false" onAction="#denyChosenProgram" prefHeight="25.0" prefWidth="160.0" text="Afvis Valgte" />
             <TextArea fx:id="program_preview" layoutX="350.0" layoutY="206.0" prefHeight="624.0" prefWidth="334.0" />
             <Label layoutX="352.0" layoutY="168.0" prefHeight="32.0" prefWidth="317.0" text="Preview af Kreditering">
@@ -75,7 +75,7 @@
             <Button fx:id="send_program_to_review" layoutX="352.0" layoutY="878.0" mnemonicParsing="false" onAction="#sendCreditToReview" prefHeight="25.0" prefWidth="334.0" text="Send kreditering til godkendelse" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="person_pane" layoutY="74.0" minHeight="0.0" minWidth="0.0" prefHeight="926.0" prefWidth="700.0">
+      <AnchorPane fx:id="person_pane" layoutY="74.0" minHeight="0.0" minWidth="0.0" prefHeight="926.0" prefWidth="700.0" visible="false">
          <children>
             <ListView fx:id="person_list" layoutX="21.0" layoutY="206.0" onMouseClicked="#personNotInCatClick" prefHeight="624.0" prefWidth="316.0" />
             <Button fx:id="set_person_name" layoutX="350.0" layoutY="116.0" mnemonicParsing="false" onAction="#setPersonName" prefHeight="25.0" prefWidth="156.0" text="Set valgte persons navn" />

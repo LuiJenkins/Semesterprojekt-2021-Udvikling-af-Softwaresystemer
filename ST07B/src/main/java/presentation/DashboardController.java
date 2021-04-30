@@ -100,10 +100,14 @@ public class DashboardController implements startInterface{
         program_list.setItems(Main.getAllPrograms());
     }
     public void acceptChosenProgram() {
-
+        if (selectedProgram != null) {
+            ApplicationFacade.acceptProgram(selectedProgram);
+        }
     }
     public void denyChosenProgram() {
-
+        if (selectedProgram != null) {
+            ApplicationFacade.denyProgram(selectedProgram);
+        }
     }
     public void addCategory() {
         if (new_category_name.getText() != null && selectedProgram.getProducerID() == LoginHandler.currentUser.getUserRole() || currentUser.isAllowed(2)) {
@@ -134,7 +138,7 @@ public class DashboardController implements startInterface{
         program_preview_second.setText(selectedProgram.toText());
     }
     public void sendCreditToReview() {
-
+        ApplicationFacade.sendCreditToReview(selectedProgram);
     }
 
     public void setPersonName() {

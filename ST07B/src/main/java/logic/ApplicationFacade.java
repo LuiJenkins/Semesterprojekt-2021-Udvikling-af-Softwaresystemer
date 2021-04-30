@@ -23,12 +23,22 @@ public class ApplicationFacade {
         }
     }
 
-    public static void denyProgram(int ID,int status){
-        CreditsHandler.getSpecificCredit(ID).getApproved().setStatus(status);
+    public static void denyProgram(Program p){
+        if (currentUser.isAllowed(2)) {
+            p.getApproved().deny();
+        }
+    }
+    public static void acceptProgram(Program p){
+        if (currentUser.isAllowed(2)) {
+            p.getApproved().approve();
+        }
     }
 
-    public static void sendCreditToReview(int ID){
-        throw new UnsupportedOperationException();
+
+    public static void sendCreditToReview(Program p){
+        if (p.getProducerID() == LoginHandler.currentUser.getProducerID()) {
+            p.getApproved().setStatus(1);
+        }
     }
 
     public static void makeNewCategory(Program p,String new_cat){
