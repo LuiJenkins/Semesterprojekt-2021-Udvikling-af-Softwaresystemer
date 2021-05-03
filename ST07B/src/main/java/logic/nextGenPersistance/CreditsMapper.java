@@ -12,6 +12,11 @@ import java.util.ArrayList;
 
 public class CreditsMapper implements AbstractClassMapper<CreditRelation> {
     public Connection conn;
+
+    public CreditsMapper() {
+        getConnection();
+    }
+
     public void getConnection() {
         if (conn == null) {
             conn = PersistanceHandler.getConn();
@@ -60,10 +65,12 @@ public class CreditsMapper implements AbstractClassMapper<CreditRelation> {
     public void addToDB(CreditRelation o) {
         getConnection();
         try {
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO credits (credit_id,program_id,catagory_id,person_id,numberInCatagory) VALUES (?,?,?,NULL)");
-            stmt.setInt(1, o.creditId);
-            stmt.setInt(2,o.programId);
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO credits (program_id,category_id,person_id,numberInCategory) VALUES (?,?,?,NULL)");
+            stmt.setInt(1,o.creditId);
+            stmt.setInt(2,o.categoryId);
             stmt.setInt(3,o.personId);
+            stmt.executeUpdate();
+            System.out.println("Added");
 
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -71,6 +78,8 @@ public class CreditsMapper implements AbstractClassMapper<CreditRelation> {
     }
 
     public void addAllToDB(ArrayList<CreditRelation> o) {
-
+        for (CreditRelation cr : o) {
+            addToDB(cr);
+        }
     }
 }

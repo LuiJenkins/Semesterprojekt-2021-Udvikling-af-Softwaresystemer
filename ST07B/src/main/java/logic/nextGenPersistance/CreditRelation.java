@@ -4,11 +4,11 @@ import logic.CreditsHandler;
 
 public class CreditRelation {
     public int creditId;
-    public int programId;
+    public int categoryId;
     public int personId;
-    public CreditRelation(int creditId,int programId,int personId) {
+    public CreditRelation(int creditId,int categoryId,int personId) {
         this.creditId = creditId;
         this.personId = personId;
-        this.programId = programId;
+        this.categoryId = categoryId;
     }
 }

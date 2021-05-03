@@ -11,6 +11,11 @@ import java.util.ArrayList;
 
 public class PersonMapper implements AbstractClassMapper<Person> {
     public Connection conn;
+
+    public PersonMapper() {
+        getConnection();
+    }
+
     public void getConnection() {
         if (conn == null) {
             conn = PersistanceHandler.getConn();
@@ -57,7 +62,7 @@ public class PersonMapper implements AbstractClassMapper<Person> {
             stmt.setInt(1, o.getId());
             stmt.setString(2,o.getName());
             stmt.setString(3,o.getDesc());
-
+            stmt.executeQuery();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

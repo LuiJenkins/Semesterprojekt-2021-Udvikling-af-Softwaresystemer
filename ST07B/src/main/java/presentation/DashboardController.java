@@ -56,6 +56,7 @@ public class DashboardController implements startInterface{
 
     public void logout() {
         ApplicationFacade.logUserOut();
+        ApplicationFacade.UploadToDB();
         Main.SwitchScene(0);
     }
 

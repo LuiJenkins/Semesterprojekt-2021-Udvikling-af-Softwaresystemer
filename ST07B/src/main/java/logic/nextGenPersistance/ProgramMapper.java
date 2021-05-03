@@ -12,6 +12,10 @@ import java.util.ArrayList;
 public class ProgramMapper implements AbstractClassMapper<Program> {
     public Connection conn = null;
 
+    public ProgramMapper() {
+        getConnection();
+    }
+
     public void getConnection() {
         if (conn == null) {
             conn = PersistanceHandler.getConn();
@@ -55,7 +59,7 @@ public class ProgramMapper implements AbstractClassMapper<Program> {
             stmt.setInt(1, o.getProgramID());
             stmt.setInt(2,o.getProducerID());
             stmt.setString(3,o.getName());
-
+            stmt.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

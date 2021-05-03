@@ -1,12 +1,16 @@
 package logic;
 
-import javafx.collections.ObservableList;
+import logic.nextGenPersistance.PersistanceFacade;
 
 import java.util.ArrayList;
 
 import static logic.LoginHandler.*;
 
 public class ApplicationFacade {
+
+    public static void UploadToDB() {
+        PersistanceFacade.UploadProgramsToDB(CreditsHandler.getAllCreditsFromLocal());
+    }
 
     public static void makeNewProgram(String Titel) {
         if (currentUser.isAllowed(1)) {

@@ -11,6 +11,11 @@ import java.util.ArrayList;
 
 public class CategoryMapper implements AbstractClassMapper<Category> {
     public Connection conn;
+
+    public CategoryMapper() {
+        getConnection();
+    }
+
     public void getConnection() {
         if (conn == null) {
             conn = PersistanceHandler.getConn();
@@ -57,7 +62,7 @@ public class CategoryMapper implements AbstractClassMapper<Category> {
             stmt.setInt(1, o.getId());
             stmt.setString(2,o.getName());
             stmt.setInt(3,o.getSortingOrder());
-
+            stmt.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
