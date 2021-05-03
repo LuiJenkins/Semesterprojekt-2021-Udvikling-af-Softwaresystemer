@@ -72,12 +72,13 @@ public class Program {
 
     @Override
     public String toString() {
-        String s;
-        if(approved.getStatus()==2){
-            s="+ ";
+        String s = "";
+        if(LoginHandler.currentUser==null){return programTitle;}
+        if (approved.getStatus() == 2) {
+            s = "+ ";
         } else {
-            s="- ";
+            s = "- ";
         }
-        return s+programTitle;
+        return s + programTitle;
     }
 }
