@@ -1,5 +1,6 @@
 package presentation;
 
+import database.PersistanceHandler;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -71,6 +72,7 @@ public class Main extends Application {
 
         /////
         mainmenuController.start();
+        PersistanceHandler.initDB();
     }
 
 
