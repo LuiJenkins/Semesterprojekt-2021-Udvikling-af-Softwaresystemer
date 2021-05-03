@@ -14,6 +14,7 @@ public class Program {
         this.programID = programID;
         this.ProducerID = producerID;
         this.programTitle = programName;
+        this.approved = new Approved(programID);
     }
     public Program() { }
 
@@ -71,6 +72,12 @@ public class Program {
 
     @Override
     public String toString() {
-        return programTitle;
+        String s;
+        if(approved.getStatus()==2){
+            s="+ ";
+        } else {
+            s="- ";
+        }
+        return s+programTitle;
     }
 }

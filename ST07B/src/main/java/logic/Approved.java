@@ -11,6 +11,23 @@ public class Approved<setStatus> {
     public int programID;
     public Date approvedDate;
 
+    public Approved(int status, int programID, Date approvedDate) {
+        this.status = status;
+        this.programID = programID;
+        this.approvedDate = approvedDate;
+    }
+
+    public Approved(int status, int programID) {
+        this.status = status;
+        this.programID = programID;
+        this.approvedDate =null;
+    }
+
+    public Approved(int programID) {
+        this.programID = programID;
+        this.status = 0;
+        this.approvedDate =null;
+    }
 
     public static void createApproved(int status) {
          status = 0;
