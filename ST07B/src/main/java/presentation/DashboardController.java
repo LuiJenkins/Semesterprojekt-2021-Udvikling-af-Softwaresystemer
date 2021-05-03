@@ -6,10 +6,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import logic.ApplicationFacade;
-import logic.Category;
-import logic.Person;
-import logic.Program;
+import logic.*;
+
+import static logic.LoginHandler.currentUser;
 
 public class DashboardController implements startInterface{
     @FXML
@@ -84,28 +83,34 @@ public class DashboardController implements startInterface{
     public void makeProgram() {
         if (newprogram_name.getText() != null) {
             System.out.println("Making new program: "+newprogram_name.getText());
-            ApplicationFacade.makeNewProgram(1,newprogram_name.getText());
+            ApplicationFacade.makeNewProgram(newprogram_name.getText());
         }
         program_list.setItems(Main.getAllPrograms());
     }
     public void editChosenProgram() {
-        setpage(1);
-        category_list.setItems(Main.getAllCategoryForProgram(selectedProgram));
-        program_preview.setText(selectedProgram.toText());
-        program_preview_second.setText(selectedProgram.toText());
+        if (LoginHandler.currentUser.getProducerID() == selectedProgram.getProducerID() || currentUser.isAllowed(2)) {
+            setpage(1);
+            category_list.setItems(Main.getAllCategoryForProgram(selectedProgram));
+            program_preview.setText(selectedProgram.toText());
+            program_preview_second.setText(selectedProgram.toText());
+        }
     }
     public void deleteChosenProgram() {
         ApplicationFacade.deleteProgram(selectedProgram);
         program_list.setItems(Main.getAllPrograms());
     }
     public void acceptChosenProgram() {
-
+        if (selectedProgram != null) {
+            ApplicationFacade.acceptProgram(selectedProgram);
+        }
     }
     public void denyChosenProgram() {
-
+        if (selectedProgram != null) {
+            ApplicationFacade.denyProgram(selectedProgram);
+        }
     }
     public void addCategory() {
-        if (new_category_name.getText() != null) {
+        if (new_category_name.getText() != null && selectedProgram.getProducerID() == LoginHandler.currentUser.getUserRole() || currentUser.isAllowed(2)) {
             ApplicationFacade.makeNewCategory(selectedProgram,new_category_name.getText());
             System.out.println("Making new category: "+new_category_name.getText());
         }
@@ -114,7 +119,7 @@ public class DashboardController implements startInterface{
         program_preview_second.setText(selectedProgram.toText());
     }
     public void editChosenCategory() {
-        if (selectedCategory != null) {
+        if (selectedCategory != null && selectedProgram.getProducerID() == LoginHandler.currentUser.getUserRole() || currentUser.isAllowed(2)) {
             setpage(2);
             person_list.setItems(Main.getAllPersonsNotInCategory(selectedCategory));
             category_preview.setItems(Main.getAllPersonsInCategory(selectedCategory));
@@ -133,7 +138,7 @@ public class DashboardController implements startInterface{
         program_preview_second.setText(selectedProgram.toText());
     }
     public void sendCreditToReview() {
-
+        ApplicationFacade.sendCreditToReview(selectedProgram);
     }
 
     public void setPersonName() {
@@ -182,7 +187,7 @@ public class DashboardController implements startInterface{
         category_pane.setVisible(false);
         person_pane.setVisible(false);
         role_loggedin.setText(ApplicationFacade.loggedInRoleString());
-        program_list.setItems(Main.getAllPrograms());
+        program_list.setItems(Main.getAllProgramsICanEdit());
     }
     public void setpage(int page) {
         if (page == 0) {

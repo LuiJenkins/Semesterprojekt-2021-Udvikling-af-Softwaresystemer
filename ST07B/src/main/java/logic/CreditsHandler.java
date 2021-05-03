@@ -125,4 +125,31 @@ public class CreditsHandler {
         }
         return filteredQuery;
     }
+
+    public static ArrayList<Person> searchPerson(String text) {
+        ArrayList<Person> filteredQuery = new ArrayList<>();
+        for (Person p : currentLoadedPersons) {
+            if(p.getName().toLowerCase().contains(text.toLowerCase())) {
+                filteredQuery.add(p);
+            }
+        }
+        return filteredQuery;
+    }
+
+    public static String crossReferencePersonFromCredits(Person selectedPerson) {
+        String s = "▶▶ "+selectedPerson.getName()+"\n";
+
+        s += "──━━━ Medvirker i ━━━──\n";
+
+        for (Program p : currentLoadedProgramCredits) {
+            for(Category c : p.getAllCategory()) {
+                for (Person pe : c.getPersonsFromCategory()) {
+                    if (pe.equals(selectedPerson)) {
+                        s += "\""+p.getName()+"\" som \""+c.getName()+"\"\n";
+                    }
+                }
+            }
+        }
+        return s;
+    }
 }

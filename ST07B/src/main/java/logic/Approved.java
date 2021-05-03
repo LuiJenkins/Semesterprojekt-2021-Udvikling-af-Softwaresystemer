@@ -9,13 +9,11 @@ import java.util.Date;
 public class Approved<setStatus> {
     public int status;
     public int programID;
-    public String approvedBy;
     public Date approvedDate;
 
 
-    public static void createApproved(int status, String approvedBy) {
+    public static void createApproved(int status) {
          status = 0;
-         approvedBy = "NULL";
     }
 
     public int getStatus(){
@@ -26,11 +24,15 @@ public class Approved<setStatus> {
     status = newStatus;
     }
 
-    public String getApprovedBy() {
-        return approvedBy;
-    }
 
     public Date getApprovedDate(){
         return approvedDate;
+    }
+    public void approve() {
+        status = 2;
+        approvedDate = new Date();
+    }
+    public void deny() {
+        status = 0;
     }
 }

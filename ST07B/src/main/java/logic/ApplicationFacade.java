@@ -8,48 +8,49 @@ import static logic.LoginHandler.*;
 
 public class ApplicationFacade {
 
-    public static void makeNewProgram(int producerid,String Titel) {
-        // checks for highest id and creates new program with id+1;
-            CreditsHandler.makeNewCredit(producerid, Titel);
+    public static void makeNewProgram(String Titel) {
+        if (currentUser.isAllowed(1)) {
+            CreditsHandler.makeNewCredit(LoginHandler.currentUser.getProducerID(), Titel);
+        }
+    }
+    public static void makeNewProgram(int producerid, String Titel) {
+        CreditsHandler.makeNewCredit(producerid, Titel);
     }
 
     public static void deleteProgram(Program p){
-        CreditsHandler.deleteCredit(p);
+        if (p.getProducerID() == LoginHandler.currentUser.getProducerID()) {
+            CreditsHandler.deleteCredit(p);
+        }
     }
 
-    public static void editProgram(int ID, String Title){
-        CreditsHandler.getSpecificCredit(ID).setName(Title);
+    public static void denyProgram(Program p){
+        if (currentUser.isAllowed(2)) {
+            p.getApproved().deny();
+        }
+    }
+    public static void acceptProgram(Program p){
+        if (currentUser.isAllowed(2)) {
+            p.getApproved().approve();
+        }
     }
 
-    public static void acceptProgram(int ID, int status){
-        CreditsHandler.getSpecificCredit(ID).getApproved().setStatus(status);
 
+    public static void sendCreditToReview(Program p){
+        if (p.getProducerID() == LoginHandler.currentUser.getProducerID()) {
+            p.getApproved().setStatus(1);
+        }
     }
 
-    public static void denyProgram(int ID,int status){
-        CreditsHandler.getSpecificCredit(ID).getApproved().setStatus(status);
-    }
-
-    public static void sendCreditToReview(int ID){
-        throw new UnsupportedOperationException();
-    }
-
-    public static void makeNewCategory(int prgID,String new_cat){
-        CreditsHandler.getSpecificCredit(prgID).createCategory(new_cat);
-    }
     public static void makeNewCategory(Program p,String new_cat){
-        p.createCategory(new_cat);
+        if (p.getProducerID() == LoginHandler.currentUser.getProducerID() || currentUser.isAllowed(2)) {
+            p.createCategory(new_cat);
+        }
     }
 
-    public static void deleteCategory(int catID, int prgID){
-        CreditsHandler.getSpecificCredit(prgID).deleteCategory(catID);
-    }
     public static void deleteCategory(Category selectedCategory, Program selectedProgram) {
-        selectedProgram.deleteCategory(selectedCategory);
-    }
-
-    public static void editCategory(int ID, int prgID, String newName){
-        CreditsHandler.getSpecificCredit(prgID).setName(newName);
+        if (selectedProgram.getProducerID() == LoginHandler.currentUser.getProducerID() || currentUser.isAllowed(2)) {
+            selectedProgram.deleteCategory(selectedCategory);
+        }
     }
 
     public static void makeNewPerson(String name, String desc){
@@ -60,12 +61,17 @@ public class ApplicationFacade {
         CreditsHandler.deletePerson(person);
     }
 
-    public static void updatePerson(int ID, String name, String desc){
-        CreditsHandler.updatePerson(ID,name,desc);
-    }
-
     public static ArrayList<Program> getCurrentPrograms(){
         return CreditsHandler.getAllCreditsFromLocal();
+    }
+    public static ArrayList<Program> getCurrentProgramsICanEdit(){
+        ArrayList<Program> pcicanedit = new ArrayList<>();
+        for (Program p : CreditsHandler.getAllCreditsFromLocal()) {
+            if (p.getProducerID() == LoginHandler.currentUser.getProducerID() || currentUser.isAllowed(2)) {
+                pcicanedit.add(p);
+            }
+        }
+        return pcicanedit;
     }
 
     public static Program getCurrentProgram(int id) {
@@ -112,5 +118,13 @@ public class ApplicationFacade {
 
     public static ArrayList<Program> searchProgram(String text) {
         return CreditsHandler.searchProgram(text);
+    }
+
+    public static ArrayList<Person> searchPerson(String text) {
+        return CreditsHandler.searchPerson(text);
+    }
+
+    public static String crossReferencePersonFromCredits(Person selectedPerson) {
+        return CreditsHandler.crossReferencePersonFromCredits(selectedPerson);
     }
 }
