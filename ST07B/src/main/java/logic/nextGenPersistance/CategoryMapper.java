@@ -58,7 +58,7 @@ public class CategoryMapper implements AbstractClassMapper<Category> {
     public void addToDB(Category o) {
         getConnection();
         try {
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO programs (catagory_id,catagoryName,catagoryType,catagoryNumber) VALUES (?,?,NULL,?");
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO categorys (category_id,categoryname,categorytype,categorynumber) VALUES (?,?,NULL,?)");
             stmt.setInt(1, o.getId());
             stmt.setString(2,o.getName());
             stmt.setInt(3,o.getSortingOrder());

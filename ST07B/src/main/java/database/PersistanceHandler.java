@@ -30,10 +30,8 @@ public class PersistanceHandler {
                     "playingTimeSec INT" +
                     ");");
             SqlPostQuery("CREATE TABLE IF NOT EXISTS approved (\n" +
-                    "approved_id SERIAL PRIMARY KEY,\n" +
-                    "program_id INT,\n" +
+                    "program_id SERIAL PRIMARY KEY,\n" +
                     "status INT,\n" +
-                    "approvedBy INT,\n" +
                     "approvedDate TIMESTAMP\n" +
                     ");");
             SqlPostQuery("CREATE TABLE IF NOT EXISTS persons (\n" +
