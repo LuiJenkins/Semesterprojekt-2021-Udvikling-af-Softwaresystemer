@@ -103,11 +103,13 @@ public class DashboardController implements startInterface{
     public void acceptChosenProgram() {
         if (selectedProgram != null) {
             ApplicationFacade.acceptProgram(selectedProgram);
+            program_list.setItems(Main.getAllPrograms());  //  to refresh list
         }
     }
     public void denyChosenProgram() {
         if (selectedProgram != null) {
             ApplicationFacade.denyProgram(selectedProgram);
+            program_list.setItems(Main.getAllPrograms());  // to refresh list
         }
     }
     public void addCategory() {
