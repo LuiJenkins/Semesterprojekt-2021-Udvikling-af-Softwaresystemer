@@ -141,6 +141,7 @@ public class DashboardController implements startInterface{
     }
     public void sendCreditToReview() {
         ApplicationFacade.sendCreditToReview(selectedProgram);
+        program_list.setItems(Main.getAllPrograms());
     }
 
     public void setPersonName() {
