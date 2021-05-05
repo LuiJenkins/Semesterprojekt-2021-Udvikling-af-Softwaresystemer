@@ -18,7 +18,7 @@ public class ApplicationFacade {
     }
 
     public static void deleteProgram(Program p){
-        if (p.getProducerID() == LoginHandler.currentUser.getProducerID()) {
+        if (p.getProducerID() == LoginHandler.currentUser.getProducerID() || currentUser.isAllowed(2)) {
             CreditsHandler.deleteCredit(p);
         }
     }
