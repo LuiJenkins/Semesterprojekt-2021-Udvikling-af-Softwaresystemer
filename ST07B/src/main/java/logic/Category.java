@@ -13,7 +13,7 @@ public class Category {
         this.id = id;
         this.name = name;
     }
-    public Category(int id,String name, int sortingOrder) {
+    public Category(int id,java.lang.String name, int sortingOrder) {
         this.id = id;
         this.name = name;
         this.sortingOrder = sortingOrder;

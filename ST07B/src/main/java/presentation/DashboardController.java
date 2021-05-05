@@ -77,7 +77,7 @@ public class DashboardController implements startInterface{
         System.out.println("Selected Peron in DB: "+selectedPersonInDB);
     }
     public void personInCatClick(MouseEvent event) {
-        selectedPersonInCat = (Person)person_list.getSelectionModel().getSelectedItem();
+        selectedPersonInCat = (Person)category_preview.getSelectionModel().getSelectedItem();
         System.out.println("Selected Peron in Credit: "+selectedPersonInCat);
     }
 

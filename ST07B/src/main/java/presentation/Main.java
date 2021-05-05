@@ -11,7 +11,6 @@ import logic.ApplicationFacade;
 import logic.Person;
 import logic.Program;
 import logic.*;
-
 import java.util.ArrayList;
 
 public class Main extends Application {

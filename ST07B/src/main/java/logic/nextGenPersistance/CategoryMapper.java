@@ -46,6 +46,7 @@ public class CategoryMapper implements AbstractClassMapper<Category> {
             int rowcount = 0;
             ArrayList<Category> returnValue = new ArrayList<>();
             while (sqlRV.next()){
+                System.out.println(sqlRV.getInt(1)+":"+sqlRV.getString(2)+":"+sqlRV.getInt(3));
                 returnValue.add(new Category(sqlRV.getInt(1),sqlRV.getString(2),sqlRV.getInt(3)));
             }
             return returnValue;
