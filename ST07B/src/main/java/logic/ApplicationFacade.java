@@ -23,25 +23,28 @@ public class ApplicationFacade {
     }
 
     public static void deleteProgram(Program p){
-        if (p.getProducerID() == LoginHandler.currentUser.getProducerID()) {
+        if (p.getProducerID() == LoginHandler.currentUser.getProducerID() || currentUser.isAllowed(2)) {
             CreditsHandler.deleteCredit(p);
         }
     }
 
     public static void denyProgram(Program p){
         if (currentUser.isAllowed(2)) {
+            System.out.println("Deny program");
             p.getApproved().deny();
         }
     }
     public static void acceptProgram(Program p){
         if (currentUser.isAllowed(2)) {
+            System.out.println("Accept program");
             p.getApproved().approve();
         }
     }
 
 
     public static void sendCreditToReview(Program p){
-        if (p.getProducerID() == LoginHandler.currentUser.getProducerID()) {
+        if (p.getProducerID() == LoginHandler.currentUser.getProducerID() || currentUser.isAllowed(2)) {
+            System.out.println("Sending program to review"); // ## test
             p.getApproved().setStatus(1);
         }
     }
@@ -110,10 +113,12 @@ public class ApplicationFacade {
     }
 
     public static void logUserOut() {
+        System.out.println("LogOut Event");
         LoginHandler.loginToAccount("","");
     }
 
     public static void logUserIn(String username,String password) {
+        System.out.println("LogIn Event");
         LoginHandler.loginToAccount(username,password);
     }
 

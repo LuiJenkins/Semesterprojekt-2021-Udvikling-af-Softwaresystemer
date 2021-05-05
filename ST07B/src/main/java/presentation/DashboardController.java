@@ -98,18 +98,22 @@ public class DashboardController implements startInterface{
     }
     public void deleteChosenProgram() {
         ApplicationFacade.deleteProgram(selectedProgram);
-        program_list.setItems(Main.getAllPrograms());
+        program_list.setItems(Main.getAllProgramsICanEdit());
     }
     public void acceptChosenProgram() {
-        if (selectedProgram != null) {
-            ApplicationFacade.acceptProgram(selectedProgram);
-            program_list.setItems(Main.getAllPrograms());  //  to refresh list
+        if (currentUser.isAllowed(2)) {         // only userRole >= 2 can acceptProgram
+            if (selectedProgram != null) {
+                ApplicationFacade.acceptProgram(selectedProgram);
+                program_list.setItems(Main.getAllProgramsICanEdit());  //  to refresh list
+            }
         }
     }
-    public void denyChosenProgram() {
-        if (selectedProgram != null) {
-            ApplicationFacade.denyProgram(selectedProgram);
-            program_list.setItems(Main.getAllPrograms());  // to refresh list
+    public void denyChosenProgram() {                   // only userRole >= 2 can denyProgram
+        if (currentUser.isAllowed(2)) {
+            if (selectedProgram != null) {
+                ApplicationFacade.denyProgram(selectedProgram);
+                program_list.setItems(Main.getAllProgramsICanEdit());  // to refresh list
+            }
         }
     }
     public void addCategory() {
@@ -142,6 +146,7 @@ public class DashboardController implements startInterface{
     }
     public void sendCreditToReview() {
         ApplicationFacade.sendCreditToReview(selectedProgram);
+        program_list.setItems(Main.getAllProgramsICanEdit());
     }
 
     public void setPersonName() {
