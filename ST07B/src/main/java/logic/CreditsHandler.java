@@ -9,6 +9,11 @@ public class CreditsHandler {
     public static ArrayList<Program> getAllCreditsFromLocal(){
         return currentLoadedProgramCredits;
     }
+    public static void setAllCredits(ArrayList<Program> credits,ArrayList<Person> persons) {
+        currentLoadedProgramCredits = credits;
+        currentLoadedPersons = persons;
+    }
+
     public static void makeNewCredit(int producerid, String name) {
         int highestId = 0;
         for (Program p : currentLoadedProgramCredits) {
@@ -27,10 +32,10 @@ public class CreditsHandler {
         getSpecificCredit(highestId+1).createCategory("Musik");
         getSpecificCredit(highestId+1).createCategory("Kamera");
     }
+
     public static void deleteCredit(Program program) {
         currentLoadedProgramCredits.remove(program);
     }
-
 
     public static Program getSpecificCredit(int ID){
         for (int i = 0; i < currentLoadedProgramCredits.size();i++) {
@@ -40,6 +45,7 @@ public class CreditsHandler {
         }
         return new Program();
     }
+
     public static void addSpecificCredit(Program program) {
         currentLoadedProgramCredits.add(program);
     }

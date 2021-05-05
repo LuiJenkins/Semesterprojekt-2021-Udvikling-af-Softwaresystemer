@@ -1,6 +1,5 @@
 package presentation;
 
-import database.PersistanceHandler;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -42,37 +41,10 @@ public class Main extends Application {
 
 
         ///// shows demo credit
-        ApplicationFacade.makeNewPerson("John Smith","");
-        ApplicationFacade.makeNewPerson("Adam Sandal","");
-        ApplicationFacade.makeNewPerson("Din Mor","");
-        ApplicationFacade.makeNewPerson("Din Far","");
-        ApplicationFacade.makeNewPerson("Din Søster","");
-        ApplicationFacade.makeNewPerson("Din Bror","");
-        ApplicationFacade.makeNewPerson("John Doe","");
-        ApplicationFacade.makeNewPerson("John Wick","");
-        ApplicationFacade.makeNewPerson("Egon Olsen","");
-        ApplicationFacade.makeNewPerson("Onkel Anders","");
-
-
-        ApplicationFacade.makeNewProgram(1,"Vores Test Program");
-        ApplicationFacade.makeNewProgram(2,"Et andet testprogram");
-
-        ApplicationFacade.addPersonToCategory(1,1,1);
-        ApplicationFacade.addPersonToCategory(1,1,2);
-        ApplicationFacade.addPersonToCategory(1,2,3);
-        ApplicationFacade.addPersonToCategory(2,2,3);
-        ApplicationFacade.addPersonToCategory(1,2,4);
-        ApplicationFacade.addPersonToCategory(1,2,5);
-        ApplicationFacade.addPersonToCategory(1,2,6);
-        ApplicationFacade.addPersonToCategory(2,1,7);
-        ApplicationFacade.addPersonToCategory(2,2,8);
-        ApplicationFacade.addPersonToCategory(2,2,9);
-        ApplicationFacade.addPersonToCategory(2,2,10);
-
-
         /////
+        ApplicationFacade.initDB();
+        ApplicationFacade.DownloadFromDB();
         mainmenuController.start();
-        PersistanceHandler.initDB();
     }
 
 

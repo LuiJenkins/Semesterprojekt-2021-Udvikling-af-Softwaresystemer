@@ -31,6 +31,7 @@ public class Category {
     public void addPersonToCategory(Person person){
         persons.add(person);
     }
+
     public void removePersonFromCategory(Person person) {
         persons.remove(person);
     }
@@ -59,5 +60,6 @@ public class Category {
     public String toString() {
         return name;
     }
- }
+
+}
 

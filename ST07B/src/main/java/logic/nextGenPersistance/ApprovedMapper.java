@@ -54,10 +54,17 @@ public class ApprovedMapper implements AbstractClassMapper<Approved> {
 
     public void addToDB(Approved o) {
         try {
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO approved (program_id,status,approveddate) VALUES (?,?,?)");
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO approved (program_id,status,approveddate) VALUES (?,?,?) ON CONFLICT (program_id) DO UPDATE SET status=?,approveddate=?");
             stmt.setInt(1, o.programID);
             stmt.setInt(2,o.status);
-            stmt.setDate(3,(Date)o.approvedDate);
+            stmt.setInt(4,o.status);
+            if (o.approvedDate != null) {
+                stmt.setDate(3,new java.sql.Date(o.approvedDate.getTime()));
+                stmt.setDate(5,new java.sql.Date(o.approvedDate.getTime()));
+            } else {
+                stmt.setDate(3,null);
+                stmt.setDate(5,null);
+            }
             stmt.executeUpdate();
             System.out.println("Approved"+o.programID);
         } catch (SQLException ex) {

@@ -1,8 +1,7 @@
 package logic.nextGenPersistance;
 
-import database.PersistanceHandler;
-import logic.Category;
-import logic.Person;
+import logic.*;
+import database.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -48,7 +47,7 @@ public class CreditsMapper implements AbstractClassMapper<CreditRelation> {
     public ArrayList<CreditRelation> getAllFromDB() {
         getConnection();
         try {
-            PreparedStatement stmt = conn.prepareStatement("SELECT credit_id,program_id,catagory_id,person_id FROM credits");
+            PreparedStatement stmt = conn.prepareStatement("SELECT program_id,category_id,person_id FROM credits");
             ResultSet sqlRV = stmt.executeQuery();
             int rowcount = 0;
             ArrayList<CreditRelation> returnValue = new ArrayList<>();
@@ -65,7 +64,7 @@ public class CreditsMapper implements AbstractClassMapper<CreditRelation> {
     public void addToDB(CreditRelation o) {
         getConnection();
         try {
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO credits (program_id,category_id,person_id,numberInCategory) VALUES (?,?,?,NULL)");
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO credits (program_id,category_id,person_id,numberInCategory) VALUES (?,?,?,NULL) ON CONFLICT (program_id,category_id,person_id) DO NOTHING");
             stmt.setInt(1,o.creditId);
             stmt.setInt(2,o.categoryId);
             stmt.setInt(3,o.personId);

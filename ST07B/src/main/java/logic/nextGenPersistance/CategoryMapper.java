@@ -41,7 +41,7 @@ public class CategoryMapper implements AbstractClassMapper<Category> {
     public ArrayList<Category> getAllFromDB() {
         getConnection();
         try {
-            PreparedStatement stmt = conn.prepareStatement("SELECT catagory_id,catagoryName,catagoryType,catagoryNumber FROM categorys ");
+            PreparedStatement stmt = conn.prepareStatement("SELECT category_id,categoryName,categoryType FROM categorys ");
             ResultSet sqlRV = stmt.executeQuery();
             int rowcount = 0;
             ArrayList<Category> returnValue = new ArrayList<>();
@@ -58,10 +58,12 @@ public class CategoryMapper implements AbstractClassMapper<Category> {
     public void addToDB(Category o) {
         getConnection();
         try {
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO categorys (category_id,categoryname,categorytype,categorynumber) VALUES (?,?,NULL,?)");
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO categorys (category_id,categoryname,categorytype,categorynumber) VALUES (?,?,NULL,?) ON CONFLICT (category_id) DO UPDATE SET categoryname=?,categorynumber=?");
             stmt.setInt(1, o.getId());
             stmt.setString(2,o.getName());
             stmt.setInt(3,o.getSortingOrder());
+            stmt.setString(4,o.getName());
+            stmt.setInt(5,o.getSortingOrder());
             stmt.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();

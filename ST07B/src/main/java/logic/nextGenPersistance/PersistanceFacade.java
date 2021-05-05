@@ -1,9 +1,6 @@
 package logic.nextGenPersistance;
 
-import logic.Approved;
-import logic.Category;
-import logic.Person;
-import logic.Program;
+import logic.*;
 
 import java.util.ArrayList;
 
@@ -35,11 +32,39 @@ public class PersistanceFacade {
                 approved.add(p.getApproved());
             }
         }
-        System.out.println("");
-        /*creditsMapper.addAllToDB(creditRelations);
+        System.out.println(approved);
+        creditsMapper.addAllToDB(creditRelations);
         programMapper.addAllToDB(programs);
         categoryMapper.addAllToDB(categories);
-        personMapper.addAllToDB(people);*/
+        personMapper.addAllToDB(people);
         approvedMapper.addAllToDB(approved);
+    }
+    public static void UploadPersonsToDB(ArrayList<Person> pers) {
+        personMapper.addAllToDB(pers);
+    }
+
+    public static void DownloadProgramsFromDB() {
+        ArrayList<Program> Credits;
+        ArrayList<Person> Persons;
+        ArrayList<Category> Categorys;
+        ArrayList<CreditRelation> Creditrelation;
+
+        Persons = personMapper.getAllFromDB();
+        Credits = programMapper.getAllFromDB();
+        Categorys = categoryMapper.getAllFromDB();
+        Creditrelation = creditsMapper.getAllFromDB();
+        CreditsHandler.setAllCredits(Credits,Persons);
+        for (CreditRelation c : Creditrelation) {
+            for (Category cat : Categorys) {
+                if (c.categoryId==cat.getId()) {
+                    CreditsHandler.getSpecificCredit(c.creditId).createCategory(cat.getName());
+                    for (Person p : Persons) {
+                        if (p.getId()==c.personId) {
+                            CreditsHandler.getSpecificCredit(c.creditId).getCategory(c.categoryId).addPersonToCategory(p);
+                        }
+                    }
+                }
+            }
+        }
     }
 }

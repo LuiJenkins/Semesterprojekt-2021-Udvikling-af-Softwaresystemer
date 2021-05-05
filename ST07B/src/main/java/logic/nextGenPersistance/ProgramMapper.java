@@ -55,10 +55,12 @@ public class ProgramMapper implements AbstractClassMapper<Program> {
 
     public void addToDB(Program o) {
         try {
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO programs (program_id,producer_id,programName,playingTimeSec) VALUES (?,?,?,NULL)");
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO programs (program_id,producer_id,programName,playingTimeSec) VALUES (?,?,?,NULL) ON CONFLICT (program_id) DO UPDATE SET producer_id=?,programName=?");
             stmt.setInt(1, o.getProgramID());
             stmt.setInt(2,o.getProducerID());
             stmt.setString(3,o.getName());
+            stmt.setInt(4,o.getProducerID());
+            stmt.setString(5,o.getName());
             stmt.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();

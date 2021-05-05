@@ -1,24 +1,34 @@
 package database;
 
 import java.sql.*;
-import java.util.ArrayList;
 
 public class PersistanceHandler {
     private static PersistanceHandler instance;
-    private static String url = "localhost";
+    /*private static String url = "localhost";
     private static int port = 3000;
     private static String dbname = "creditsdb";
     private static String username = "postgres";
-    private static String password = "toor";
+    private static String password = "toor";*/
+    private static String url = "rogue.db.elephantsql.com";
+    private static int port = 5432;
+    private static String dbname = "cyhlnbjt";
+    private static String username = "cyhlnbjt";
+    private static String password = "sQ3Tg5T6-kPdUAuzYPP0kjTewCC7m7rE";
     private static Connection conn;
     public static void initDB() {
         try {
             DriverManager.registerDriver(new org.postgresql.Driver());
             conn = DriverManager.getConnection("jdbc:postgresql://" + url + ":" + port + "/" + dbname, username, password);
+            //conn = DriverManager.getConnection(url);
         } catch (SQLException | IllegalArgumentException ex) {
             ex.printStackTrace(System.err);
         } finally {
             if (conn == null) System.exit(-1);
+            /*SqlPostQuery("CREATE DATABASE \"creditsdb\"\n" +
+                    "WITH \n" +
+                    "OWNER = postgres\n" +
+                    "ENCODING = 'UTF8'\n" +
+                    "CONNECTION LIMIT = -1;");*/
             SqlPostQuery("CREATE TABLE IF NOT EXISTS producers (\n" +
                     "producer_id SERIAL PRIMARY KEY,\n" +
                     "producerName VARCHAR(250),\n" +

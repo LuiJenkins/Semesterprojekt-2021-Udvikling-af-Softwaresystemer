@@ -1,16 +1,17 @@
 package logic;
 
 import logic.nextGenPersistance.PersistanceFacade;
-
 import java.util.ArrayList;
-
 import static logic.LoginHandler.*;
+import database.PersistanceHandler;
 
 public class ApplicationFacade {
 
     public static void UploadToDB() {
         PersistanceFacade.UploadProgramsToDB(CreditsHandler.getAllCreditsFromLocal());
+        PersistanceFacade.UploadPersonsToDB(CreditsHandler.getPersonsFromPersonDB());
     }
+    public static void DownloadFromDB() {PersistanceFacade.DownloadProgramsFromDB();}
 
     public static void makeNewProgram(String Titel) {
         if (currentUser.isAllowed(1)) {
@@ -130,5 +131,9 @@ public class ApplicationFacade {
 
     public static String crossReferencePersonFromCredits(Person selectedPerson) {
         return CreditsHandler.crossReferencePersonFromCredits(selectedPerson);
+    }
+
+    public static void initDB() {
+        PersistanceHandler.initDB();
     }
 }

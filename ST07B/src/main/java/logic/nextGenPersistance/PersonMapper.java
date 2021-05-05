@@ -58,10 +58,12 @@ public class PersonMapper implements AbstractClassMapper<Person> {
     public void addToDB(Person o) {
         getConnection();
         try {
-            PreparedStatement stmt = conn.prepareStatement("INSERT INTO persons (person_id,personName,personDesc) VALUES (?,?,?)");
+            PreparedStatement stmt = conn.prepareStatement("INSERT INTO persons (person_id,personName,personDesc) VALUES (?,?,?) ON CONFLICT (person_id) DO UPDATE SET personname = ?,persondesc=?");
             stmt.setInt(1, o.getId());
             stmt.setString(2,o.getName());
             stmt.setString(3,o.getDesc());
+            stmt.setString(4,o.getName());
+            stmt.setString(5,o.getDesc());
             stmt.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
