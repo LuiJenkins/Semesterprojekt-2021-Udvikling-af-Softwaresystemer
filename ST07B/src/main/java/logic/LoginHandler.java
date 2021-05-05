@@ -10,6 +10,11 @@ public class LoginHandler {
         // dummy block for test      ######
         int userRole = 0;
         int producerId = 0;
+        if (currentUser!=null) {
+            currentUser.setUserRole(0);
+            currentUser.setProducerID(0);
+            currentUser.setUserName("");
+        }
         if (password.contains("#1")) {
             userRole=1;
         } else {

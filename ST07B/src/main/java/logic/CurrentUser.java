@@ -35,7 +35,6 @@ public class CurrentUser {
 
     public void setUserRole(int userRole){
         this.userRole=userRole;
-
     }
 
     public int getUserRole(){

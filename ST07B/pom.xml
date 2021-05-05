@@ -41,6 +41,16 @@
       <version>4.0.16-alpha</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>42.2.10.jre7</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+      <version>4.0.0.RELEASE</version>
+    </dependency>
   </dependencies>
 
   <build>

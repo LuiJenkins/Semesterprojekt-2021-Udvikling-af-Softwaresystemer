@@ -1,12 +1,17 @@
 package logic;
 
-import javafx.collections.ObservableList;
-
+import logic.nextGenPersistance.PersistanceFacade;
 import java.util.ArrayList;
-
 import static logic.LoginHandler.*;
+import database.PersistanceHandler;
 
 public class ApplicationFacade {
+
+    public static void UploadToDB() {
+        PersistanceFacade.UploadProgramsToDB(CreditsHandler.getAllCreditsFromLocal());
+        PersistanceFacade.UploadPersonsToDB(CreditsHandler.getPersonsFromPersonDB());
+    }
+    public static void DownloadFromDB() {PersistanceFacade.DownloadProgramsFromDB();}
 
     public static void makeNewProgram(String Titel) {
         if (currentUser.isAllowed(1)) {
@@ -18,25 +23,28 @@ public class ApplicationFacade {
     }
 
     public static void deleteProgram(Program p){
-        if (p.getProducerID() == LoginHandler.currentUser.getProducerID()) {
+        if (p.getProducerID() == LoginHandler.currentUser.getProducerID() || currentUser.isAllowed(2)) {
             CreditsHandler.deleteCredit(p);
         }
     }
 
     public static void denyProgram(Program p){
         if (currentUser.isAllowed(2)) {
+            System.out.println("Deny program");
             p.getApproved().deny();
         }
     }
     public static void acceptProgram(Program p){
         if (currentUser.isAllowed(2)) {
+            System.out.println("Accept program");
             p.getApproved().approve();
         }
     }
 
 
     public static void sendCreditToReview(Program p){
-        if (p.getProducerID() == LoginHandler.currentUser.getProducerID()) {
+        if (p.getProducerID() == LoginHandler.currentUser.getProducerID() || currentUser.isAllowed(2)) {
+            System.out.println("Sending program to review"); // ## test
             p.getApproved().setStatus(1);
         }
     }
@@ -105,10 +113,12 @@ public class ApplicationFacade {
     }
 
     public static void logUserOut() {
+        System.out.println("LogOut Event");
         LoginHandler.loginToAccount("","");
     }
 
     public static void logUserIn(String username,String password) {
+        System.out.println("LogIn Event");
         LoginHandler.loginToAccount(username,password);
     }
 
@@ -126,5 +136,9 @@ public class ApplicationFacade {
 
     public static String crossReferencePersonFromCredits(Person selectedPerson) {
         return CreditsHandler.crossReferencePersonFromCredits(selectedPerson);
+    }
+
+    public static void initDB() {
+        PersistanceHandler.initDB();
     }
 }
