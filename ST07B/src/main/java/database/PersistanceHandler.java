@@ -62,6 +62,15 @@ public class PersistanceHandler {
                     "numberInCategory INT,\n" +
                     "PRIMARY KEY (program_id,category_id,person_id)" +
                     ");");
+            SqlPostQuery("CREATE TABLE IF NOT EXISTS app_user (\n" +
+                    "user_id SERIAL PRIMARY KEY,\n" +
+                    "username VARCHAR(45) NOT NULL,\n" +
+                    "password VARCHAR(150),\n" +
+                    "fullName VARCHAR(250),\n" +
+                    "userRole INT,\n" +
+                    "producer_id INT" +
+                    ");");
+
         }
     }
     public static void SqlPostQuery(String s) {

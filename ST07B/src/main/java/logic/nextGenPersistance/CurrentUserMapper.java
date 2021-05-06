@@ -62,11 +62,11 @@ public class CurrentUserMapper implements AbstractClassMapper<CurrentUser> {
         try {
             PreparedStatement stmt = conn.prepareStatement("INSERT INTO app_user (user_id,username, userRole, producer_id) VALUES (?,?,?,?) ON CONFLICT (user_id) DO UPDATE SET username=?, userRole=?, producer_id=?");
             stmt.setInt(1, o.getUserID());
-            stmt.setInt(2,o.getUserName());
-            stmt.setString(3,o.getUserRole());
+            stmt.setString(2,o.getUserName());
+            stmt.setInt(3,o.getUserRole());
             stmt.setInt(4,o.getProducerID());
             stmt.setString(5,o.getUserName());
-            stmt.setString(6,o.getUserRole());
+            stmt.setInt(6,o.getUserRole());
             stmt.setInt(7,o.getProducerID());
             stmt.executeUpdate();
         } catch (SQLException ex) {
