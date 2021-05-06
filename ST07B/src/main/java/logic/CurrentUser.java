@@ -45,6 +45,10 @@ public class CurrentUser {
         return(this.userRole >= reqRole);
     }
 
+    public int getUserID() {
+        return userID;
+    }
+
     public void updateUser(){
         throw new UnsupportedOperationException();
     }

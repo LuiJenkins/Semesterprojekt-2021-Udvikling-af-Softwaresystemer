@@ -29,13 +29,13 @@ public class ApplicationFacade {
     }
 
     public static void denyProgram(Program p){
-        if (currentUser.isAllowed(2)) {
+        if (LoginHandler.currentUser.isAllowed(2)) {
             System.out.println("Deny program");
             p.getApproved().deny();
         }
     }
     public static void acceptProgram(Program p){
-        if (currentUser.isAllowed(2)) {
+        if (LoginHandler.currentUser.isAllowed(2)) {
             System.out.println("Accept program");
             p.getApproved().approve();
         }
