@@ -3,14 +3,27 @@ package logic;
 public class CurrentUser {
     public int userID;
     public String userName;
+    public String password;
+    public String fullName;
     public int userRole;
     public int producerID;
+
+    public CurrentUser(int userID, String userName, String password, String fullName, int userRole, int producerID) {
+        this.userID = userID;
+        this.userName = userName;
+        this.password = password;
+        this.fullName = fullName;
+        this.userRole = userRole;
+        this.producerID = producerID;
+    }
 
     public CurrentUser(int userID, String userName, int userRole, int producerID) {
         this.userID = userID;
         this.userName = userName;
         this.userRole = userRole;
         this.producerID = producerID;
+        this.fullName = "";
+        this.password = "";
     }
 
     public void createUser(String name, int role) {
@@ -18,7 +31,7 @@ public class CurrentUser {
     }
 
     public void setProducerID(int producerID){
-        this.producerID = producerID;        ;
+        this.producerID = producerID;
     }
 
     public int getProducerID(){
@@ -47,6 +60,22 @@ public class CurrentUser {
 
     public int getUserID() {
         return userID;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public void updateUser(){
