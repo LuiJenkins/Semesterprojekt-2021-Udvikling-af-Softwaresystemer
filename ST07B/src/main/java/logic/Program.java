@@ -11,7 +11,7 @@ public class Program {
     private int programID;
     private String programTitle;
 
-    public boolean modified;
+    public boolean modified = true;
 
     public Program(int programID, int producerID, String programName) {
         this.programID = programID;

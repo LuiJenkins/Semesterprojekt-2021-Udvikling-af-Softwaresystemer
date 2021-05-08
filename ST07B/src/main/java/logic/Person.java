@@ -5,7 +5,7 @@ public class Person {
     private String name;
     private String desc;
 
-    public boolean modified;
+    public boolean modified = true;
 
     public Person(int id, String name) {
         this.id = id;
