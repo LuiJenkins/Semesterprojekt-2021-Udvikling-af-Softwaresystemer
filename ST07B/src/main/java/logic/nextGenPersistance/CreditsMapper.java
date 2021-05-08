@@ -81,4 +81,58 @@ public class CreditsMapper implements AbstractClassMapper<CreditRelation> {
             addToDB(cr);
         }
     }
+
+    public void removeFromDB(int id) {
+        removeProgramFromDB(id);
+    }
+    public void removeProgramFromDB(int id) {
+        try {
+            PreparedStatement stmt = conn.prepareStatement("DELETE FROM credits WHERE program_id=?");
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    public void removeCategoryFromDB(int id) {
+        try {
+            PreparedStatement stmt = conn.prepareStatement("DELETE FROM credits WHERE category_id=?");
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    public void removePersonFromDB(int id) {
+        try {
+            PreparedStatement stmt = conn.prepareStatement("DELETE FROM credits WHERE person_id=?");
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void removeProgramCategoryPersonFromDB(int person_id, int credit_id,int program_id) {
+        try {
+            PreparedStatement stmt = conn.prepareStatement("DELETE FROM credits WHERE person_id=?,category_id=?,program_id=?");
+            stmt.setInt(1, person_id);
+            stmt.setInt(2, credit_id);
+            stmt.setInt(3, program_id);
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void removeCategoryPersonFromDB(int person_id, int credit_id) {
+        try {
+            PreparedStatement stmt = conn.prepareStatement("DELETE FROM credits WHERE person_id=?,category_id=?");
+            stmt.setInt(1, person_id);
+            stmt.setInt(2, credit_id);
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
 }

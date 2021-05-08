@@ -75,4 +75,14 @@ public class PersonMapper implements AbstractClassMapper<Person> {
             addToDB(p);
         }
     }
+
+    public void removeFromDB(int id) {
+        try {
+            PreparedStatement stmt = conn.prepareStatement("DELETE FROM persons WHERE person_id=?");
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
 }

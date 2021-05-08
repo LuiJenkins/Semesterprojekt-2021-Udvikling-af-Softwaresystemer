@@ -84,6 +84,16 @@ public class CurrentUserMapper implements AbstractClassMapper<CurrentUser> {
         }
     }
 
+    public void removeFromDB(int id) {
+        try {
+            PreparedStatement stmt = conn.prepareStatement("DELETE FROM app_user WHERE user_id=?");
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
 }
 
 

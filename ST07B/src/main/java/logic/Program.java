@@ -1,5 +1,7 @@
 package logic;
 
+import logic.nextGenPersistance.PersistanceFacade;
+
 import java.util.ArrayList;
 
 public class Program {
@@ -9,6 +11,7 @@ public class Program {
     private int programID;
     private String programTitle;
 
+    public boolean modified;
 
     public Program(int programID, int producerID, String programName) {
         this.programID = programID;
@@ -52,9 +55,11 @@ public class Program {
 
 
     public void deleteCategory(int ID){
+        PersistanceFacade.categoryMapper.removeFromDB(ID);
         categories.remove(ID);
     }
     public void deleteCategory(Category c) {
+        PersistanceFacade.personMapper.removeFromDB(c.getId());
         categories.remove(c);
     }
 

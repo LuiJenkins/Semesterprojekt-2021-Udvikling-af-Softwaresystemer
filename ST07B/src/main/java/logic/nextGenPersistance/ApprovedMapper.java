@@ -77,4 +77,14 @@ public class ApprovedMapper implements AbstractClassMapper<Approved> {
             addToDB(a);
         }
     }
+
+    public void removeFromDB(int id) {
+        try {
+            PreparedStatement stmt = conn.prepareStatement("DELETE FROM approved WHERE program_id=?");
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
 }
