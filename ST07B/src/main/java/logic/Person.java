@@ -5,6 +5,8 @@ public class Person {
     private String name;
     private String desc;
 
+    public boolean modified;
+
     public Person(int id, String name) {
         this.id = id;
         this.name = name;

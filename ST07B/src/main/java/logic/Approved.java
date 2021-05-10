@@ -11,6 +11,8 @@ public class Approved<setStatus> {
     public int programID;
     public Date approvedDate;
 
+    public boolean modified;
+
     public Approved(int status, int programID, Date approvedDate) {
         this.status = status;
         this.programID = programID;

@@ -72,4 +72,14 @@ public class ProgramMapper implements AbstractClassMapper<Program> {
             addToDB(p);
         }
     }
+
+    public void removeFromDB(int id) {
+        try {
+            PreparedStatement stmt = conn.prepareStatement("DELETE FROM programs WHERE program_id=?");
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
 }

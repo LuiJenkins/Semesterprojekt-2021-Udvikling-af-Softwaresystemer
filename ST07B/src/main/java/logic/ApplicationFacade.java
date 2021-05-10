@@ -25,6 +25,7 @@ public class ApplicationFacade {
     public static void deleteProgram(Program p){
         if (p.getProducerID() == LoginHandler.currentUser.getProducerID() || currentUser.isAllowed(2)) {
             CreditsHandler.deleteCredit(p);
+            PersistanceFacade.programMapper.removeFromDB(p.getProgramID());
         }
     }
 
@@ -58,6 +59,7 @@ public class ApplicationFacade {
     public static void deleteCategory(Category selectedCategory, Program selectedProgram) {
         if (selectedProgram.getProducerID() == LoginHandler.currentUser.getProducerID() || currentUser.isAllowed(2)) {
             selectedProgram.deleteCategory(selectedCategory);
+            PersistanceFacade.categoryMapper.removeFromDB(selectedCategory.getId());
         }
     }
 
@@ -66,6 +68,7 @@ public class ApplicationFacade {
     }
 
     public static void deletePerson(Person person) {
+        PersistanceFacade.personMapper.removeFromDB(person.getId());
         CreditsHandler.deletePerson(person);
     }
 
@@ -98,6 +101,7 @@ public class ApplicationFacade {
     }
     public static void removePersonFromCategory(Category category,Person person) {
         category.removePersonFromCategory(person);
+        PersistanceFacade.creditsMapper.removeCategoryPersonFromDB(person.getId(),category.getId());
     }
 
     public static ArrayList<Category> getCategoriesFromProgram(Program program) {

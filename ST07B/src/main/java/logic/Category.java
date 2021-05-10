@@ -1,5 +1,7 @@
 package logic;
 
+import logic.nextGenPersistance.PersistanceFacade;
+
 import java.util.ArrayList;
 
 public class Category {
@@ -8,6 +10,8 @@ public class Category {
     private int id;
     private String name;
     private int sortingOrder = 0;
+
+    public boolean modified;
 
     public Category(int id,String name) {
         this.id = id;

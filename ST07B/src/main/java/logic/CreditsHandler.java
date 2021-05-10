@@ -1,5 +1,7 @@
 package logic;
 
+import logic.nextGenPersistance.PersistanceFacade;
+
 import java.util.ArrayList;
 
 public class CreditsHandler {

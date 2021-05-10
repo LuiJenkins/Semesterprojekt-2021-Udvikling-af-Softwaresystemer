@@ -76,4 +76,15 @@ public class CategoryMapper implements AbstractClassMapper<Category> {
             addToDB(c);
         }
     }
+
+    @Override
+    public void removeFromDB(int id) {
+        try {
+            PreparedStatement stmt = conn.prepareStatement("DELETE FROM categorys WHERE category_id=?");
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
 }
