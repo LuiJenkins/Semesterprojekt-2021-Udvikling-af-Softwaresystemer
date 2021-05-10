@@ -40,7 +40,24 @@ public class CurrentUserMapper implements AbstractClassMapper<CurrentUser> {
             return null;
         }
     }
-        public ArrayList<CurrentUser> getAllFromDB() {
+    public CurrentUser getFromDB(String name, String password) {
+        getConnection();
+        try {
+            PreparedStatement stmt = conn.prepareStatement("SELECT user_id, username, password, fullName, userRole, producer_id FROM app_user WHERE (username = ? AND password = ?");
+            stmt.setString(1, name);
+            stmt.setString(2, password);
+            ResultSet sqlRV = stmt.executeQuery();
+            if (!sqlRV.next()) {
+                return null;
+            }
+            return new CurrentUser(sqlRV.getInt(1), sqlRV.getString(2), sqlRV.getString(3), sqlRV.getString(4), sqlRV.getInt(5), sqlRV.getInt(6));
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+    public ArrayList<CurrentUser> getAllFromDB() {
             getConnection();
             try {
                 PreparedStatement stmt = conn.prepareStatement("SELECT user_id, username, password, fullName, userRole, producer_id FROM app_user ");
