@@ -40,10 +40,10 @@ public class CurrentUserMapper implements AbstractClassMapper<CurrentUser> {
             return null;
         }
     }
-    public CurrentUser getFromDB(String name, String password) {
+    public CurrentUser getLoginFromDB(String name, String password) {
         getConnection();
         try {
-            PreparedStatement stmt = conn.prepareStatement("SELECT user_id, username, password, fullName, userRole, producer_id FROM app_user WHERE (username = ? AND password = ?");
+            PreparedStatement stmt = conn.prepareStatement("SELECT user_id, username, password, fullName, userRole, producer_id FROM app_user WHERE (username = ? AND password = ?);");
             stmt.setString(1, name);
             stmt.setString(2, password);
             ResultSet sqlRV = stmt.executeQuery();

@@ -1,5 +1,7 @@
 package logic;
 
+import logic.nextGenPersistance.CurrentUserMapper;
+
 import java.io.File;
 import java.util.Scanner;
 
@@ -8,6 +10,7 @@ public class LoginHandler {
 
     public static void loginToAccount(String username, String password) {
         // dummy block for test      ######
+
         int userRole = 0;
         int producerId = 0;
         if (currentUser!=null) {
@@ -44,9 +47,6 @@ public class LoginHandler {
             currentUser.setUserRole(userRole);
             currentUser.setProducerID(producerId);
         }
-        // System.out.println("rolle: "+currentUser.userRole+" producer: "+currentUser.producerID);
-        // dummy block end
-        // CurrentUser currentUser = new CurrentUser(0,username,userRole,producerId);
 
     }
     public int getUserRole() {

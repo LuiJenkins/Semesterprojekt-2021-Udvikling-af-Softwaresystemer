@@ -10,7 +10,7 @@ public class PersistanceFacade {
     public static PersonMapper personMapper = new PersonMapper();
     public static ProgramMapper programMapper = new ProgramMapper();
     public static ApprovedMapper approvedMapper = new ApprovedMapper();
-
+    public static CurrentUserMapper currentUserMapper = new CurrentUserMapper();
 
     public static void UploadProgramsToDB(ArrayList<Program> prog) {
         ArrayList<CreditRelation> creditRelations = new ArrayList<>();
@@ -18,6 +18,7 @@ public class PersistanceFacade {
         ArrayList<Program> programs = new ArrayList<>();
         ArrayList<Category> categories = new ArrayList<>();
         ArrayList<Approved> approved = new ArrayList<>();
+
 
         for (Program p : prog) {
             for(Category c : p.getAllCategory()) {
@@ -41,6 +42,19 @@ public class PersistanceFacade {
     }
     public static void UploadPersonsToDB(ArrayList<Person> pers) {
         personMapper.addAllToDB(pers);
+    }
+
+    public static void TestUserFromDB(String name, String password) {
+        CurrentUser currentUser = currentUserMapper.getLoginFromDB(name,password);
+        if(currentUser != null) {
+            LoginHandler.currentUser = currentUser;
+        } else {
+            if(LoginHandler.currentUser == null) {
+                LoginHandler.currentUser = new CurrentUser(0,"",0,0);
+            } else {
+                LoginHandler.currentUser.resetUser();
+            }
+        }
     }
 
     public static void DownloadProgramsFromDB() {
