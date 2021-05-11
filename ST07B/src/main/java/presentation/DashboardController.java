@@ -189,7 +189,9 @@ public class DashboardController implements startInterface{
         program_preview_second.setText(selectedProgram.toText());
     }
 
-    @Override
+    public void gotoadmin() {
+        if(LoginHandler.currentUser.isAllowed(3)) Main.SwitchScene(2);
+    }
     public void start() {
         program_pane.setVisible(true);
         category_pane.setVisible(false);

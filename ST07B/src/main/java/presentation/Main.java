@@ -11,6 +11,8 @@ import logic.ApplicationFacade;
 import logic.Person;
 import logic.Program;
 import logic.*;
+import logic.nextGenPersistance.PersistanceFacade;
+
 import java.util.ArrayList;
 
 public class Main extends Application {
@@ -19,6 +21,7 @@ public class Main extends Application {
     private static Stage primaryStage;
     private static DashboardController dashboardController;
     private static MainmenuController mainmenuController;
+    private static AdminpanelController adminpanelController;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -27,10 +30,13 @@ public class Main extends Application {
         scenes.add(new Scene((Parent) roots.get(0).load(),700,1000));
         roots.add((FXMLLoader) new FXMLLoader(getClass().getClassLoader().getResource("dashboard.fxml")));
         scenes.add(new Scene((Parent) roots.get(1).load(),700,1000));
+        roots.add((FXMLLoader) new FXMLLoader(getClass().getClassLoader().getResource("adminpanel.fxml")));
+        scenes.add(new Scene((Parent) roots.get(2).load(),700,1000));
 
 
         mainmenuController = roots.get(0).getController();
         dashboardController = roots.get(1).getController();
+        adminpanelController = roots.get(2).getController();
 
         this.primaryStage = primaryStage;
 
@@ -57,6 +63,7 @@ public class Main extends Application {
         primaryStage.show();
         if (SceneId == 0) {mainmenuController.start();}
         else if (SceneId == 1) {dashboardController.start();}
+        else if (SceneId == 2) {adminpanelController.start();}
     }
     public static void displayCredits(Program program) {
         mainmenuController.credits.setText(program.toText());
@@ -106,6 +113,11 @@ public class Main extends Application {
         ArrayList<Person> ap = ApplicationFacade.searchPerson(text);
         return FXCollections.observableArrayList(ap.toArray());
     }
+
+    public static ObservableList<CurrentUser> getAllUsers() {
+        return FXCollections.observableArrayList(PersistanceFacade.currentUserMapper.getAllFromDB());
+    }
+
 
     public void makeNewProgram(String programName) {
         ApplicationFacade.makeNewProgram(programName);
