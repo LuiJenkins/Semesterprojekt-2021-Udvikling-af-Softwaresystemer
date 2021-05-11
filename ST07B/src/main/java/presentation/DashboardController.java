@@ -1,7 +1,7 @@
 package presentation;
 /*
-Controls the graphical subsystem of the system, if the user is logged on from the main screen.
-
+Controls the graphical subsystem of the system, if the user is logged in from the main screen.
+Handels mouseclick and controls witch pane is visible
 */
 import javafx.collections.FXCollections;
 import javafx.event.EventHandler;
