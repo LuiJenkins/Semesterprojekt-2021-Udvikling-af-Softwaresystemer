@@ -1,4 +1,8 @@
 package logic;
+/*
+Class that holds the timeslots where the programs are shown.
+This is not yet implemented.
+*/
 
 public class TimeSlot {
     private int from;

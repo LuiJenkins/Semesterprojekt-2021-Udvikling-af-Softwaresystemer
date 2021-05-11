@@ -1,4 +1,7 @@
 package logic;
+/*
+Class that holds the persons that are credited .
+ */
 
 public class Person {
     private int id;

@@ -1,5 +1,8 @@
 package presentation;
+/*
+Controls the graphical system that handles if the user is logged on
 
+*/
 import javafx.collections.FXCollections;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;

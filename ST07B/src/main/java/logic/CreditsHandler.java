@@ -1,5 +1,8 @@
 package logic;
+/*
+Class that handels the credits of a program.
 
+ */
 import logic.nextGenPersistance.PersistanceFacade;
 
 import java.util.ArrayList;

@@ -1,4 +1,7 @@
 package logic;
+/*
+Class that holds uesers of the system and their roles.
+ */
 
 public class CurrentUser {
     public int userID;
@@ -81,6 +84,7 @@ public class CurrentUser {
     public void deleteUser(){
         throw new UnsupportedOperationException();
     }
+
     public void resetUser(){
         this.userID = 0;
         this.userName = "";

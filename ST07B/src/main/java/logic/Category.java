@@ -1,4 +1,8 @@
 package logic;
+/*
+Class that holds the categorys of a program.
+
+ */
 
 import logic.nextGenPersistance.PersistanceFacade;
 

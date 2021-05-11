@@ -1,4 +1,7 @@
 package logic;
+/*
+Class that handles the current user that is logged onto the system.
+ */
 
 import logic.nextGenPersistance.CurrentUserMapper;
 

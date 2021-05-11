@@ -1,4 +1,9 @@
 package presentation;
+/*
+A Controler of the systems main screen, the main screen displays the credits for a ordinary viewer
+If you log on to the system you switch to the DashboardController
+
+*/
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
