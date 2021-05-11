@@ -26,10 +26,6 @@ public class CurrentUser {
         this.password = "";
     }
 
-    public void createUser(String name, int role) {
-        throw new UnsupportedOperationException();
-    }
-
     public void setProducerID(int producerID){
         this.producerID = producerID;
     }
@@ -84,5 +80,14 @@ public class CurrentUser {
 
     public void deleteUser(){
         throw new UnsupportedOperationException();
+    }
+    public void resetUser(){
+        this.userID = 0;
+        this.userName = "";
+        this.userRole = 0;
+        this.producerID = 0;
+        this.fullName = "";
+        this.password = "";
+
     }
 }

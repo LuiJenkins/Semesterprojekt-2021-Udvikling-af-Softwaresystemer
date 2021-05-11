@@ -121,12 +121,14 @@ public class ApplicationFacade {
 
     public static void logUserOut() {
         System.out.println("LogOut Event");
-        LoginHandler.loginToAccount("","");
+        PersistanceFacade.TestUserFromDB("","");
+ //       LoginHandler.loginToAccount("","");
     }
 
     public static void logUserIn(String username,String password) {
         System.out.println("LogIn Event");
-        LoginHandler.loginToAccount(username,password);
+        PersistanceFacade.TestUserFromDB(username,password);
+//        LoginHandler.loginToAccount(username,password);
     }
 
     public static String loggedInRoleString() {
