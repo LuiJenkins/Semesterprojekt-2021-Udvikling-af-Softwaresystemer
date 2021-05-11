@@ -82,6 +82,6 @@ public class Program {
         if (approved.getStatus() == 2) { return "+ " + programTitle; }
         if (approved.getStatus() == 1) { return "? " + programTitle; }
         if (approved.getStatus() == 0) { return "- " + programTitle; }
-        return " error ----> " + approved.getStatus() + " " + programTitle;
+        return " Status error ----> " + approved.getStatus() + " " + programTitle;
     }
 }

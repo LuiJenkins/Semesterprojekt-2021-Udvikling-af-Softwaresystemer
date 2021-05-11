@@ -9,6 +9,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/*
+Class that maps the credits table in the database.
+the credits table contains  program_id, category, person_id which provides the individual credit line
+ */
+
 public class CreditsMapper implements AbstractClassMapper<CreditRelation> {
     public Connection conn;
 

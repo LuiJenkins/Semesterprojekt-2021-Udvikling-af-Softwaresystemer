@@ -1,5 +1,10 @@
 package logic;
-
+/*
+Class that holds the approval status of a program.
+status = 0 the program is not approved nor sent to be approved
+status = 1 the program is sent to be approved
+status = 2 the program is approved.
+ */
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

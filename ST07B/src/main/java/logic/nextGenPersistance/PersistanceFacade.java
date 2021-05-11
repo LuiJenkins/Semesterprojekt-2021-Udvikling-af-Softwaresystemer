@@ -3,7 +3,9 @@ package logic.nextGenPersistance;
 import logic.*;
 
 import java.util.ArrayList;
-
+/*
+The facade of the persistance system, it makes instances of the individual mappers
+ */
 public class PersistanceFacade {
     public static CreditsMapper creditsMapper = new CreditsMapper();
     public static CategoryMapper categoryMapper = new CategoryMapper();

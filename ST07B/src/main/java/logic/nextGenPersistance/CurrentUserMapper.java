@@ -1,12 +1,12 @@
 package logic.nextGenPersistance;
-
+/*
+Class that maps the app_user table in the database.
+the app_user table contains users of the system.
+ */
 import database.PersistanceHandler;
-
 import logic.Category;
 import logic.CurrentUser;
 import logic.Program;
-
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

@@ -7,7 +7,10 @@ import logic.Program;
 
 import java.sql.*;
 import java.util.ArrayList;
-
+/*
+Class that maps the Approved table in the database.
+Approved handles program approvals.
+ */
 public class ApprovedMapper implements AbstractClassMapper<Approved> {
     public Connection conn;
     public void getConnection() {
