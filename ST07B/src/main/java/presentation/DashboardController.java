@@ -1,6 +1,6 @@
 package presentation;
 /*
-Controls the graphical system that handles if the user is logged on
+Controls the graphical subsystem of the system, if the user is logged on from the main screen.
 
 */
 import javafx.collections.FXCollections;

@@ -2,6 +2,9 @@ package logic.nextGenPersistance;
 /*
 Class that maps the app_user table in the database.
 the app_user table contains users of the system.
+userRole = 1 producer
+userRole = 2 maintainer
+userRole = 3 Administrator
  */
 import database.PersistanceHandler;
 import logic.Category;

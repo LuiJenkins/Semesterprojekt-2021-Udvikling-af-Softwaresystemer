@@ -10,7 +10,11 @@ import java.util.ArrayList;
 /*
 Class that maps the Approved table in the database.
 Approved handles program approvals.
+status = 0 the program is not approved nor is it sent to be approved
+status = 1 the program is sent to be approved
+status = 2 the program is approved.
  */
+
 public class ApprovedMapper implements AbstractClassMapper<Approved> {
     public Connection conn;
     public void getConnection() {
