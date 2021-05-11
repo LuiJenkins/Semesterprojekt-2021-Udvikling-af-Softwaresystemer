@@ -33,12 +33,14 @@ public class ApplicationFacade {
         if (LoginHandler.currentUser.isAllowed(2)) {
             System.out.println("Deny program");
             p.getApproved().deny();
+            p.modified = true;
         }
     }
     public static void acceptProgram(Program p){
         if (LoginHandler.currentUser.isAllowed(2)) {
             System.out.println("Accept program");
             p.getApproved().approve();
+            p.modified = true;
         }
     }
 
@@ -47,6 +49,7 @@ public class ApplicationFacade {
         if (p.getProducerID() == LoginHandler.currentUser.getProducerID() || currentUser.isAllowed(2)) {
             System.out.println("Sending program to review"); // ## test
             p.getApproved().setStatus(1);
+            p.modified = true;
         }
     }
 

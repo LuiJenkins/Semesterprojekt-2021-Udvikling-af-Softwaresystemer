@@ -11,7 +11,7 @@ public class Category {
     private String name;
     private int sortingOrder = 0;
 
-    public boolean modified;
+    public boolean modified = true;
 
     public Category(int id,String name) {
         this.id = id;
@@ -33,6 +33,7 @@ public class Category {
     public int getSortingOrder() {return sortingOrder;}
 
     public void addPersonToCategory(Person person){
+        person.modified = true;
         persons.add(person);
     }
 

@@ -23,13 +23,19 @@ public class PersistanceFacade {
         for (Program p : prog) {
             for(Category c : p.getAllCategory()) {
                 for (Person pe : c.getPersonsFromCategory()) {
-                    creditRelations.add(new CreditRelation(p.getProgramID(),c.getId(),pe.getId()));
-                    people.add(pe);
+                    if (pe.modified) {
+                        creditRelations.add(new CreditRelation(p.getProgramID(),c.getId(),pe.getId()));
+                        people.add(pe);
+                    }
                 }
-                categories.add(c);
+                if (c.modified) {
+                    categories.add(c);
+                }
             }
-            programs.add(p);
-            if (p.getApproved() != null) {
+            if (p.modified) {
+                programs.add(p);
+            }
+            if (p.getApproved() != null && p.modified) {
                 approved.add(p.getApproved());
             }
         }
@@ -67,6 +73,8 @@ public class PersistanceFacade {
         Credits = programMapper.getAllFromDB();
         Categorys = categoryMapper.getAllFromDB();
         Creditrelation = creditsMapper.getAllFromDB();
+        for (Program p : Credits) { p.modified = false; }
+        for (Person p : Persons) { p.modified = false; }
         CreditsHandler.setAllCredits(Credits,Persons);
         for (CreditRelation c : Creditrelation) {
             for (Category cat : Categorys) {
@@ -74,6 +82,7 @@ public class PersistanceFacade {
                     CreditsHandler.getSpecificCredit(c.creditId).createCategory(cat.getName());
                     for (Person p : Persons) {
                         if (p.getId()==c.personId) {
+                            p.modified = false;
                             CreditsHandler.getSpecificCredit(c.creditId).getCategory(c.categoryId).addPersonToCategory(p);
                         }
                     }
