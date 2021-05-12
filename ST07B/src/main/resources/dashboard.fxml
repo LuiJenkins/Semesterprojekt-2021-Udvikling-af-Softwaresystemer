@@ -104,5 +104,6 @@
             <ListView fx:id="category_preview" layoutX="354.0" layoutY="206.0" onMouseClicked="#personInCatClick" prefHeight="624.0" prefWidth="317.0" />
          </children>
       </AnchorPane>
+      <Button fx:id="adminpanel" layoutX="428.0" layoutY="24.0" mnemonicParsing="false" onAction="#gotoadmin" prefHeight="25.0" prefWidth="126.0" text="AdminPanel" />
    </children>
 </AnchorPane>

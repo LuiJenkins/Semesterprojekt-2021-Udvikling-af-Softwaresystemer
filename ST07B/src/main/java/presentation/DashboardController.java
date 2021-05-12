@@ -117,7 +117,7 @@ public class DashboardController implements startInterface{
         }
     }
     public void addCategory() {
-        if (new_category_name.getText() != null && selectedProgram.getProducerID() == LoginHandler.currentUser.getUserRole() || currentUser.isAllowed(2)) {
+        if (new_category_name.getText() != null && selectedProgram.getProducerID() == LoginHandler.currentUser.getProducerID() || currentUser.isAllowed(2)) {
             ApplicationFacade.makeNewCategory(selectedProgram,new_category_name.getText());
             System.out.println("Making new category: "+new_category_name.getText());
         }
@@ -126,7 +126,7 @@ public class DashboardController implements startInterface{
         program_preview_second.setText(selectedProgram.toText());
     }
     public void editChosenCategory() {
-        if (selectedCategory != null && selectedProgram.getProducerID() == LoginHandler.currentUser.getUserRole() || currentUser.isAllowed(2)) {
+        if (selectedCategory != null && selectedProgram.getProducerID() == LoginHandler.currentUser.getProducerID()  || currentUser.isAllowed(2)) {
             setpage(2);
             person_list.setItems(Main.getAllPersonsNotInCategory(selectedCategory));
             category_preview.setItems(Main.getAllPersonsInCategory(selectedCategory));
@@ -189,7 +189,9 @@ public class DashboardController implements startInterface{
         program_preview_second.setText(selectedProgram.toText());
     }
 
-    @Override
+    public void gotoadmin() {
+        if(LoginHandler.currentUser.isAllowed(3)) Main.SwitchScene(2);
+    }
     public void start() {
         program_pane.setVisible(true);
         category_pane.setVisible(false);

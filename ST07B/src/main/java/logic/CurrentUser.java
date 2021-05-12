@@ -90,4 +90,25 @@ public class CurrentUser {
         this.password = "";
 
     }
+
+    public String roleToString(int role) {
+        switch (userRole) {
+            case 1:
+                return "Producer";
+            case 2:
+                return "Maintainer";
+            case 3:
+                return "Adminstrator";
+            default:
+                return "Bruger";
+        }
+    }
+
+    @Override
+    public String toString() {
+        if (userRole == 1) {
+            return userName+" (role: "+roleToString(userRole)+" id: "+producerID+")";
+        }
+        return userName+" (role: "+roleToString(userRole)+")";
+    }
 }
