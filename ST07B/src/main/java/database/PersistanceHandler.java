@@ -1,6 +1,10 @@
 package database;
 
 import java.sql.*;
+/* *************************************************************************************
+PersistanceHandler has the connection perimeters for connecting to the database.
+It creates tables in the database, if these are not present.
+**************************************************************************************** */
 
 public class PersistanceHandler {
     private static PersistanceHandler instance;

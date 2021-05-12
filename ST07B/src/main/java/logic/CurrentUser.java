@@ -1,4 +1,11 @@
 package logic;
+/*
+Class that holds uesers of the system and their roles.
+userRole = 1 producer
+userRole = 2 maintainer
+userRole = 3 Administrator
+
+ */
 
 public class CurrentUser {
     public int userID;
@@ -81,6 +88,7 @@ public class CurrentUser {
     public void deleteUser(){
         throw new UnsupportedOperationException();
     }
+
     public void resetUser(){
         this.userID = 0;
         this.userName = "";

@@ -1,8 +1,12 @@
 package logic.nextGenPersistance;
 
+/*
+Class that maps the persons table in the database.
+the persons table contains the individuals tha is registeret as being credited in the system.
+ */
+
 import database.PersistanceHandler;
 import logic.Person;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

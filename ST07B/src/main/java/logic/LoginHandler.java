@@ -1,4 +1,11 @@
 package logic;
+/*
+Class that handles the current user that is logged onto the system.
+userRole = 1 producer
+userRole = 2 maintainer
+userRole = 3 Administrator
+
+ */
 
 import logic.nextGenPersistance.CurrentUserMapper;
 

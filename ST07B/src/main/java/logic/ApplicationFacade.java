@@ -1,5 +1,8 @@
 package logic;
+/*
+Facade that acts as interface between the GUI layer and the domain layer of the application.
 
+ */
 import logic.nextGenPersistance.PersistanceFacade;
 import java.util.ArrayList;
 import static logic.LoginHandler.*;

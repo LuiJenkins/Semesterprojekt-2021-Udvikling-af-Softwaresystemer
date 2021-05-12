@@ -8,6 +8,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+/*
+Class that maps the category table in the database.
+category's are groups that arranges persons with function in program in the same group
+ */
 
 public class CategoryMapper implements AbstractClassMapper<Category> {
     public Connection conn;

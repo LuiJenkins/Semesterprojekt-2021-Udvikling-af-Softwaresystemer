@@ -1,5 +1,8 @@
 package logic.nextGenPersistance;
-
+/*
+Class that maps the programs table in the database.
+the programs table contains the individual programs that is credited.
+ */
 import database.PersistanceHandler;
 import logic.Program;
 

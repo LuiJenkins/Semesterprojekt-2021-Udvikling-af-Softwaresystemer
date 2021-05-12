@@ -4,7 +4,10 @@ import logic.Program;
 
 import java.sql.Connection;
 import java.util.ArrayList;
+/*
+Interface which is implemented by all Mapper classes
 
+ */
 public interface AbstractClassMapper<T> {
     Connection conn = null;
     void getConnection();

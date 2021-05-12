@@ -1,4 +1,8 @@
 package logic;
+/*
+Class that holds the categorys of a program.
+category's are groups that arranges persons with function in program in the same group
+ */
 
 import logic.nextGenPersistance.PersistanceFacade;
 
