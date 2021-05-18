@@ -26,7 +26,7 @@ public class PersistanceHandler {
             //conn = DriverManager.getConnection(url);
         } catch (SQLException | IllegalArgumentException ex) {
             ex.printStackTrace(System.err);
-        } finally {i
+        } finally {
             if (conn == null) System.exit(-1);
             /*SqlPostQuery("CREATE DATABASE \"creditsdb\"\n" +
                     "WITH \n" +
