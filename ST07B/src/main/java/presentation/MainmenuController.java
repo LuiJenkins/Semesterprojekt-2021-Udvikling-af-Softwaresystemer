@@ -7,6 +7,7 @@ If you log on to the system you switch to the DashboardController
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import logic.*;
 
 public class MainmenuController implements startInterface{
@@ -20,6 +21,7 @@ public class MainmenuController implements startInterface{
     public ListView<Object> suggestions;
 
     public TextArea credits;
+    public ImageView qrcode;
 
     public RadioButton searchCredit;
     public RadioButton searchPerson;
@@ -43,6 +45,12 @@ public class MainmenuController implements startInterface{
             selectedProgram = (Program)suggestions.getSelectionModel().getSelectedItem();
             search_term.setText(selectedProgram.toString());
             Main.displayCredits(selectedProgram);
+            try {
+                qrcode.setImage(QRFacade.GetQRCode("https://www.google.com/search?q="+selectedProgram.getName(),128,128));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
         } else if (suggestions.getSelectionModel().getSelectedItem() instanceof Person) {
             selectedPerson = (Person)suggestions.getSelectionModel().getSelectedItem();
             search_term.setText(selectedPerson.toString());
