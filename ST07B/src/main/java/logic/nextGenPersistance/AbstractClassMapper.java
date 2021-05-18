@@ -12,7 +12,7 @@ public interface AbstractClassMapper<T> {
     Connection conn = null;
     void getConnection();
     T getFromDB(int id);
-    ArrayList<T> getAllFromDB();
+    ArrayList<T> getAllFromDB;
     void addToDB(T o);
     void addAllToDB(ArrayList<T> o);
     void removeFromDB(int id);
