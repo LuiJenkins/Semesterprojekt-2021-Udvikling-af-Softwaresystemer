@@ -1,15 +1,13 @@
 package logic;
 import com.google.zxing.*;
-import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelFormat;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
 
-import java.awt.image.BufferedImage;
 import java.io.UnsupportedEncodingException;
-import java.nio.Buffer;
+
 
 public class QRFacade {
     public static Image GetQRCode(String data, int w, int h) throws WriterException,UnsupportedEncodingException {
