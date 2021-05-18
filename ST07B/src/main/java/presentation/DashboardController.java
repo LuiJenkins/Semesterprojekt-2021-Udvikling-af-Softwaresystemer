@@ -11,8 +11,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import logic.*;
 
-import static logic.LoginHandler.currentUser;
-
 public class DashboardController implements startInterface{
     @FXML
     public Button logout_button;
@@ -92,7 +90,7 @@ public class DashboardController implements startInterface{
         program_list.setItems(Main.getAllPrograms());
     }
     public void editChosenProgram() {
-        if (LoginHandler.currentUser.getProducerID() == selectedProgram.getProducerID() || currentUser.isAllowed(2)) {
+        if (LoginHandler.currentUser.getProducerID() == selectedProgram.getProducerID() || LoginHandler.currentUser.isAllowed(2)) {
             setpage(1);
             category_list.setItems(Main.getAllCategoryForProgram(selectedProgram));
             program_preview.setText(selectedProgram.toText());
@@ -104,7 +102,7 @@ public class DashboardController implements startInterface{
         program_list.setItems(Main.getAllProgramsICanEdit());
     }
     public void acceptChosenProgram() {
-        if (currentUser.isAllowed(2)) {         // only userRole >= 2 can acceptProgram
+        if (LoginHandler.currentUser.isAllowed(2)) {         // only userRole >= 2 can acceptProgram
             if (selectedProgram != null) {
                 ApplicationFacade.acceptProgram(selectedProgram);
                 program_list.setItems(Main.getAllProgramsICanEdit());  //  to refresh list
@@ -112,7 +110,7 @@ public class DashboardController implements startInterface{
         }
     }
     public void denyChosenProgram() {                   // only userRole >= 2 can denyProgram
-        if (currentUser.isAllowed(2)) {
+        if (LoginHandler.currentUser.isAllowed(2)) {
             if (selectedProgram != null) {
                 ApplicationFacade.denyProgram(selectedProgram);
                 program_list.setItems(Main.getAllProgramsICanEdit());  // to refresh list
@@ -120,7 +118,7 @@ public class DashboardController implements startInterface{
         }
     }
     public void addCategory() {
-        if (new_category_name.getText() != null && selectedProgram.getProducerID() == LoginHandler.currentUser.getProducerID() || currentUser.isAllowed(2)) {
+        if (new_category_name.getText() != null && selectedProgram.getProducerID() == LoginHandler.currentUser.getProducerID() || LoginHandler.currentUser.isAllowed(2)) {
             ApplicationFacade.makeNewCategory(selectedProgram,new_category_name.getText());
             System.out.println("Making new category: "+new_category_name.getText());
         }
@@ -129,7 +127,7 @@ public class DashboardController implements startInterface{
         program_preview_second.setText(selectedProgram.toText());
     }
     public void editChosenCategory() {
-        if (selectedCategory != null && selectedProgram.getProducerID() == LoginHandler.currentUser.getProducerID()  || currentUser.isAllowed(2)) {
+        if (selectedCategory != null && selectedProgram.getProducerID() == LoginHandler.currentUser.getProducerID()  || LoginHandler.currentUser.isAllowed(2)) {
             setpage(2);
             person_list.setItems(Main.getAllPersonsNotInCategory(selectedCategory));
             category_preview.setItems(Main.getAllPersonsInCategory(selectedCategory));

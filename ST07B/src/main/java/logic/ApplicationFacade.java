@@ -49,7 +49,7 @@ public class ApplicationFacade {
 
 
     public static void sendCreditToReview(Program p){
-        if (p.getProducerID() == LoginHandler.currentUser.getProducerID() || currentUser.isAllowed(2)) {
+        if (p.getProducerID() == LoginHandler.currentUser.getProducerID() || LoginHandler.currentUser.isAllowed(2)) {
             System.out.println("Sending program to review"); // ## test
             p.getApproved().setStatus(1);
             p.modified = true;

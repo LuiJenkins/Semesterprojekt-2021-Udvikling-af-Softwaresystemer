@@ -21,6 +21,13 @@ public class Program {
         this.programTitle = programName;
         this.approved = new Approved(programID);
     }
+    public Program(int programID, int producerID, String programName, int status) {
+        this.programID = programID;
+        this.ProducerID = producerID;
+        this.programTitle = programName;
+        this.approved = new Approved(programID);
+        this.approved.setStatus(status);
+    }
     public Program() { }
 
     public int getProgramID(){
