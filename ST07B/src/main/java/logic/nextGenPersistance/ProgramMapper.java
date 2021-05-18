@@ -24,21 +24,6 @@ public class ProgramMapper implements AbstractClassMapper<Program> {
             conn = PersistanceHandler.getConn();
         }
     }
- /*   public Program getFromDB(int id) {
-        getConnection();
-        try {
-            PreparedStatement stmt = conn.prepareStatement("SELECT program_id,producer_id,programName FROM programs WHERE program_id = ?");
-            stmt.setInt(1, id);
-            ResultSet sqlRV = stmt.executeQuery();
-            if (!sqlRV.next()){
-                return null;
-            }
-            return new Program(sqlRV.getInt(1),sqlRV.getInt(2),sqlRV.getString(3));
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            return null;
-        }
-    } */
     public Program getFromDB(int id) {
         getConnection();
         try {
@@ -49,13 +34,12 @@ public class ProgramMapper implements AbstractClassMapper<Program> {
             if (!sqlRV.next()){
                 return null;
             }
-            return new Program(sqlRV.getInt(1),sqlRV.getInt(2),sqlRV.getString(3),sqlRV.getInt(4));
+            return new Program(sqlRV.getInt(1),sqlRV.getInt(2),(String)sqlRV.getString(3),sqlRV.getInt(4));
         } catch (SQLException ex) {
             ex.printStackTrace();
             return null;
         }
     }
-/*
     public ArrayList<Program> getAllFromDB() {
         try {
             PreparedStatement stmt = conn.prepareStatement("SELECT program_id,producer_id,programName FROM programs ");
@@ -70,24 +54,7 @@ public class ProgramMapper implements AbstractClassMapper<Program> {
             ex.printStackTrace();
             return null;
         }
-    } */
-    public ArrayList<Program> getAllFromDB() {
-        try {
-            PreparedStatement stmt = conn.prepareStatement( "SELECT programs.program_id, programs.producer_id, programs.programName,approved.status FROM programs " +
-                                                                "JOIN approved on (programs.program_id=approved.program_id);");
-            ResultSet sqlRV = stmt.executeQuery();
-            int rowcount = 0;
-            ArrayList<Program> returnValue = new ArrayList<>();
-            while (sqlRV.next()){
-                returnValue.add(new Program(sqlRV.getInt(1),sqlRV.getInt(2),sqlRV.getString(3), sqlRV.getInt(4)));
-            }
-            return returnValue;
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            return null;
-        }
     }
-
     public void addToDB(Program o) {
         try {
             PreparedStatement stmt = conn.prepareStatement("INSERT INTO programs (program_id,producer_id,programName,playingTimeSec) VALUES (?,?,?,NULL) ON CONFLICT (program_id) DO UPDATE SET producer_id=?,programName=?");
