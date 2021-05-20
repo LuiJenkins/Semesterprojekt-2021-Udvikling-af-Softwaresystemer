@@ -14,14 +14,14 @@ CREATE TABLE IF NOT EXISTS programs (
 	program_id SERIAL PRIMARY KEY,
 	producer_id INT,			-- id of the owning producer
 	programName VARCHAR(250),	-- name of the program
-	playingTimeSec INT			-- playing time in secunds
+	playingTimeSec INT			-- playing time in seconds
 	);
 
 -- Approved
 CREATE TABLE IF NOT EXISTS approved (
 	program_id SERIAL PRIMARY KEY, 	-- the approved program
 	status INT,						-- 1 = sent to be approved 2 = approved 0 = not approved
-	approvedDate TIMESTAMP			-- time and date of approvel
+	approvedDate TIMESTAMP			-- time and date of approval
 	);
 	
 -- person	
@@ -35,8 +35,8 @@ CREATE TABLE IF NOT EXISTS persons (
 CREATE TABLE IF NOT EXISTS categorys (
 	category_id SERIAL PRIMARY KEY,	
 	categoryName VARCHAR(200),		-- Name of category
-	categoryType INT,				-- the type of catagory 0 = do not show on template. 1 = show on template (not yet implementet)
-	categoryNumber INT				-- the default nummer the catagory is in the list   (not yet implementet)
+	categoryType INT,				-- the type of category 0 = do not show on template. 1 = show on template (not yet implemented)
+	categoryNumber INT				-- the default number the category is in the list   (not yet implemented)
 	);
 
 -- credits
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS credits (
 	program_id INT,			-- the program that the credit belongs to
 	category_id INT,		-- the category the credit belongs to
 	person_id INT,			-- the person in the credit
-	numberInCategory INT,	-- the linenumber in the catagory (not yet implementet)
+	numberInCategory INT,	-- the linenumber in the category (not yet implemented)
 	PRIMARY KEY (program_id,category_id,person_id)
 	);
 	
@@ -66,10 +66,10 @@ CREATE TABLE IF NOT EXISTS app_user (
  ****************************************************/
 -- make 4 dummy users
 INSERT INTO app_user (userName, password, fullName, userRole, producer_id)
-VALUES ('Morten','111111', 'Morten H. Nielsen',1,1), 	-- producer with id 1 (Peak Production)
+VALUES ('Morten','111111', 'Morten H. Nielsen',1,1), 	-- producer with id 1 
 		('Rasmus','222222','Rasmus Bentzen Thye',2,1),	-- Maintainer
 		('Jens','333333','Jens C. Toftdahl',3,1),		-- Administrator
-		('Louie','444444','Louie Steen Laursen',1,2);	-- producer with id 2 (Studio Jox)
+		('Louie','444444','Louie Steen Laursen',1,2);	-- producer with id 2 
 		
 
 /****************************************************
