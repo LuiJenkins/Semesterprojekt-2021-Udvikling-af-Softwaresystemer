@@ -71,7 +71,7 @@ VALUES ('Morten','111111', 'Morten H. Nielsen',1,1), 	-- producer with id 1 (Pea
 		('Jens','333333','Jens C. Toftdahl',3,1),		-- Administrator
 		('Louie','444444','Louie Steen Laursen',1,2);	-- producer with id 2 (Studio Jox)
 		
- 
+
 /****************************************************
  *     End of Insert dummy data                     *
  ****************************************************/
