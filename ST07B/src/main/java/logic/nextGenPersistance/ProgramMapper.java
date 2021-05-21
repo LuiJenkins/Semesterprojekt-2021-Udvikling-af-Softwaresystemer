@@ -42,12 +42,13 @@ public class ProgramMapper implements AbstractClassMapper<Program> {
     }
     public ArrayList<Program> getAllFromDB() {
         try {
-            PreparedStatement stmt = conn.prepareStatement("SELECT program_id,producer_id,programName FROM programs ");
+            PreparedStatement stmt = conn.prepareStatement( "SELECT programs.program_id, programs.producer_id, programs.programName,approved.status FROM programs " +
+                                                                "JOIN approved on (programs.program_id=approved.program_id);");
             ResultSet sqlRV = stmt.executeQuery();
             int rowcount = 0;
             ArrayList<Program> returnValue = new ArrayList<>();
             while (sqlRV.next()){
-                returnValue.add(new Program(sqlRV.getInt(1),sqlRV.getInt(2),sqlRV.getString(3)));
+                returnValue.add(new Program(sqlRV.getInt(1),sqlRV.getInt(2),sqlRV.getString(3), sqlRV.getInt(4)));
             }
             return returnValue;
         } catch (SQLException ex) {
@@ -55,6 +56,7 @@ public class ProgramMapper implements AbstractClassMapper<Program> {
             return null;
         }
     }
+
     public void addToDB(Program o) {
         try {
             PreparedStatement stmt = conn.prepareStatement("INSERT INTO programs (program_id,producer_id,programName,playingTimeSec) VALUES (?,?,?,NULL) ON CONFLICT (program_id) DO UPDATE SET producer_id=?,programName=?");
