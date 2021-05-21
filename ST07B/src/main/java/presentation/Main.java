@@ -81,6 +81,16 @@ public class Main extends Application {
         ArrayList<Program> ap = ApplicationFacade.getCurrentPrograms();
         return FXCollections.observableArrayList(ap.toArray());
     }
+    public static ObservableList<Object> getAllApprovedPrograms() {
+        ArrayList<Program> ap = new ArrayList<>();
+        for (Program p : ApplicationFacade.getCurrentPrograms()) {
+            if (p.getApproved().isApproved()) {
+                ap.add(p);
+            }
+        }
+        return FXCollections.observableArrayList(ap.toArray());
+    }
+
     public static ObservableList<Object> getAllPersons() {
         ArrayList<Person> ap = ApplicationFacade.getPersonsFromPersonDB();
         return FXCollections.observableArrayList(ap.toArray());

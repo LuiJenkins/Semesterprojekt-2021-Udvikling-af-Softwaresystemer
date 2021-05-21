@@ -87,7 +87,7 @@ public class DashboardController implements startInterface{
             System.out.println("Making new program: "+newprogram_name.getText());
             ApplicationFacade.makeNewProgram(newprogram_name.getText());
         }
-        program_list.setItems(Main.getAllPrograms());
+        program_list.setItems(Main.getAllApprovedPrograms());
     }
     public void editChosenProgram() {
         if (LoginHandler.currentUser.getProducerID() == selectedProgram.getProducerID() || LoginHandler.currentUser.isAllowed(2)) {

@@ -14,7 +14,7 @@ public class ApplicationFacade {
         PersistanceFacade.UploadProgramsToDB(CreditsHandler.getAllCreditsFromLocal());
         PersistanceFacade.UploadPersonsToDB(CreditsHandler.getPersonsFromPersonDB());
     }
-    public static void DownloadFromDB() {PersistanceFacade.DownloadProgramsFromDB();}
+    public static void DownloadFromDB() {PersistanceFacade.downloadAllFromDB();}
 
     public static void makeNewProgram(String Titel) {
         if (currentUser.isAllowed(1)) {

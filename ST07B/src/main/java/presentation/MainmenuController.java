@@ -46,7 +46,7 @@ public class MainmenuController implements startInterface{
             search_term.setText(selectedProgram.toString());
             Main.displayCredits(selectedProgram);
             try {
-                qrcode.setImage(QRFacade.GetQRCode("https://www.google.com/search?q="+selectedProgram.getName(),128,128));
+                qrcode.setImage(QRFacade.GetQRCode("https://www.google.com/search?q="+selectedProgram.getName().replace(' ','+'),128,128));
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -60,7 +60,7 @@ public class MainmenuController implements startInterface{
     public void switchSearch(ActionEvent event) {
         System.out.println(event.getSource().toString().contains("Søg Krediteringer"));
         if (event.getSource().toString().contains("Søg Krediteringer")) {
-            suggestions.setItems(Main.getAllPrograms());
+            suggestions.setItems(Main.getAllApprovedPrograms());
             searchCredit.setSelected(true);
             searchPerson.setSelected(false);
             SearchMode="credit";
@@ -84,7 +84,7 @@ public class MainmenuController implements startInterface{
 
     @Override
     public void start() {
-        suggestions.setItems(Main.getAllPrograms());
+        suggestions.setItems(Main.getAllApprovedPrograms());
         searchCredit.setSelected(true);
         searchPerson.setSelected(false);
     }

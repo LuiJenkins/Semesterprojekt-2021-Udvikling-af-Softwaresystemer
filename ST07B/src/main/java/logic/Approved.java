@@ -59,4 +59,12 @@ public class Approved<setStatus> {
     public void deny() {
         status = 0;
     }
+
+    public boolean isApproved() {
+        if (status == 2) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

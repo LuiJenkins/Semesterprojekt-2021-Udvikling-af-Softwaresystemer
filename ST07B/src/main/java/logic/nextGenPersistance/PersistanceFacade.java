@@ -65,7 +65,7 @@ public class PersistanceFacade {
         }
     }
 
-    public static void DownloadProgramsFromDB() {
+    public static void downloadAllFromDB() {
         ArrayList<Program> Credits;
         ArrayList<Person> Persons;
         ArrayList<Category> Categorys;
