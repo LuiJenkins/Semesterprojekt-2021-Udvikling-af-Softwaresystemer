@@ -115,7 +115,12 @@ public class Main extends Application {
     }
 
     public static ObservableList<Object> searchProgram(String text) {
-        ArrayList<Program> ap = ApplicationFacade.searchProgram(text);
+        ArrayList<Program> ap = new ArrayList<>();
+        for (Program p : ApplicationFacade.searchProgram(text)) {
+            if (p.getApproved().isApproved()) {
+                ap.add(p);
+            }
+        }
         return FXCollections.observableArrayList(ap.toArray());
     }
 

@@ -150,9 +150,6 @@ public class DashboardController implements startInterface{
         program_list.setItems(Main.getAllProgramsICanEdit());
     }
 
-    public void setPersonName() {
-
-    }
     public void makeNewPersonWithName() {
         String name = person_name.getText();
         String desc = person_desc.getText();
