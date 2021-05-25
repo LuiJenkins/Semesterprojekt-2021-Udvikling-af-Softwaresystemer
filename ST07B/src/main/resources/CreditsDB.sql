@@ -57,6 +57,18 @@ CREATE TABLE IF NOT EXISTS app_user (
 	userRole INT,					-- Role of the user 1 = Producer. 2 = Maintainer. 3 = Administrator
 	producer_id INT
 	);
+
+/* Make default user Admin with the password admin (obs: small a in password)
+If there is a user with the admin role, no new admin is created */
+INSERT INTO app_user
+    (userName, password,userRole, fullname, producer_id)
+SELECT 'Admin', 'admin', 3, 'Default user!', 0
+WHERE
+    NOT EXISTS (
+        SELECT * FROM app_user WHERE userRole = 3
+    );	
+	
+
 /****************************************************
  *     End of create Tables                         *
  ****************************************************/	
