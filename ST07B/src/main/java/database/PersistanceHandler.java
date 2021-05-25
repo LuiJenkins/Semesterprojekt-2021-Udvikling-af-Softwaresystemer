@@ -73,8 +73,14 @@ public class PersistanceHandler {
                     "fullName VARCHAR(250),\n" +
                     "userRole INT,\n" +
                     "producer_id INT" +
-                    ");");
-
+                    ");\n" +
+                    "INSERT INTO app_user\n" +
+                    "    (userName, password,userRole, fullname, producer_id)\n" +
+                    "SELECT 'Admin', 'admin', 3, 'Default user!', 0\n" +
+                    "WHERE\n" +
+                    "    NOT EXISTS (\n" +
+                    "        SELECT * FROM app_user WHERE userRole = 3\n" +
+                    "    );");
         }
     }
     public static void SqlPostQuery(String s) {
